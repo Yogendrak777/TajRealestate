@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavbarMainDiv, TajLogo, RightContainer, NavBarBtn } from "./Skins"
-import TajLogoImage from "../assets/TajLogo.jpg"
+import CompantLogo from "../assets/CompanyLogo.jpeg"
 
 export default function Navbar() {
   return (
     <NavbarMainDiv>
-      <TajLogo src = {TajLogoImage}/>
+      <TajLogo src = {CompantLogo}/>
       <RightContainer>
         <NavBarBtn> Your Booking </NavBarBtn>
         <NavBarBtn> SIGN UP </NavBarBtn>
@@ -14,7 +14,6 @@ export default function Navbar() {
         <NavBarBtn> LOGIN </NavBarBtn>
         <NavBarBtn> LOGIN </NavBarBtn>
       </RightContainer>
-     
     </NavbarMainDiv>
   )
 }

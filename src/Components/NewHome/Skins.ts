@@ -19,7 +19,6 @@ position : absolute;
 top : 0px;
 left: 0px;
 height : 20em;
-position : absolute;
 z-index  : -100;
 
 @media only screen and (max-width: 600px) {
@@ -195,6 +194,7 @@ ${props => props.showFiltersCard && `top : 60em;` }
 
 export const PropertiesTittleInHome = styled.h1`
 font-weight: 700;
+margin-top : 1em;
 `;
 
 export const PropertiesInBangBody = styled(CardSeperator)`
@@ -213,11 +213,43 @@ export const ImageCard = styled(AddDetailsCard)`
 background-color: white;
 width : 15em;
 height : 15em;
+margin : 1em;
 margin-left : 1em;
+border-radius: 0.3em;
 
 @media only screen and (max-width: 600px) {
     width : 10em;
     width : auto;
     height : auto;
 }
+`;
+
+export const FooterContainer = styled.div`
+width: 100%;
+height : 25em;
+margin-top : 2em;
+background-color : rgb(167, 163, 163);
+text-align : center;
+align-items: center;
+display : flex;
+flex-direction : row;
+`;
+
+export const FooterDividerContainer = styled.div`
+width: 50%;
+height : auto;
+text-align : center;
+align-items: center;
+display : flex;
+flex-direction : column;
+`;
+
+export const FooterUlContainer = styled.ul`
+list-style-type:none;
+text-align : left;
+`;
+
+
+export const FooterLiContainer = styled.li`
+margin: 0.4em;
 `;
