@@ -4,6 +4,10 @@ interface ShowFiltersCardProps {
     showFiltersCard : boolean;
 }
 
+interface changeOnClickProps {
+    changeOnClick : boolean;
+}
+
 export const NewHomePage = styled.div`
 text-align : center;
 align-items: center;
@@ -54,7 +58,7 @@ flex-direction : row;
 align-items: center;
 `;
 
-export const CardIconPackage = styled.div`
+export const CardIconPackage = styled.div<changeOnClickProps>`
 margin : 1em;
 margin-left : 1.5em;
 margin-right: 1.5em;
@@ -62,6 +66,7 @@ width : auto;
 height : auto;
 display: flex;
 flex-direction : column;
+${props => props.changeOnClick && ` border-bottom: solid 3px #75A340;`}
 > text {
     text-align : center;
 }

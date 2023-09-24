@@ -26,6 +26,7 @@ import CommercialIcons from "../assets/bank.png";
 import LoanIconIcons from "../assets/loan.png";
 import BGImage from "../assets/BGImage.webp";
 import SalesInBangalore from "./SalesInBangalore";
+import Navbar from "../NavBar/Navbar";
 
 export default function HomeHeader() {
 
@@ -34,8 +35,9 @@ export default function HomeHeader() {
   const [ShowLocations, setShowLocations] = useState<boolean>(false)
   const [SearchFilter,  setSearchFilter] = useState<any>(["whitefiled", "jpnagar", "jayanagar",])
   const [SearchData, setFiletData] = useState<any>([])
- 
+  const [handelBuy, sethandelBuy] = useState<boolean>(false)
 
+ 
   const handelSearch = (e:any) => {
     const Value = e.target.value;
     const ValueInLowerData = Value.toLowerCase();
@@ -54,48 +56,54 @@ export default function HomeHeader() {
     setshowFilters(!showFiltersCard)
   }
 
+  const HandelOnClickBuy = () => {
+    sethandelBuy(true)
+  }
+
   return (
+    <div>
+    <Navbar/>
     <NewHomePage>
       <BGImageOfHomePage src={BGImage} />
       <CardOnMainHeader >
         <CardSeperator>
-        <CardIconPackage >
+        <CardIconPackage onClick={HandelOnClickBuy} changeOnClick = {handelBuy}>
           <IconOnCard src={BuyIcon} />
           <TextOfIcon>
             Buy
           </TextOfIcon>
         </CardIconPackage>
-        <CardIconPackage >
+        <CardIconPackage changeOnClick = {handelBuy}>
           <IconOnCard src={RentIcons} />
           <TextOfIcon>
             Rent
           </TextOfIcon>
         </CardIconPackage>
-        <CardIconPackage >
+        <CardIconPackage changeOnClick = {handelBuy}>
           <IconOnCard src={SaleIcons} />
           <TextOfIcon>
             Sale
           </TextOfIcon>
         </CardIconPackage>
-        <CardIconPackage >
+        <CardIconPackage changeOnClick = {handelBuy}>
           <IconOnCard src={NewProjectsIcons} />
           <TextOfIcon>
             New Project
           </TextOfIcon>
         </CardIconPackage>
-        <CardIconPackage >
+        <CardIconPackage changeOnClick = {handelBuy}>
           <IconOnCard src={FarmLandIcons} />
           <TextOfIcon>
             plot/Land
           </TextOfIcon>
         </CardIconPackage>
-        <CardIconPackage >
+        <CardIconPackage changeOnClick = {handelBuy}>
           <IconOnCard src={CommercialIcons} />
           <TextOfIcon>
             Commercial
           </TextOfIcon>
         </CardIconPackage>
-        <CardIconPackage >
+        <CardIconPackage changeOnClick = {handelBuy}>
           <IconOnCard src={LoanIconIcons} />
           <TextOfIcon>
             Loan
@@ -132,8 +140,8 @@ export default function HomeHeader() {
         </FilterCardRight>
 
       </div>
-     
       }
+      
       <BottomHeaderSection showFiltersCard = {showFiltersCard} >
         <AddDetailsCard>
           <h2>Post Your  Property Ads for Free </h2>
@@ -153,6 +161,8 @@ export default function HomeHeader() {
         <h2>Invest in real estate with ease</h2>
           <div>
           <text>See top markets</text>
+          </div>
+          <div>
           <text>Discover high growth options</text>
           </div>
           <AddPropertyBtn>Explore now</AddPropertyBtn>
@@ -162,5 +172,6 @@ export default function HomeHeader() {
       <SalesInBangalore showFiltersCard = {showFiltersCard}/>
 
     </NewHomePage>
+    </div>
   );
 }
