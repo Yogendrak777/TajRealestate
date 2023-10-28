@@ -37,7 +37,6 @@ export default function HomeHeader() {
   const [SearchData, setFiletData] = useState<any>([])
   const [handelBuy, sethandelBuy] = useState<boolean>(false)
 
- 
   const handelSearch = (e:any) => {
     const Value = e.target.value;
     const ValueInLowerData = Value.toLowerCase();
@@ -61,8 +60,6 @@ export default function HomeHeader() {
   }
 
   return (
-    <div>
-    <Navbar/>
     <NewHomePage>
       <BGImageOfHomePage src={BGImage} />
       <CardOnMainHeader >
@@ -168,10 +165,7 @@ export default function HomeHeader() {
           <AddPropertyBtn>Explore now</AddPropertyBtn>
         </AddDetailsCard>
       </BottomHeaderSection>
-
       <SalesInBangalore showFiltersCard = {showFiltersCard}/>
-
     </NewHomePage>
-    </div>
   );
 }

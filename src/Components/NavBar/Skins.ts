@@ -5,7 +5,7 @@ width : 100%;
 height : auto;
 position: fixed;
 top:0px;
-background-image: linear-gradient(180deg, rgb(5, 24, 15), transparent);
+background-image: linear-gradient(180deg, #30373C, transparent);
 align-items: center;
 display: flex;
 flex-direction: row;
