@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RentIcons from "../assets/rent.png";
 import SaleIcons from "../assets/sale.png";
 import BuyIcon from "../assets/mansion.png";
@@ -25,16 +25,35 @@ import {
   CardBottomColContainer,
 } from "./Skins";
 import Select from "react-select";
+import { getFirestore, collection, addDoc, getDocs,setDoc, doc, getDocFromCache, query, where, getDoc } from "firebase/firestore";
+import { AdminApp } from "../FirebaseConfig/AdminFirebase"
+
 
 export default function SearchCard() {
-  
+
+
   const [selectedOption, setSelectedOption] = useState<any>(null);
   const [getBHKData, setShowBHKData] = useState<any>("N/A");
   const [getApartmentTypeData, setGetApartmentTypeData] = useState<any>("N/A");
   const [getPropertyAgeData, setShowFPropertyAgeData] = useState<any>("N/A");
   const [getBuggetData, setShowgetBuggetData] = useState<any>("N/A");
 
+  const getDisaplyData = async () => {
+    try {
+      const db = getFirestore(AdminApp);
+      const q = query(collection(db, "PropertyData"), where("City", "==", selectedOption.value), where("BHK", "==", getBHKData.value),  where("ApartmentType", "==", getApartmentTypeData.value),);
+      const querySnapshot = await getDocs(q);
+      const data = querySnapshot.docs.map((doc) => doc.data());
+      console.log(JSON.stringify(data))
+      
+    } catch (e) {
+      alert(e);
+    }
+  };
 
+  const HandleSearchBtn = () => {
+    getDisaplyData()
+  }
 
   const options = [
     { value: "Jayanagar", label: "Jayanagar" },
@@ -165,18 +184,18 @@ export default function SearchCard() {
   ];
 
   const BuggetType = [
-    { value: "10 lacks", label: "under 10 lacks" },
-    { value: "30 lacks", label: "under 30 lacks" },
-    { value: "50 lacks", label: "under 50 lacks" },
-    { value: "70 lacks", label: "under 70 lacks" },
-    { value: "90 lacks", label: "under 90 lacks" },
-    { value: "under 1 cr", label: "under 1 cr" },
-    { value: "under 1.5 cr", label: "under 1.5 cr" },
-    { value: "under 2.5cr", label: "under 2.5 cr" },
-    { value: "under 4 cr", label: "under 4 cr" },
-    { value: "under 6 cr", label: "under 6 cr" },
-    { value: "under 8 cr", label: "under 8 cr" },
-    { value: "under 10 cr", label: "under 10 cr" },
+    { value: "10", label: "under 10 lacks" },
+    { value: "30", label: "under 30 lacks" },
+    { value: "50", label: "under 50 lacks" },
+    { value: "70", label: "under 70 lacks" },
+    { value: "90", label: "under 90 lacks" },
+    { value: "100 cr", label: "under 1 cr" },
+    { value: "1.5 cr", label: "under 1.5 cr" },
+    { value: "2.5cr", label: "under 2.5 cr" },
+    { value: "4 cr", label: "under 4 cr" },
+    { value: "6 cr", label: "under 6 cr" },
+    { value: "8 cr", label: "under 8 cr" },
+    { value: "10 cr", label: "under 10 cr" },
   ]
 
   return (
@@ -226,13 +245,13 @@ export default function SearchCard() {
               defaultValue={selectedOption}
               onChange={setSelectedOption}
               options={options}
-              placeholder="Search for the Location  'Whitefiled'"
+              placeholder="Search for the Area 'Whitefiled'"
               isSearchable={true}
               isClearable={true}
             />
           </SelectContainer>
 
-          <SearchBtn>Search</SearchBtn>
+          <SearchBtn onClick={HandleSearchBtn}>Search</SearchBtn>
 
           </CardBottomColContainer>
           {selectedOption && 

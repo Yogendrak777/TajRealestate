@@ -5,7 +5,8 @@ import ProductListPage from './Components/ProductList/ProductListPage';
 import ProductIndex from './Components/ProductScreen/ProductIndex';
 import { createBrowserRouter,  RouterProvider } from 'react-router-dom';
 import Index from './Components/NewHomePage/Index';
-import HomeHeader from './Components/NewHome/HomeHeader';
+import { isMobile } from 'react-device-detect';
+import AddIndex from './Components/AddProperty/AddIndex';
 
 const router = createBrowserRouter([
   {
@@ -17,8 +18,8 @@ const router = createBrowserRouter([
         element:  <Index/> ,
       },
       {
-        path: "/Old",
-        element:  <HomeHeader/> ,
+        path: "/addData",
+        element:  <AddIndex/> ,
       },
       {
         path: "/productList",
@@ -32,11 +33,26 @@ const router = createBrowserRouter([
   },
 ]);
 
+const Mobilerouter = createBrowserRouter([
+  {
+    path: "/",
+    element:  <Navbar/> ,
+    children: [
+      {
+        path: "/",
+        element:  <Index/> ,
+      },
+      
+    ]
+  },
+]);
+
+
 function App() {
   return (
     <div>
 
-      <RouterProvider router={router}/>
+      <RouterProvider router={ isMobile ? Mobilerouter : router }/>
      
     </div>
   );

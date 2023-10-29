@@ -5,7 +5,7 @@ width : 100%;
 height : auto;
 position: fixed;
 top:0px;
-background-image: linear-gradient(180deg, #30373C, transparent);
+background-image: linear-gradient(180deg, #00BF63, transparent);
 align-items: center;
 display: flex;
 flex-direction: row;
@@ -14,6 +14,12 @@ z-index : 100;
       background-color: lightblue;
       height : auto;
   }
+`;
+
+export const TajName = styled.span`
+color : #30373C;
+font-size: larger;
+font-weight: 800;
 `;
 
 export const TajLogo = styled.img`
