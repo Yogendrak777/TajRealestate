@@ -26,11 +26,13 @@ import {
 } from "./Skins";
 import Select from "react-select";
 import { getFirestore, collection, addDoc, getDocs,setDoc, doc, getDocFromCache, query, where, getDoc } from "firebase/firestore";
-import { AdminApp } from "../FirebaseConfig/AdminFirebase"
+ import { AdminApp } from "../FirebaseConfig/AdminFirebase"
+import { useNavigate } from "react-router-dom";
 
 
 export default function SearchCard() {
-
+  
+  const navigate = useNavigate()
 
   const [selectedOption, setSelectedOption] = useState<any>(null);
   const [getBHKData, setShowBHKData] = useState<any>("N/A");
@@ -41,10 +43,15 @@ export default function SearchCard() {
   const getDisaplyData = async () => {
     try {
       const db = getFirestore(AdminApp);
-      const q = query(collection(db, "PropertyData"), where("City", "==", selectedOption.value), where("BHK", "==", getBHKData.value),  where("ApartmentType", "==", getApartmentTypeData.value),);
+      const q = query(collection(db, "PropertyData"), where("City", "==", selectedOption.value), where("BHK", "==", getBHKData.value),  where("ApartmentType", "==", getApartmentTypeData.value));
       const querySnapshot = await getDocs(q);
+      console.log(querySnapshot)
       const data = querySnapshot.docs.map((doc) => doc.data());
       console.log(JSON.stringify(data))
+      setTimeout(() => {
+        navigate(`/addData/:${data}`)
+      }, 2000);
+     
       
     } catch (e) {
       alert(e);
@@ -52,7 +59,7 @@ export default function SearchCard() {
   };
 
   const HandleSearchBtn = () => {
-    getDisaplyData()
+     getDisaplyData()
   }
 
   const options = [
@@ -184,18 +191,37 @@ export default function SearchCard() {
   ];
 
   const BuggetType = [
-    { value: "10", label: "under 10 lacks" },
-    { value: "30", label: "under 30 lacks" },
-    { value: "50", label: "under 50 lacks" },
-    { value: "70", label: "under 70 lacks" },
-    { value: "90", label: "under 90 lacks" },
-    { value: "100 cr", label: "under 1 cr" },
-    { value: "1.5 cr", label: "under 1.5 cr" },
-    { value: "2.5cr", label: "under 2.5 cr" },
-    { value: "4 cr", label: "under 4 cr" },
-    { value: "6 cr", label: "under 6 cr" },
-    { value: "8 cr", label: "under 8 cr" },
-    { value: "10 cr", label: "under 10 cr" },
+    { value: "1 to 5", label: "1 to 5 lacks" },
+    { value: "6 to 10", label: "6 to 10 lacks" },
+    { value: "11 to 15", label: "11 to 15 lacks" },
+    { value: "16 to 20", label: "16 to 20 lacks" },
+    { value: "21 to 25", label: "21 to 25 lacks" },
+    { value: "26 to 30", label: "26 to 30 lacks" },
+    { value: "31 to 35", label: "31 to 35 lacks" },
+    { value: "36 to 40", label: "36 to 40 lacks" },
+    { value: "41 to 45", label: "41 to 45 lacks" },
+    { value: "46 to 50", label: "46 to 50 lacks" },
+    { value: "51 to 55", label: "51 to 55 lacks" },
+    { value: "56 to 60", label: "56 to 60 lacks" },
+    { value: "61 to 65", label: "61 to 65 lacks" },
+    { value: "66 to 70", label: "66 to 70 lacks" },
+    { value: "71 to 75", label: "71 to 75 lacks" },
+    { value: "76 to 80", label: "76 to 80 lacks" },
+    { value: "81 to 85", label: "81 to 85 lacks" },
+    { value: "86 to 90", label: "86 to 90 lacks" },
+    { value: "91 to 95", label: "91 to 95 lacks" },
+    { value: "96 to 100", label: "96 lacks to 1 Cr " },
+    { value: "101", label: "1 Cr to 1.20 Cr" },
+    { value: "102", label: "1.20 Cr to 1.50 Cr" },
+    { value: "103", label: "1.50 Cr to 2 Cr" },
+    { value: "104", label: "2 Cr to 2.5 Cr" },
+    { value: "105", label: "3 Cr to 3.5 Cr" },
+    { value: "106", label: "4 Cr to 4.5 Cr" },
+    { value: "107", label: "5 Cr to 5.5 Cr" },
+    { value: "108", label: "6 Cr to 6.5 Cr" },
+    { value: "109", label: "7 Cr to 7.5 Cr" },
+    { value: "110", label: "8 Cr to 8.5 Cr" },
+    { value: "111", label: "10+ Cr" },
   ]
 
   return (

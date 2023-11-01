@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         element:  <Index/> ,
       },
       {
-        path: "/addData",
+        path: "/addData/:id",
         element:  <AddIndex/> ,
       },
       {

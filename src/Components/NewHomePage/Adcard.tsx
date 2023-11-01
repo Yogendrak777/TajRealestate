@@ -10,15 +10,22 @@ import {
   CardContainer,
   Text,
 } from "./Skins";
+import { useNavigate } from "react-router-dom";
 
 export default function Adcard() {
+  const navigate = useNavigate();
+
+  const HandleAddData = () => {
+    navigate('/addData')
+  }
+
   return (
     <CardContainer>
       <AdSellContainer>
         <HeaderLabel> Post Your Property Ads for Free </HeaderLabel>
         <Text>Sell/Rent out your property & Get unlimited responses</Text>
         <CardContentColContainer>
-        <ListBtn>List your property</ListBtn>
+        <ListBtn onClick={HandleAddData}>List your property</ListBtn>
         </CardContentColContainer>
       </AdSellContainer>
 
