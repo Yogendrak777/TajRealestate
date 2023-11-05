@@ -27,7 +27,7 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   getStorage,
   ref,
@@ -38,11 +38,6 @@ import { AdminApp } from "../FirebaseConfig/AdminFirebase";
 import Select from "react-select";
 
 export default function Index(props: any) {
-  const location = useLocation();
-  const myParam = new URLSearchParams(location.search).get('myParam');
-  console.log(myParam)
-
-
   const [File, setFile] = useState<any>([]);
   const [percent, setPercent] = useState(0);
   const [showAnimation, setShowAnimation] = useState<boolean>(true);
@@ -196,7 +191,7 @@ export default function Index(props: any) {
       const db = getFirestore(AdminApp);
       const uid = user.uid;
       try {
-        const docRef = await addDoc(collection(db, "PropertyData"), {
+        const docRef = await addDoc(collection(db, "CustomerAddedData"), {
           uid: uid,
           images: {
             img1: File[0],
@@ -215,7 +210,8 @@ export default function Index(props: any) {
           AvalibleData: getAvalibleFrom,
           Floor: getFloor,
           TotalFloor: getTotalFloor,
-          Prices: getPrices.value,
+          Prices: Number(getPrices.value),
+          RentAmount : getPrices.label,
           Advance: getAdvanceData,
           MaintenanceCost: getMaintenance,
           BuyOrRent : getBuyOrRentData,
@@ -229,7 +225,7 @@ export default function Index(props: any) {
           Power: getPower.value,
           Security: getSecurity.value,
           uniqueId: getUniqueid,
-          City: getcityData,
+          City: getcityData.value,
           Locality: getstreetData,
           Address: getAddressData,
           ContactNumber: getContentData,
@@ -256,7 +252,7 @@ export default function Index(props: any) {
           },
         });
         alert("Upload Successful  id : " + docRef.id);
-        navigate("/DisplayProperty");
+        navigate('/')
       } catch (e) {
         alert("Error adding document: " + e);
       }
@@ -313,6 +309,12 @@ export default function Index(props: any) {
 
   const HandelOwnerAvalibitilySlide = () => {
     HandelSubmitBtn();
+    setShowAnimation(false);
+    setTimeout(() => {
+      setGetImageContainer(false);
+      setShowAdditionInfoSlide(false);
+      setShowYourAvailabilitySlide(false);
+    }, 400);
   };
 
   const handlePropertyName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -459,7 +461,7 @@ export default function Index(props: any) {
 
   const Negotiable = [
     { value: "Negotiable", label: "Negotiable" },
-    { value: "Not", label: "Not" },
+    { value: "Not-Negotiable", label: "Not-Negotiable" },
   ];
 
   const EmiOption = [
@@ -644,39 +646,39 @@ export default function Index(props: any) {
   ]
 
   const BuggetType = [
-    { value: "1 to 5", label: "1 to 5 lacks" },
-    { value: "6 to 10", label: "6 to 10 lacks" },
-    { value: "11 to 15", label: "11 to 15 lacks" },
-    { value: "16 to 20", label: "16 to 20 lacks" },
-    { value: "21 to 25", label: "21 to 25 lacks" },
-    { value: "26 to 30", label: "26 to 30 lacks" },
-    { value: "31 to 35", label: "31 to 35 lacks" },
-    { value: "36 to 40", label: "36 to 40 lacks" },
-    { value: "41 to 45", label: "41 to 45 lacks" },
-    { value: "46 to 50", label: "46 to 50 lacks" },
-    { value: "51 to 55", label: "51 to 55 lacks" },
-    { value: "56 to 60", label: "56 to 60 lacks" },
-    { value: "61 to 65", label: "61 to 65 lacks" },
-    { value: "66 to 70", label: "66 to 70 lacks" },
-    { value: "71 to 75", label: "71 to 75 lacks" },
-    { value: "76 to 80", label: "76 to 80 lacks" },
-    { value: "81 to 85", label: "81 to 85 lacks" },
-    { value: "86 to 90", label: "86 to 90 lacks" },
-    { value: "91 to 95", label: "91 to 95 lacks" },
-    { value: "96 to 100", label: "96 lacks to 1 Cr " },
-    { value: "101", label: "1 Cr to 1.20 Cr" },
-    { value: "102", label: "1.20 Cr to 1.50 Cr" },
-    { value: "103", label: "1.50 Cr to 2 Cr" },
-    { value: "104", label: "2 Cr to 2.5 Cr" },
-    { value: "105", label: "3 Cr to 3.5 Cr" },
-    { value: "106", label: "4 Cr to 4.5 Cr" },
-    { value: "107", label: "5 Cr to 5.5 Cr" },
-    { value: "108", label: "6 Cr to 6.5 Cr" },
-    { value: "109", label: "7 Cr to 7.5 Cr" },
-    { value: "110", label: "8 Cr to 8.5 Cr" },
-    { value: "111", label: "10+ Cr" },
+    { value: 3, label: "1 to 5 lacks" },
+    { value: 7, label: "6 to 10 lacks" },
+    { value: 13, label: "11 to 15 lacks" },
+    { value: 17, label: "16 to 20 lacks" },
+    { value: 23, label: "21 to 25 lacks" },
+    { value: 27, label: "26 to 30 lacks" },
+    { value: 33, label: "31 to 35 lacks" },
+    { value: 37, label: "36 to 40 lacks" },
+    { value: 43, label: "41 to 45 lacks" },
+    { value: 47, label: "46 to 50 lacks" },
+    { value: 53, label: "51 to 55 lacks" },
+    { value: 57, label: "56 to 60 lacks" },
+    { value: 63, label: "61 to 65 lacks" },
+    { value: 67, label: "66 to 70 lacks" },
+    { value: 73, label: "71 to 75 lacks" },
+    { value: 77, label: "76 to 80 lacks" },
+    { value: 83, label: "81 to 85 lacks" },
+    { value: 87, label: "86 to 90 lacks" },
+    { value: 93, label: "91 to 95 lacks" },
+    { value: 97, label: "96 lacks to 1 Cr " },
+    { value: 101, label: "1 Cr to 1.20 Cr" },
+    { value: 102, label: "1.20 Cr to 1.50 Cr" },
+    { value: 103, label: "1.50 Cr to 2 Cr" },
+    { value: 104, label: "2 Cr to 2.5 Cr" },
+    { value: 105, label: "3 Cr to 3.5 Cr" },
+    { value: 106, label: "4 Cr to 4.5 Cr" },
+    { value: 107, label: "5 Cr to 5.5 Cr" },
+    { value: 108, label: "6 Cr to 6.5 Cr" },
+    { value: 109, label: "7 Cr to 7.5 Cr" },
+    { value: 110, label: "8 Cr to 8.5 Cr" },
+    { value: 111, label: "10+ Cr" },
   ]
-
+  
   return (
     <BaseContainer>
       {showPropertyDetailsSlide && (

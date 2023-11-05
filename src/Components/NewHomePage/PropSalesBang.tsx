@@ -9,8 +9,10 @@ import {
   LabelOnImgCard,
 } from "./Skins";
 import Banner2 from "../assets/Banner2.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function PropSalesBang() {
+  const navigate = useNavigate()
 
   const [mostPopular, setMostPopular] = useState<any>(true);
   const [Budget, setBudget] = useState<any>(false);
@@ -45,6 +47,10 @@ export default function PropSalesBang() {
     setBHK(true);
   };
 
+  const HandleBudgetWithIn90Lacks = (budget:any) => {
+    navigate(`/BudgetSearch/:?Prices=${budget}`)
+  }
+
   return (
     <PropBangBaseContainer>
       <PropertiesTittleInHome>
@@ -62,7 +68,7 @@ export default function PropSalesBang() {
       
       {mostPopular && (
         <CardBaseContainer>
-          <PropSaleContainer>
+          <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(87)}>
             <ImgBGonDiv src={Banner2} />
             <LabelOnImgCard> Budget within 90 Lacks</LabelOnImgCard>
           </PropSaleContainer>
@@ -87,25 +93,25 @@ export default function PropSalesBang() {
 
       {Budget && (
         <CardBaseContainer>
-          <PropSaleContainer>
+          <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(47)}>
             <ImgBGonDiv src={Banner2} />
-            <LabelOnImgCard> Budget within 50 Lacks</LabelOnImgCard>
+            <LabelOnImgCard > Budget within 50 Lacks</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer  onClick={() =>HandleBudgetWithIn90Lacks(57)}>
             <ImgBGonDiv src={Banner2} />
-            <LabelOnImgCard> Budget within 60 Lacks</LabelOnImgCard>
+            <LabelOnImgCard > Budget within 60 Lacks</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer  onClick={() =>HandleBudgetWithIn90Lacks(87)}>
             <ImgBGonDiv src={Banner2} />
             <LabelOnImgCard> Budget within 90 Lacks</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(97)}>
             <ImgBGonDiv src={Banner2} />
-            <LabelOnImgCard> Budget within 1 crores</LabelOnImgCard>
+            <LabelOnImgCard > Budget within 1 crores</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(103)}>
             <ImgBGonDiv src={Banner2} />
-            <LabelOnImgCard> Budget within 2 crores</LabelOnImgCard>
+            <LabelOnImgCard > Budget within 2 crores</LabelOnImgCard>
           </PropSaleContainer>
         </CardBaseContainer>
       )}
@@ -118,15 +124,15 @@ export default function PropSalesBang() {
           </PropSaleContainer>
           <PropSaleContainer>
             <ImgBGonDiv src={Banner2} />
-            <LabelOnImgCard> Residential Plots</LabelOnImgCard>
+            <LabelOnImgCard>Independent Houses/Villa</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
             <ImgBGonDiv src={Banner2} />
-            <LabelOnImgCard> House & Villas </LabelOnImgCard>
+            <LabelOnImgCard> Gated community Villa </LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
             <ImgBGonDiv src={Banner2} />
-            <LabelOnImgCard> Builder Floors </LabelOnImgCard>
+            <LabelOnImgCard> Stand Alone Building </LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
             <ImgBGonDiv src={Banner2} />

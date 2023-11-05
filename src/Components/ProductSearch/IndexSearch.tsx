@@ -1,63 +1,39 @@
 import React, { useEffect, useState } from "react";
-import RentIcons from "../assets/rent.png";
-import SaleIcons from "../assets/sale.png";
-import BuyIcon from "../assets/mansion.png";
-import NewProjectsIcons from "../assets/skyscraper.png";
-import FarmLandIcons from "../assets/farming.png";
-import CommercialIcons from "../assets/bank.png";
-import LoanIconIcons from "../assets/loan.png";
 import {
-  CardOnMainHeader,
-  CardBaseContainer,
-  IconOnCard,
-  CardContentContainer,
-  CardSaleContainer,
-  CardContentColContainer,
-  CardBuyContainer,
-  CardNewProjectContainer,
-  CardLandContainer,
-  CardCommericalContainer,
-  CardLoanContainer,
-  LabelOnCard,
-  HR,
+  BaseContainer,
+  FilterContainer,
   SelectContainer,
-  SearchBtn,
-  CardBottomColContainer,
+  ProductListContainer,
+  ProductDetailsContainer,
+  CityDiv,
+  ProductColContainer,
+  SeeMoreBtn,
+  TittleBar
 } from "./Skins";
 import Select from "react-select";
-import { getFirestore, collection, addDoc, getDocs,setDoc, doc, getDocFromCache, query, where, getDoc } from "firebase/firestore";
- import { AdminApp } from "../FirebaseConfig/AdminFirebase"
-import { useNavigate } from "react-router-dom";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  getDocFromCache,
+  query,
+  where,
+  getDoc,
+} from "firebase/firestore";
+import { AdminApp } from "../FirebaseConfig/AdminFirebase";
+import Carousel from "./Carousel";
 
-export default function SearchCard() {
-  
-  const navigate = useNavigate()
+export default function IndexSearch() {
+  const params = new URLSearchParams(window.location.search);
 
-  const [selectedOption, setSelectedOption] = useState<any>(null);
+  const [selectedOption, setSelectedOption] = useState<any>("N/A");
   const [getBHKData, setShowBHKData] = useState<any>("N/A");
   const [getApartmentTypeData, setGetApartmentTypeData] = useState<any>("N/A");
   const [getPropertyAgeData, setShowFPropertyAgeData] = useState<any>("N/A");
   const [getBuggetData, setShowgetBuggetData] = useState<any>("N/A");
-
-  const getDisaplyData = async () => {
-    try {
-      const db = getFirestore(AdminApp);
-      const q = query(collection(db, "PropertyData"), where("City", "==", selectedOption.value), where("BHK", "==", getBHKData.value),  where("ApartmentType", "==", getApartmentTypeData.value), where('Prices', "==",getBuggetData.value), where('PropertyAge', "==",getPropertyAgeData.value));
-      const querySnapshot = await getDocs(q);
-      const data = querySnapshot.docs.map((doc) => doc.data());
-      console.log(JSON.stringify(data))
-    } catch (e) {
-      alert(e);
-    }
-  };
-
-  const HandleSearchBtn = () => {
-    if (selectedOption !== null && getBHKData !== null && getApartmentTypeData !== null){
-      navigate(`/productSearch/:?City=${selectedOption.value}&&BHK=${getBHKData.value}&&ApartmentType=${getApartmentTypeData.value}&&Prices=${getBuggetData.value}&&PropertyAge=${getPropertyAgeData.value}`)
-    } else {
-      alert("please search")
-    }
-  }
 
   const options = [
     { value: "Jayanagar", label: "Jayanagar" },
@@ -219,136 +195,196 @@ export default function SearchCard() {
     { value: 109, label: "7 Cr to 7.5 Cr" },
     { value: 110, label: "8 Cr to 8.5 Cr" },
     { value: 111, label: "10+ Cr" },
-  ]
+  ];
+
+  const Cityobject = options.find((obj) => obj.value === params.get("City"));
+  const BHKTypeObject = BHKType.find((obj) => obj.value === params.get("BHK"));
+  const ApartmentTypeObject = ApartmentType.find(
+    (obj) => obj.value === params.get("ApartmentType")
+  );
+  const PropertyAgeObject = PropertyAge.find(
+    (obj) => obj.value === params.get("PropertyAge")
+  );
+  const BuggetTypeObject = BuggetType.find(
+    (obj) => obj.value === Number(params.get("Prices"))
+  );
+
+  const [getDBData, setDBData] = useState<any>([]);
+
+  const getDisaplyData = async () => {
+    try {
+      const db = getFirestore(AdminApp);
+      const q = query(
+        collection(db, "PropertyData"),
+        where("City", "==", selectedOption?.value || Cityobject?.value),
+        where("BHK", "==", getBHKData?.value || BHKTypeObject?.value),
+        where(
+          "ApartmentType",
+          "==",
+          getApartmentTypeData?.value || ApartmentTypeObject?.value
+        ),
+        where("Prices", "==", getBuggetData?.value || BuggetTypeObject?.value),
+        where(
+          "PropertyAge",
+          "==",
+          getPropertyAgeData?.value || PropertyAgeObject?.value
+        )
+      );
+      //const q = query(collection(db, "PropertyData"), where('Prices', "<", getBuggetData?.value ||BuggetTypeObject?.value));
+      const querySnapshot = await getDocs(q);
+      const data = querySnapshot.docs.map((doc) => doc.data());
+      setDBData(data);
+      console.log(getDBData);
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+  useEffect(() => {
+    getDisaplyData();
+  }, [
+    selectedOption,
+    getBHKData,
+    getApartmentTypeData,
+    getPropertyAgeData,
+    getBuggetData,
+  ]);
 
   return (
-    <CardBaseContainer>
-      <CardOnMainHeader>
-        <CardContentColContainer>
-          <CardContentContainer>
-            <IconOnCard src={RentIcons} />
-            <LabelOnCard>Rent</LabelOnCard>
-          </CardContentContainer>
-          <CardSaleContainer>
-            <IconOnCard src={SaleIcons} />
-            <LabelOnCard> Sale </LabelOnCard>
-          </CardSaleContainer>
-          <CardBuyContainer>
-            <IconOnCard src={BuyIcon} />
-            <LabelOnCard>Buy</LabelOnCard>
-          </CardBuyContainer>
-          <CardNewProjectContainer>
-            <IconOnCard src={NewProjectsIcons} />
-            <LabelOnCard>New Project</LabelOnCard>
-          </CardNewProjectContainer>
-          <CardLandContainer>
-            <IconOnCard src={FarmLandIcons} />
-            <LabelOnCard>Plot/Land</LabelOnCard>
-          </CardLandContainer>
-          <CardCommericalContainer>
-            <IconOnCard src={CommercialIcons} />
-            <LabelOnCard> Commercial </LabelOnCard>
-          </CardCommericalContainer>
-          <CardLoanContainer>
-            <IconOnCard src={LoanIconIcons} />
-            <LabelOnCard> Land </LabelOnCard>
-          </CardLoanContainer>
-        </CardContentColContainer>
-        <HR />
-        <CardBottomColContainer>
-          <SelectContainer>
-            <Select
-              styles={{
-                control: (baseStyles) => ({
-                  ...baseStyles,
-                  padding: "3px",
-                  fontStyle: "italic",
-                }),
-              }}
-              defaultValue={selectedOption}
-              onChange={setSelectedOption}
-              options={options}
-              placeholder="Search for the Area 'Whitefiled'"
-              isSearchable={true}
-              isClearable={true}
-            />
-          </SelectContainer>
-
-          <SearchBtn onClick={HandleSearchBtn}>Search</SearchBtn>
-
-          </CardBottomColContainer>
-          {selectedOption && 
-          <CardBottomColContainer >
-          <SelectContainer>
+    <BaseContainer>
+      <FilterContainer>
+        <SelectContainer>
           <Select
-           styles={{
-            control: (baseStyles) => ({
-              ...baseStyles,
-              padding: "3px",
-              fontStyle: "italic",
-            }),
-          }}
-              defaultValue={getBHKData}
-              onChange={setShowBHKData}
-              options={BHKType}
-              placeholder="BHK Type"
-              isClearable={true}
-            />
-          </SelectContainer>
-
-          <SelectContainer>
-          <Select
-              styles={{
-                control: (baseStyles) => ({
-                  ...baseStyles,
-                  padding: "3px",
-                  fontStyle: "italic",
-                }),
-              }}
-              defaultValue={getApartmentTypeData}
-              onChange={setGetApartmentTypeData}
-              options={ApartmentType}
-              placeholder="ApartmentType"
-              isClearable={true}
-            />
-          </SelectContainer>
-
-          <SelectContainer>
-          <Select
-             styles={{
+            styles={{
               control: (baseStyles) => ({
                 ...baseStyles,
                 padding: "3px",
                 fontStyle: "italic",
               }),
             }}
-              defaultValue={getPropertyAgeData}
-              onChange={setShowFPropertyAgeData}
-              options={PropertyAge}
-              placeholder="Property Age"
-              isClearable={true}
-            />
-          </SelectContainer>
+            defaultValue={Cityobject}
+            onChange={setSelectedOption}
+            options={options}
+            placeholder="Search for the Area 'Whitefiled'"
+            isSearchable={true}
+            isClearable={true}
+          />
+        </SelectContainer>
 
-          <SelectContainer>
+        <SelectContainer>
           <Select
-             styles={{
+            styles={{
               control: (baseStyles) => ({
                 ...baseStyles,
                 padding: "3px",
                 fontStyle: "italic",
               }),
             }}
-              defaultValue={getBuggetData}
-              onChange={setShowgetBuggetData}
-              options={BuggetType}
-              placeholder="Bugget Range"
-              isClearable={true}
-            />
-          </SelectContainer>
+            defaultValue={BHKTypeObject}
+            onChange={setShowBHKData}
+            options={BHKType}
+            placeholder="BHK Type"
+            isClearable={true}
+          />
+        </SelectContainer>
 
-        </CardBottomColContainer> }
-      </CardOnMainHeader>
-    </CardBaseContainer>
+        <SelectContainer>
+          <Select
+            styles={{
+              control: (baseStyles) => ({
+                ...baseStyles,
+                padding: "3px",
+                fontStyle: "italic",
+              }),
+            }}
+            defaultValue={ApartmentTypeObject}
+            onChange={setGetApartmentTypeData}
+            options={ApartmentType}
+            placeholder="ApartmentType"
+            isClearable={true}
+          />
+        </SelectContainer>
+
+        <SelectContainer>
+          <Select
+            styles={{
+              control: (baseStyles) => ({
+                ...baseStyles,
+                padding: "3px",
+                fontStyle: "italic",
+              }),
+            }}
+            defaultValue={PropertyAgeObject}
+            onChange={setShowFPropertyAgeData}
+            options={PropertyAge}
+            placeholder="Property Age"
+            isClearable={true}
+          />
+        </SelectContainer>
+
+        <SelectContainer>
+          <Select
+            styles={{
+              control: (baseStyles) => ({
+                ...baseStyles,
+                padding: "3px",
+                fontStyle: "italic",
+              }),
+            }}
+            defaultValue={BuggetTypeObject}
+            onChange={setShowgetBuggetData}
+            options={BuggetType}
+            placeholder="Bugget Range"
+            isClearable={true}
+          />
+        </SelectContainer>
+      </FilterContainer>
+
+      {getDBData.map((items: any) => (
+        <ProductListContainer key={items.uniqueId}>
+          <Carousel
+            Img1={items.images.img1}
+            Img2={items.images.img2}
+            Img3={items.images.img3}
+            Img4={items.images.img4}
+            Img5={items.images.img5}
+          />
+          <ProductColContainer>
+            <ProductDetailsContainer>
+              <CityDiv>
+                <b>
+                {items.City} 
+                </b>
+                <TittleBar>Area</TittleBar>
+             </CityDiv>
+             <CityDiv>
+                <b>
+                {items.Prices} K
+                </b>
+                <TittleBar>Rent</TittleBar>
+                <TittleBar>{items.Negotiable}</TittleBar>
+             </CityDiv>
+             <CityDiv>
+                <b>
+                {items.Advance} 
+                </b>
+                <TittleBar>Advance</TittleBar>
+             </CityDiv>
+            </ProductDetailsContainer>
+            <ProductDetailsContainer>
+              <CityDiv>{items.City}</CityDiv>
+              <CityDiv>{items.City}</CityDiv>
+              <CityDiv>{items.City}</CityDiv>
+            </ProductDetailsContainer>
+            <ProductDetailsContainer>
+              <CityDiv>{items.City}</CityDiv>
+              <CityDiv>{items.City}</CityDiv>
+              <CityDiv>{items.City}</CityDiv>
+            </ProductDetailsContainer>
+            <SeeMoreBtn>See More </SeeMoreBtn>
+          </ProductColContainer>
+        </ProductListContainer>
+      ))}
+    </BaseContainer>
   );
 }

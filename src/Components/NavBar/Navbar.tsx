@@ -14,7 +14,7 @@ export default function Navbar() {
     <>
     <NavbarMainDiv>
       <TajLogo src = {CompantLogo}/>
-      <TajName onClick={HandleGoBack}>  Taj RealEstate </TajName>
+      <TajName onClick={HandleGoBack}> TajRealtors </TajName>
      
       {/* <RightContainer>
         <NavBarBtn> Your Booking </NavBarBtn>
