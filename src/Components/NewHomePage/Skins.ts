@@ -340,10 +340,13 @@ export const ImgBGonDiv = styled.img`
 export const LabelOnImgCard = styled.span`
   z-index: 5;
   position: absolute;
-  left: 3em;
-  top: 11em;
+  left: 1em;
+  top: 1em;
   color: white;
-  font-weight: 600;
+  font-weight: 700;
+  background-color : #00bf63;
+  padding : 5px;
+  border-radius : 10px;
 `;
 
 export const FooterBaseContainer = styled.div`

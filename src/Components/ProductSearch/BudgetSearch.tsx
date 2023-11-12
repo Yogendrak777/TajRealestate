@@ -8,12 +8,18 @@ import {
   CityDiv,
   ProductColContainer,
   SeeMoreBtn,
-  TittleBar 
+  TittleBar,
+  PriceColContainer,
+  ProductBaseContainer,
+  ProductEndContainer,
+  PriceBold
 } from "./Skins"
 import Select from "react-select";
 import { getFirestore, collection, addDoc, getDocs,setDoc, doc, getDocFromCache, query, where, getDoc } from "firebase/firestore";
 import { AdminApp } from "../FirebaseConfig/AdminFirebase"
 import Carousel from './Carousel';
+import { LuParkingSquare } from "react-icons/lu";
+import { BsCurrencyRupee } from 'react-icons/bs'
 
 export default function BudgetSearch() {
 
@@ -106,40 +112,92 @@ export default function BudgetSearch() {
             Img4={items.images.img4}
             Img5={items.images.img5}
           />
-          <ProductColContainer>
+          <ProductBaseContainer>
+          
+              <p>
+                <strong> {items.BHK} </strong> is Ready to Occupy from{" "}
+                <strong> {items.AvalibleData} </strong> for{" "}
+                <strong>{items.BuyOrRent.value} </strong> in{" "}
+                <strong>{items.City}</strong>
+              </p>
+    
+
+            <ProductColContainer>
             <ProductDetailsContainer>
-              <CityDiv>
-                <b>
-                {items.City} 
-                </b>
-                <TittleBar>Area</TittleBar>
-             </CityDiv>
-             <CityDiv>
-                <b>
-                {items.Prices} K
-                </b>
-                <TittleBar>Rent</TittleBar>
-                <TittleBar>{items.Negotiable}</TittleBar>
-             </CityDiv>
-             <CityDiv>
-                <b>
-                {items.Advance} 
-                </b>
-                <TittleBar>Advance</TittleBar>
-             </CityDiv>
-            </ProductDetailsContainer>
-            <ProductDetailsContainer>
-              <CityDiv>{items.City}</CityDiv>
-              <CityDiv>{items.City}</CityDiv>
-              <CityDiv>{items.City}</CityDiv>
-            </ProductDetailsContainer>
-            <ProductDetailsContainer>
-              <CityDiv>{items.City}</CityDiv>
-              <CityDiv>{items.City}</CityDiv>
-              <CityDiv>{items.City}</CityDiv>
-            </ProductDetailsContainer>
-            <SeeMoreBtn>See More </SeeMoreBtn>
-          </ProductColContainer>
+            <ProductEndContainer>
+                  <LuParkingSquare />
+                <CityDiv>
+                  <TittleBar>Apartment Type</TittleBar>
+                  <span>
+                    <strong>{items.ApartmentType} </strong>
+                  </span>
+                </CityDiv>
+                </ProductEndContainer>
+                <ProductEndContainer>
+                  <LuParkingSquare />
+                <CityDiv>
+                  <TittleBar>FLOOR</TittleBar>
+                  <span>
+                    <strong>{items.Floor} </strong> out of{" "}
+                    <strong> {items.TotalFloor} </strong>
+                  </span>
+                </CityDiv>
+                </ProductEndContainer>
+              </ProductDetailsContainer>
+
+              <ProductDetailsContainer>
+              <ProductEndContainer>
+                  <LuParkingSquare />
+                <CityDiv>
+                  <TittleBar>PARKING</TittleBar>
+                  <span>
+                    <strong>{items.Parking} </strong>
+                  </span>
+                </CityDiv>
+                </ProductEndContainer>
+                <ProductEndContainer>
+                  <LuParkingSquare />
+                <CityDiv>
+                  <TittleBar>FURNISHING</TittleBar>
+                  <span>
+                    <strong>{items.Furnishing} </strong>
+                  </span>
+                </CityDiv>
+                </ProductEndContainer>
+              </ProductDetailsContainer>
+
+              <ProductDetailsContainer>
+              <ProductEndContainer>
+                  <LuParkingSquare />
+                <CityDiv>
+                  <TittleBar>FACING</TittleBar>
+                  <span>
+                    <strong>{items.Facing} </strong>
+                  </span>
+                </CityDiv>
+                </ProductEndContainer>
+                <ProductEndContainer>
+                  <LuParkingSquare />
+                  <CityDiv>
+                    <TittleBar>CARPET AREA</TittleBar>
+                    <b>{items.CarpetArea}</b>
+                  </CityDiv>
+                </ProductEndContainer>
+              </ProductDetailsContainer>
+            
+              <PriceColContainer>
+                <ProductDetailsContainer>
+                  <CityDiv>
+                    <p> <BsCurrencyRupee/> <PriceBold>{items.Prices} Lakhs </PriceBold> <sup>{`(${items.Negotiable})`}</sup></p>
+                    
+                    {/* <TittleBar>{items.BuildUpArea} sqrt</TittleBar> */}
+                    <SeeMoreBtn> Get more Info &gt;</SeeMoreBtn>
+                  </CityDiv>
+                </ProductDetailsContainer>
+              </PriceColContainer>
+            </ProductColContainer>
+
+          </ProductBaseContainer>
         </ProductListContainer>
       ))}
     </BaseContainer>

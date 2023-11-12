@@ -10,6 +10,20 @@ import {
 } from "./Skins";
 import Banner2 from "../assets/Banner2.jpg";
 import { useNavigate } from "react-router-dom";
+import FiftyLakhs from "../assets/50Lakhs.jpg";
+import NintyLakhs from "../assets/90Lakhs.jpg";
+import OneCr from "../assets/OneCr.jpg";
+import TwoCr from "../assets/TwoCr.jpg";
+import Banner4 from "../assets/Banner4.jpg";
+import Villa from "../assets/Villa.jpg";
+import Independent from "../assets/Independent.jpg";
+import Flats from "../assets/Flats.jpg";
+import Frams from "../assets/Farms.jpg";
+import OneBHK from "../assets/1BHK.jpg";
+import TwoBHK from "../assets/2BHK.jpg";
+import ThreeBHK from "../assets/3BHK.jpg";
+import FourBHK from "../assets/4BHK.jpg";
+import FiveBHK from "../assets/5BHK.jpg";
 
 export default function PropSalesBang() {
   const navigate = useNavigate()
@@ -73,19 +87,19 @@ export default function PropSalesBang() {
             <LabelOnImgCard> Budget within 90 Lacks</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={ThreeBHK} />
             <LabelOnImgCard> 3 BHK Apartments</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={Flats} />
             <LabelOnImgCard> Flats</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={FiftyLakhs} />
             <LabelOnImgCard> Budget within 50 Lacks</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={Frams} />
             <LabelOnImgCard> Residential Plots</LabelOnImgCard>
           </PropSaleContainer>
         </CardBaseContainer>
@@ -98,19 +112,19 @@ export default function PropSalesBang() {
             <LabelOnImgCard > Budget within 50 Lacks</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer  onClick={() =>HandleBudgetWithIn90Lacks(57)}>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={FiftyLakhs} />
             <LabelOnImgCard > Budget within 60 Lacks</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer  onClick={() =>HandleBudgetWithIn90Lacks(87)}>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={NintyLakhs} />
             <LabelOnImgCard> Budget within 90 Lacks</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(97)}>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={OneCr} />
             <LabelOnImgCard > Budget within 1 crores</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(103)}>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={TwoCr} />
             <LabelOnImgCard > Budget within 2 crores</LabelOnImgCard>
           </PropSaleContainer>
         </CardBaseContainer>
@@ -119,23 +133,23 @@ export default function PropSalesBang() {
       {PropertyType && (
         <CardBaseContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={Flats} />
             <LabelOnImgCard> Flats </LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={Independent} />
             <LabelOnImgCard>Independent Houses/Villa</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={Villa} />
             <LabelOnImgCard> Gated community Villa </LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={Banner4} />
             <LabelOnImgCard> Stand Alone Building </LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={Frams} />
             <LabelOnImgCard> Farm House </LabelOnImgCard>
           </PropSaleContainer>
         </CardBaseContainer>
@@ -144,23 +158,23 @@ export default function PropSalesBang() {
       {BHK && (
         <CardBaseContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={OneBHK} />
             <LabelOnImgCard> 1 BHK Apartments</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={TwoBHK} />
             <LabelOnImgCard> 2 BHK Apartments</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={ThreeBHK} />
             <LabelOnImgCard> 3 BHK Apartments</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={FourBHK} />
             <LabelOnImgCard> 4 BHK Apartments</LabelOnImgCard>
           </PropSaleContainer>
           <PropSaleContainer>
-            <ImgBGonDiv src={Banner2} />
+            <ImgBGonDiv src={FiveBHK} />
             <LabelOnImgCard> 4+ BHK Apartments</LabelOnImgCard>
           </PropSaleContainer>
         </CardBaseContainer>

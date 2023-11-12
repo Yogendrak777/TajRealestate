@@ -251,7 +251,7 @@ export default function SearchCard() {
           </CardCommericalContainer>
           <CardLoanContainer>
             <IconOnCard src={LoanIconIcons} />
-            <LabelOnCard> Land </LabelOnCard>
+            <LabelOnCard> Loan </LabelOnCard>
           </CardLoanContainer>
         </CardContentColContainer>
         <HR />

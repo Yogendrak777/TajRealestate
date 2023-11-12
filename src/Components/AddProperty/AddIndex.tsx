@@ -202,8 +202,8 @@ export default function Index(props: any) {
           },
           ApartmentType: getApartmentTypeData.value,
           PropertyName: getPropertyNameData,
-          BuildUpArea: getBuildUpAreaData,
-          CarpetArea: getCarpetAreaData,
+          BuildUpArea: `${getBuildUpAreaData} Sqrt`,
+          CarpetArea: `${getCarpetAreaData} Sqrt`,
           BHK: getBHKData.value,
           Facing: getFacingData.value,
           PropertyAge: getPropertyAgeData.value,
@@ -640,7 +640,7 @@ export default function Index(props: any) {
   ];
 
   const BuyOrRent = [
-    { value: "Sell", label: "Sell" },
+    { value: "Sale", label: "Sale" },
     { value: "Rent", label: "Rent" },
     { value: "lease", label: "Lease" },
   ]

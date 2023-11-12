@@ -20,6 +20,8 @@
   font-size: small;
   font-weight: 600;
   margin-top: 30em;
+  cursor: pointer;
+  width: fit-content;
 }
 
 

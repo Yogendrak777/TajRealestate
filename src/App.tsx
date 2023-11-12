@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Navbar from './Components/NavBar/Navbar';
-import ProductListPage from './Components/ProductList/ProductListPage';
 import ProductIndex from './Components/ProductScreen/ProductIndex';
 import { createBrowserRouter,  RouterProvider } from 'react-router-dom';
 import Index from './Components/NewHomePage/Index';
@@ -10,6 +9,7 @@ import AddIndex from './Components/AddProperty/AddIndex';
 import IndexSearch from './Components/ProductSearch/IndexSearch';
 import NoInternetIndex from './Components/NoInternet/NoInternetIndex';
 import BudgetSearch from './Components/ProductSearch/BudgetSearch';
+import ProductFullInfoIndex from './Components/ProductFullInfo/ProductFullInfoIndex';
 
 const router = createBrowserRouter([
   {
@@ -25,10 +25,6 @@ const router = createBrowserRouter([
         element:  <AddIndex/> ,
       },
       {
-        path: "/productList",
-        element:  <ProductListPage/>,
-      },
-      {
         path: "/productSearch/:queryParam",
         element:  <IndexSearch/>,
       },
@@ -39,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/product",
         element: <ProductIndex/>,
+      },
+      {
+        path: "/productFullInfo/:queryParam",
+        element: <ProductFullInfoIndex/>,
       },
     ]
   },
