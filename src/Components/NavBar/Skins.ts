@@ -29,19 +29,14 @@ margin : 0.5em;
 `;
 
 export const RightContainer = styled.div`
-padding-left :40em;
-@media only screen and (max-width: 600px) {
-  padding-left :5em;
-}
+margin-left :60%;
+background-color: back;
 `;
 
-export const NavBarBtn = styled.button`
-padding : 0.5em;
-left: 50em;
-margin : 1em;
-background-color:  rgb(213, 255, 186);
-width : 8em;
-box-shadow: 1px 1px 5px grey;
-border-radius: 1em;
-border: solid 0.5px greenyellow;
+export const LoginBtn = styled.div`
+background-color:  #00BF63;
+color : white;
+padding : 0.5em 1em; 0.5em 1em;
+border-radius : 5px;
+cursor:pointer;
 `;

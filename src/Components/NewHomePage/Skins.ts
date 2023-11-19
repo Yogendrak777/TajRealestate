@@ -424,10 +424,14 @@ export const ReviewTittle = styled.span`
   margin-top : 0.5em;
   font-size: medium;
   font-weight: 700;
+
 `;
 
 export const ReviewPara = styled.p`
   width: 80%;
   height: auto;
-  margin-top : 0.2em;
+  margin-top : 0.8em;
+  text-align: left;
+  font-size: small;
+  justify-content: left;
 `;

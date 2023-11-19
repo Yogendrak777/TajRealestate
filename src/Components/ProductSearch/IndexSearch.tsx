@@ -223,7 +223,7 @@ export default function IndexSearch() {
     try {
       const db = getFirestore(AdminApp);
       const q = query(
-        collection(db, "PropertyData"),
+        collection(db, "ProdData"),
         where("City", "==", selectedOption?.value || Cityobject?.value),
         where("BHK", "==", getBHKData?.value || BHKTypeObject?.value),
         where(

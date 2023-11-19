@@ -10,6 +10,8 @@ import IndexSearch from './Components/ProductSearch/IndexSearch';
 import NoInternetIndex from './Components/NoInternet/NoInternetIndex';
 import BudgetSearch from './Components/ProductSearch/BudgetSearch';
 import ProductFullInfoIndex from './Components/ProductFullInfo/ProductFullInfoIndex';
+import SignIn from './Components/Login/SignIn';
+import SignUp from './Components/Login/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element:  <Index/> ,
+      },
+      {
+        path: "/signIn",
+        element:  <SignIn/> ,
+      },
+      {
+        path: "/signUp",
+        element:  <SignUp/> ,
       },
       {
         path: "/addData",
