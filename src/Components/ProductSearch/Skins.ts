@@ -132,8 +132,9 @@ cursor: pointer;
 export const TittleBar =  styled.span`
 width: auto;
 height: auto;
-font-size : 14px;
+font-size : small;
 cursor: pointer;
+margin-bottom : 0.5em;
 `;
 
 export const PriceBold = styled.b`
