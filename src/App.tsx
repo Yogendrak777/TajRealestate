@@ -12,6 +12,10 @@ import BudgetSearch from './Components/ProductSearch/BudgetSearch';
 import ProductFullInfoIndex from './Components/ProductFullInfo/ProductFullInfoIndex';
 import SignIn from './Components/Login/SignIn';
 import SignUp from './Components/Login/SignUp';
+import MobNavbar from './MobileComponents/MobNavBar/MobNavbar';
+import MobHomePage from './MobileComponents/MobNewHomePage/MobOptionCards';
+import MobHomeIndex from './MobileComponents/MobNewHomePage/MobHomeIndex';
+import FooterNavBar from './MobileComponents/FooterBar/FooterNavBar';
 
 const router = createBrowserRouter([
   {
@@ -57,15 +61,16 @@ const router = createBrowserRouter([
 const MobileRouter = createBrowserRouter([
   {
     path: "/",
-    element:  <Navbar/> ,
+    element:  <MobNavbar/> ,
     children: [
       {
         path: "/",
-        element:  <Index/> ,
+        element: <MobHomeIndex/> ,
       },
-      
     ]
   },
+  
+
 ]);
 
 const NoConnection = createBrowserRouter([

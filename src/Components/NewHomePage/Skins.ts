@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface TypeOfProps {
-  BGColor? : string;
-  Clr ? : string;
+  BGColor?: string;
+  Clr?: string;
 }
 
 export const BaseContainer = styled.div`
@@ -20,20 +20,12 @@ export const SliderContainer = styled.div`
   text-align: center;
   padding: 0.6em;
   margin: 1em;
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    height: 10em;
-  }
 `;
 
 export const ImageContainer = styled.img`
   width: 100%;
   height: 20em;
   cursor: pointer;
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    height: 10em;
-  }
 `;
 
 export const CardBaseContainer = styled.div`
@@ -55,7 +47,7 @@ export const PropBangBaseContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-bottom : 2em;
+  margin-bottom: 2em;
   cursor: pointer;
 `;
 
@@ -69,12 +61,6 @@ export const CardOnMainHeader = styled.div`
   margin-top: -6%;
   z-index: 1;
   cursor: pointer;
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    margin-top: -14%;
-    height: auto;
-    width: 75%;
-  }
 `;
 
 export const CardContentColContainer = styled.div`
@@ -120,12 +106,6 @@ export const CardContentContainer = styled.div`
   &: hover {
     transform: scale(1.2);
   }
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    width: 10%;
-    height: auto;
-    margin: 1% 2% 1% 2%;
-  }
 `;
 
 export const CardBuyContainer = styled(CardContentContainer)``;
@@ -143,38 +123,20 @@ export const CardLoanContainer = styled(CardContentContainer)``;
 export const IconOnCard = styled.img`
   width: 100%;
   height: 5em;
-  
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    width: 100%;
-    height: 2em;
-  }
 `;
 
 export const LabelOnCard = styled.span`
   font-size: medium;
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    font-size: 6px;
-  }
 `;
 
 export const HR = styled.hr`
   margin: 1px 2% 0% 2%;
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    margin: 1px 2% 0% 2%;
-  }
 `;
 
 export const SelectContainer = styled.div`
   margin: 1em;
   width: 20em;
   cursor: pointer;
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    margin: 1em;
-    width: 16em;
-  }
 `;
 
 export const SearchBtn = styled.button`
@@ -190,10 +152,6 @@ export const SearchBtn = styled.button`
   border-radius: 5em;
   font-size: 18px;
   cursor: pointer;
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    width: 25%;
-  }
 `;
 
 export const ListBtn = styled.button`
@@ -215,9 +173,6 @@ export const ListBtn = styled.button`
   &: hover {
     transform: scale(1.1);
   }
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-  }
 `;
 
 export const TypeOfProps = styled.button<TypeOfProps>`
@@ -235,10 +190,7 @@ export const TypeOfProps = styled.button<TypeOfProps>`
   padding-right: 1em;
   cursor: pointer;
   background-color: ${(props) => (props.BGColor ? props.BGColor : "")};
-  color : ${(props) => (props.Clr ? props.Clr : "Black")};
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-  }
+  color: ${(props) => (props.Clr ? props.Clr : "Black")};
 `;
 
 export const AdSellContainer = styled.div`
@@ -253,27 +205,6 @@ export const AdSellContainer = styled.div`
   margin: 2em;
   padding: 1em;
   cursor: pointer;
-
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    width: 70%;
-    height: auto;
-    margin: 1em;
-    padding: 1em;
-  }
-
-  @media only screen and (min-width: 600px) and (max-width: 900px) {
-    width: 40%;
-    height: 25em;
-    margin: 1em;
-    padding: 1em;
-  }
-
-  @media only screen and (min-width: 900px) and (max-width: 1200px) {
-    width: 30%;
-    height: 15em;
-    margin: 1em;
-    padding: 1em;
-  }
 `;
 
 export const PropSaleContainer = styled.div`
@@ -344,33 +275,33 @@ export const LabelOnImgCard = styled.span`
   top: 1em;
   color: white;
   font-weight: 700;
-  background-color : #00bf63;
-  padding : 5px;
-  border-radius : 10px;
+  background-color: #00bf63;
+  padding: 5px;
+  border-radius: 10px;
 `;
 
 export const FooterBaseContainer = styled.div`
-width: 100%;
-height: 20em;
-display: flex;
-flex-direction: row;
-text-align: center;
-justify-content: center;
-align-items: center;
-color : white;
-background-color : #778899;
-cursor: pointer;
+  width: 100%;
+  height: 20em;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #778899;
+  cursor: pointer;
 `;
 
 export const FooterColContainer = styled.div`
-width: 100%;
-height: auto;
-display: flex;
-flex-direction: column;
-text-align: left;
-justify-content: center;
-align-items: left;
-margin-left : 10em;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items: left;
+  margin-left: 10em;
 `;
 
 export const CardReview = styled.div`
@@ -381,39 +312,39 @@ export const CardReview = styled.div`
 `;
 
 export const ReviewBaseContainer = styled.div`
-width: 28em;
-height: 15em;
-display: flex;
-flex-direction: column;
-text-align: center;
-justify-content: center;
-align-items: center;
-margin:1px;
-box-shadow: 0.5px 0.5px 4px #778899;
-border-radius: 0.5em;
+  width: 28em;
+  height: 15em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  box-shadow: 0.5px 0.5px 4px #778899;
+  border-radius: 0.5em;
 `;
 
 export const ReviewColContainer = styled.div`
-width: 100%;
-height: auto;
-display: flex;
-flex-direction: row;
-text-align: left;
-justify-content: left;
-margin:1px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: left;
+  margin: 1px;
 `;
 
 export const ReviewImage = styled.img`
   width: 3em;
   height: 3em;
-  margin : 1em;
+  margin: 1em;
   border-radius: 5em;
 `;
 
 export const ReviewName = styled.span`
   width: 80%;
   height: auto;
-  margin-top : 2em;
+  margin-top: 2em;
   font-size: medium;
   font-weight: 700;
 `;
@@ -421,16 +352,15 @@ export const ReviewName = styled.span`
 export const ReviewTittle = styled.span`
   width: 80%;
   height: auto;
-  margin-top : 0.5em;
+  margin-top: 0.5em;
   font-size: medium;
   font-weight: 700;
-
 `;
 
 export const ReviewPara = styled.p`
   width: 80%;
   height: auto;
-  margin-top : 0.8em;
+  margin-top: 0.8em;
   text-align: left;
   font-size: small;
   justify-content: left;
