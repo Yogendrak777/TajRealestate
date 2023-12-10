@@ -280,21 +280,8 @@ export default function SearchCards() {
           </SelectContainer>
 
         </> }
-
-            
+           
         </SearchCard>
     </SearchBaseContainer>
   )
 }
-
-  
-  
-
-
-
-
-    //       </CardBottomColContainer>
-    //       
-    //   </CardOnMainHeader>
-    // </CardBaseContainer>
- 

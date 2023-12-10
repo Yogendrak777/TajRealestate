@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+interface TypeOfProps {
+  BGColor?: string;
+  Clr?: string;
+}
+
 export const MobBaseContainer = styled.div`
   width: auto;
   margin-top: 2.5em;
@@ -155,8 +160,8 @@ export const AddCard = styled.div`
 `;
 
 export const AddCardHeaer = styled.header`
-  font-size: medium;
-  font-weight: 700;
+  font-size: small;
+  font-weight: 600;
   color: black;
 `;
 
@@ -180,3 +185,80 @@ export const MobAddCardArrow = styled.img`
     brightness(98%) contrast(101%);
 `;
 
+export const MobPIBContainer = styled.div`
+  width: auto;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom : 5em;
+`;
+
+export const MobPIBTittle = styled.div`
+font-size: medium;
+font-weight: 700;
+color: black;
+margin : 1em;
+`;
+
+export const Row = styled.div`
+  width: 100%;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+`;
+
+export const TypeOfPropsBang = styled.button<TypeOfProps>`
+  width: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #00bf63;
+  box-shadow: 0.5px 0.5px 4px #778899;
+  border-radius: 5em;
+  font-size: small;
+  margin: 0.3em;
+  padding-left: 0 0.5em 0 0.5em;
+  cursor: pointer;
+  background-color: ${(props) => (props.BGColor ? props.BGColor : "")};
+  color: ${(props) => (props.Clr ? props.Clr : "Black")};
+`;
+
+export const PIBContainer = styled.div`
+  width: 100%;
+  height: 10em;
+  box-shadow: 0.5px 0.5px 4px #778899;
+  text-align: left;
+  border-radius: 1em;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+  cursor: pointer;
+`;
+
+export const ImgBGonDiv = styled.img`
+  width: 100%;
+  height: 10em;
+  border-radius: 1em;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+`;
+
+export const LabelOnImgCard = styled.span`
+  z-index: 5;
+  position: absolute;
+  left: 0.3em;
+  top: 1em;
+  color: white;
+  font-weight: 500;
+  font-size : small;
+  background-color: #00bf63;
+  padding: 5px;
+  border-radius: 10px;
+  width : fit-content;
+`;

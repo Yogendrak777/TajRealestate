@@ -17,7 +17,7 @@ export default function HotSelling() {
         Hot Selling Project in Bangalore
       </PropertiesTittleInHome>
       <CardBaseContainer>
-        <Carousel cols={4} rows={1} gap={15} loop={true}>
+        <Carousel cols={4} rows={1} gap={1} loop={true}>
           <Carousel.Item>
             <HotSaleContainer>
               <ImgBGonDiv src={Banner2} />

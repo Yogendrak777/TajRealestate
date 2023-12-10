@@ -7,7 +7,7 @@ export const MobBottomContainer = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
-  z-index: 3;
+  z-index: 20;
   position: fixed;
   bottom: 1px;
   background-color: white;
