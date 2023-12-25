@@ -135,7 +135,7 @@ export const AddCardContainer = styled.div`
   margin: 1em;
 `;
 
-export const DivisionAddCard = styled.span`
+export const DivisionAddCard = styled.section`
   width: 100%;
   height: auto;
   text-align: center;
@@ -173,16 +173,12 @@ export const MobAddCardImage = styled.img`
   width: 2em;
   height: 2em;
   cursor: pointer;
-  filter: invert(56%) sepia(87%) saturate(3368%) hue-rotate(119deg)
-    brightness(98%) contrast(101%);
 `;
 
 export const MobAddCardArrow = styled.img`
   width: 1em%;
   height: 1em;
   cursor: pointer;
-  filter: invert(56%) sepia(87%) saturate(3368%) hue-rotate(119deg)
-    brightness(98%) contrast(101%);
 `;
 
 export const MobPIBContainer = styled.div`
@@ -191,14 +187,14 @@ export const MobPIBContainer = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin-bottom : 5em;
+  margin-bottom: 0.5em;
 `;
 
 export const MobPIBTittle = styled.div`
-font-size: medium;
-font-weight: 700;
-color: black;
-margin : 1em;
+  font-size: medium;
+  font-weight: 700;
+  color: black;
+  margin: 1em;
 `;
 
 export const Row = styled.div`
@@ -222,7 +218,7 @@ export const TypeOfPropsBang = styled.button<TypeOfProps>`
   border-radius: 5em;
   font-size: small;
   margin: 0.3em;
-  padding-left: 0 0.5em 0 0.5em;
+  padding: 0.2em 0.7em 0.2em 0.7em;
   cursor: pointer;
   background-color: ${(props) => (props.BGColor ? props.BGColor : "")};
   color: ${(props) => (props.Clr ? props.Clr : "Black")};
@@ -256,9 +252,128 @@ export const LabelOnImgCard = styled.span`
   top: 1em;
   color: white;
   font-weight: 500;
-  font-size : small;
+  font-size: small;
   background-color: #00bf63;
   padding: 5px;
   border-radius: 10px;
-  width : fit-content;
+  width: fit-content;
+`;
+
+export const MobHSPBTittle = styled.main`
+  font-size: medium;
+  font-weight: 700;
+  color: black;
+  margin: 1em;
+`;
+
+export const MobHSPBContainer = styled.div`
+  overflow-x: auto;
+  height: 16em;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const MobHSPBPropertyCardsContainer = styled.div`
+  width: 70em;
+  height: 10em;
+  box-shadow: 0.5px 0.5px 4px #778899;
+  text-align: left;
+  border-radius: 1em;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+export const MobHSPBLabelOnImgCard = styled.span`
+  z-index: 5;
+  position: absolute;
+  left: 0.3em;
+  top: 1em;
+  color: white;
+  font-weight: 500;
+  font-size: small;
+  background-color: #00bf63;
+  padding: 5px;
+  border-radius: 10px;
+  width: fit-content;
+`;
+
+export const MobHSPBPricesCard = styled(MobHSPBLabelOnImgCard)`
+  left: 0.3em;
+  top: 3em;
+`;
+export const MobHSPBBHKCard = styled(MobHSPBLabelOnImgCard)`
+  left: 0.3em;
+  top: 5em;
+`;
+export const MobHSPBProjectSizeCard = styled(MobHSPBLabelOnImgCard)`
+  left: 0.3em;
+  top: 7em;
+`;
+
+export const MobHSPBImgBGonDiv = styled.img`
+  width: 100%;
+  height: 15em;
+  border-radius: 1em;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+`;
+
+export const MobHSPBSliderContainer = styled.div`
+  width: auto;
+  height: 15em;
+  text-align: center;
+  padding: 0 1em;
+  margin: 0.2em;
+  z-index: 0;
+  margin-bottom: 1em;
+`;
+
+export const ReviewContainer = styled.div`
+  width: auto;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5em;
+`;
+
+export const ReviewCardContainer = styled.div`
+  overflow-x: auto;
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  padding: 0 1em;
+`;
+
+export const ReviewCard = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 12em;
+  padding: 0.1em 0.5em 0.1em 0.5em;
+  border-radius: 15px;
+  border: 1px solid #778899;
+  margin-left: 0.5em;
+`;
+export const ReviewOptionContainer = styled.div`
+  width: 95%;
+  overflow-x: auto;
+  height: auto;
+  text-align: left;
+  justify-content: left;
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ReviewDecs = styled.span`
+  font-size: small;
+  width: 20em;
+  justify-content: justify;
 `;

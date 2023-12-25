@@ -13,9 +13,11 @@ import ProductFullInfoIndex from './Components/ProductFullInfo/ProductFullInfoIn
 import SignIn from './Components/Login/SignIn';
 import SignUp from './Components/Login/SignUp';
 import MobNavbar from './MobileComponents/MobNavBar/MobNavbar';
-import MobHomePage from './MobileComponents/MobNewHomePage/MobOptionCards';
 import MobHomeIndex from './MobileComponents/MobNewHomePage/MobHomeIndex';
-import FooterNavBar from './MobileComponents/FooterBar/FooterNavBar';
+import ProfileIndex from './MobileComponents/MobProfile/ProfileIndex';
+import MobShortlistIndex from './MobileComponents/MobShortlist/MobShortlistIndex';
+import MobAddPropIndex from './MobileComponents/MobAddPropertyData/MobAddPropIndex';
+import MobAddIndex from './MobileComponents/MobAddPropertyData/MobAddIndex';
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,22 @@ const MobileRouter = createBrowserRouter([
       {
         path: "/",
         element: <MobHomeIndex/> ,
+      },
+      {
+        path: "/profile",
+        element: <ProfileIndex/> ,
+      },
+      {
+        path: "/shortlist",
+        element: <MobShortlistIndex/> ,
+      },
+      {
+        path: "/addDataDivision",
+        element: <MobAddPropIndex/> ,
+      },
+      {
+        path: "/addProjectData",
+        element: <MobAddIndex/> ,
       },
     ]
   },

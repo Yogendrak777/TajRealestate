@@ -1,15 +1,43 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { AddCardContainer, DivisionAddCard, AddCard, AddCardHeaer, AddCardPara, MobAddCardImage, MobAddCardArrow } from './Skins'
 import AddProperty from '../../Components/assets/MobAddProperty.png' 
 import RightArrow from '../../Components/assets/MobRightArrow.png'
 import FindHouse from '../../Components/assets/MobFindHouse.png'
 import InvestHouse from '../../Components/assets/MobInvest.png'
 import Broker from '../../Components/assets/MobHomeBrocker.png'
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "firebase/auth";
+import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
+import { useNavigate } from 'react-router-dom'
 
 export default function MobAddCard() {
+  const navigate = useNavigate()
+
+  const [isLogout, setIsLogOut] = useState<any>(true)
+
+
+  const handelAddData = () => {
+    
+   const auth = getAuth(AdminApp);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+       navigate('/addDataDivision');
+      } else {
+        alert('login page')
+      }
+
+    })
+  }
+
   return (
     <AddCardContainer>
-      <DivisionAddCard>
+      <DivisionAddCard onClick={handelAddData}>
         <MobAddCardImage src={AddProperty}/>
         <AddCard>
           <AddCardHeaer> Post Your Property Ads for Free </AddCardHeaer>
