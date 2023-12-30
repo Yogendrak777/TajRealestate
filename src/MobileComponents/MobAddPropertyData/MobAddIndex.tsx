@@ -10,8 +10,7 @@ import {
   CheckBoxContainer,
   InputCheckContainer,
   LabelContainerForCheckBox,
-  LabelContainerOnImages,
-  InputImageContainer
+  InputImageContainer,
 } from "./Skins";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -30,33 +29,25 @@ export default function MobAddIndex() {
 
   const [File, setFile] = useState<any>([]);
   const [percent, setPercent] = useState(0);
-  const [showAnimation, setShowAnimation] = useState<boolean>(false);
-
-  const [getImageContainer, setGetImageContainer] = useState<boolean>(true);
-  const [showPropertyDetailsSlide, setShowPropertyDetailsSlide] =
-    useState<boolean>(false);
-  const [showAmenitiesSlide, setShowAmenitiesSlide] = useState<boolean>(false);
-  const [showLocationSlide, setShowLocationSlide] = useState<boolean>(false);
-  const [showAdditionInfoSlide, setShowAdditionInfoSlide] =
-    useState<boolean>(false);
-  const [showYourAvailabilitySlide, setShowYourAvailabilitySlide] =
-    useState<boolean>(false);
+  const [getImageContainer, setGetImageContainer] = useState<boolean>(false);
+  const [showPropertyDetails, setShowPropertyDetails] = useState<boolean>(true);
+  const [showAmenities, setShowAmenities] = useState<boolean>(false);
+  const [showFinallSubmit, setshowFinallSubmit] = useState<boolean>(false);
 
   const [getApartmentTypeData, setGetApartmentTypeData] = useState<any>("N/A");
   const [getPropertyNameData, setPropertyNameData] = useState<any>("");
-  const [getBuildUpAreaData, setBuildUpAreaData] = useState<any>("");
-  const [getCarpetAreaData, setCarpetAreaData] = useState<any>("");
+  const [getProjectSize, setProjectSize] = useState<any>("");
+  const [getNoOfUnits, setNoOfUnits] = useState<any>("");
   const [getBHKData, setShowBHKData] = useState<any>("N/A");
-  const [getFacingData, setShowFacingData] = useState<any>("N/A");
   const [getPropertyAgeData, setShowFPropertyAgeData] = useState<any>("N/A");
   const [getAvalibleFrom, setShowAvalibleFromData] = useState<any>("");
   const [getFloor, setShowFloorData] = useState<any>("");
   const [getTotalFloor, setShowTotalFloorData] = useState<any>("");
-  const [getPrices, setPricesData] = useState<any>("N/A");
+  const [getMinPrice, setMinPrice] = useState<any>("N/A");
+  const [getMaxPrice, setMaxPrice] = useState<any>("N/A");
   const [getRentPrices, setRentPricesData] = useState<any>("N/A");
   const [getMaintenance, setMaintenanceData] = useState<any>("");
   const [getPricesnegotiable, setPricesnegotiableData] = useState<any>("N/A");
-  const [getEmiData, setEmiData] = useState<any>("N/A");
   const [getBuyOrRentData, setBuyOrRentData] = useState<any>("N/A");
   const [getFurnishing, setFurnishingeData] = useState<any>("N/A");
   const [getParking, setParkingData] = useState<any>("N/A");
@@ -85,21 +76,14 @@ export default function MobAddIndex() {
   const [getSaleSeedData, setSaleSeedData] = useState<any>("N/A");
   const [getPropertyTaxData, setPropertyTaxData] = useState<any>("N/A");
   const [getAdvanceData, setAdvanceData] = useState<any>("");
-  const [getEmiInputData, setEmiInputData] = useState<any>("");
   const [getOccupancyCertificateData, setOccupancyCertificateData] =
     useState<any>("N/A");
-  const [getOwerShowData, setOwerShowData] = useState<any>("N/A");
-  const [getOwnerAvalibilityData, setOwnerAvalibilityData] =
-    useState<any>("N/A");
-  const [NoOfBedRooms, setNoOfBedRooms] = useState<any>("");
-  const [NoOfBathRooms, setNoOfBathRooms] = useState<any>("");
-  const [Balcony, setBalcony] = useState<any>("N/A");
+  const [getProjectArea, setProjectArea] = useState<any>("");
   const [PipedGas, setPipedGas] = useState<any>("N/A");
   const [MulitpruposeHall, setMulitpruposeHall] = useState<any>("N/A");
   const [TenniusCourt, setTenniusCourt] = useState<any>("N/A");
   const [MeditationArea, setMeditationArea] = useState<any>("N/A");
   const [BatmitionCourt, setBatmitionCourt] = useState<any>("N/A");
-
 
   const ApartmentType = [
     { value: "Flats", label: "Flats" },
@@ -126,35 +110,9 @@ export default function MobAddIndex() {
     { value: "More than 10 years", label: "More than 10 years" },
   ];
 
-  const NoOfBalcony = [
-    { value: "N/A", label: "N/A" },
-    { value: "1", label: "1 Balcony" },
-    { value: "2", label: "2 Balcony" },
-    { value: "3", label: "3 Balcony" },
-    { value: "4", label: "4 Balcony" },
-    { value: "5", label: "5 Balcony" },
-  ];
-
-  const FacingDirection = [
-    { value: "North", label: "North" },
-    { value: "East", label: "East" },
-    { value: "West", label: "West" },
-    { value: "South", label: "South" },
-    { value: "North-East", label: "North-East" },
-    { value: "North-West", label: "North-West" },
-    { value: "South-West", label: "South-West" },
-    { value: "South-East", label: "South-East" },
-    { value: "I Don't Facing", label: "I Don't Facing" },
-  ];
-
   const Negotiable = [
     { value: "Negotiable", label: "Negotiable" },
     { value: "Not-Negotiable", label: "Not-Negotiable" },
-  ];
-
-  const EmiOption = [
-    { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" },
   ];
 
   const FurnishingType = [
@@ -354,38 +312,37 @@ export default function MobAddIndex() {
     { value: 87, label: "86 to 90 k" },
   ];
 
-  const BuggetType = [
-    { value: 3, label: "1 to 5 lacks" },
-    { value: 7, label: "6 to 10 lacks" },
-    { value: 13, label: "11 to 15 lacks" },
-    { value: 17, label: "16 to 20 lacks" },
-    { value: 23, label: "21 to 25 lacks" },
-    { value: 27, label: "26 to 30 lacks" },
-    { value: 33, label: "31 to 35 lacks" },
-    { value: 37, label: "36 to 40 lacks" },
-    { value: 43, label: "41 to 45 lacks" },
-    { value: 47, label: "46 to 50 lacks" },
-    { value: 53, label: "51 to 55 lacks" },
-    { value: 57, label: "56 to 60 lacks" },
-    { value: 63, label: "61 to 65 lacks" },
-    { value: 67, label: "66 to 70 lacks" },
-    { value: 73, label: "71 to 75 lacks" },
-    { value: 77, label: "76 to 80 lacks" },
-    { value: 83, label: "81 to 85 lacks" },
-    { value: 87, label: "86 to 90 lacks" },
-    { value: 93, label: "91 to 95 lacks" },
-    { value: 97, label: "96 lacks to 1 Cr " },
-    { value: 101, label: "1 Cr to 1.20 Cr" },
-    { value: 102, label: "1.20 Cr to 1.50 Cr" },
-    { value: 103, label: "1.50 Cr to 2 Cr" },
-    { value: 104, label: "2 Cr to 2.5 Cr" },
-    { value: 105, label: "3 Cr to 3.5 Cr" },
-    { value: 106, label: "4 Cr to 4.5 Cr" },
-    { value: 107, label: "5 Cr to 5.5 Cr" },
-    { value: 108, label: "6 Cr to 6.5 Cr" },
-    { value: 109, label: "7 Cr to 7.5 Cr" },
-    { value: 110, label: "8 Cr to 8.5 Cr" },
-    { value: 111, label: "10+ Cr" },
+  const MiniumRange = [
+    { value: 5, label: "5 lacks" },
+    { value: 10, label: "10 lacks" },
+    { value: 15, label: "15 lacks" },
+    { value: 20, label: "20 lacks" },
+    { value: 25, label: "25 lacks" },
+    { value: 30, label: "30 lacks" },
+    { value: 35, label: "35 lacks" },
+    { value: 40, label: "40 lacks" },
+    { value: 45, label: "45 lacks" },
+    { value: 50, label: "50 lacks" },
+    { value: 55, label: "55 lacks" },
+    { value: 60, label: "60 lacks" },
+    { value: 65, label: "65 lacks" },
+    { value: 70, label: "70 lacks" },
+    { value: 75, label: "75 lacks" },
+    { value: 80, label: "80 lacks" },
+    { value: 85, label: "85 lacks" },
+    { value: 90, label: "90 lacks" },
+    { value: 95, label: "95 lacks" },
+    { value: 100, label: "1 Cr " },
+    { value: 101, label: "1.20 Cr" },
+    { value: 102, label: "1.21.50 Cr" },
+    { value: 103, label: "1.52 Cr" },
+    { value: 104, label: "2.5 Cr" },
+    { value: 105, label: "3.5 Cr" },
+    { value: 106, label: "4.5 Cr" },
+    { value: 107, label: "5.5 Cr" },
+    { value: 108, label: "6.5 Cr" },
+    { value: 109, label: "7.5 Cr" },
+    { value: 110, label: "8.5 Cr" },
   ];
 
   const handleKeyPress = (e: any) => {
@@ -424,51 +381,58 @@ export default function MobAddIndex() {
     ImageFile[4] = event.target.files[0];
   }
 
+  function handleChange5(event: any) {
+    ImageFile[5] = event.target.files[0];
+  }
+
   const handleUpload = () => {
-      const uid = user.uid;
-      if (ImageFile.length < 4) {
-        alert("Please upload the images");
-      } else {
-        // setFile(ImageFile);
-        ImageFile.forEach((element: any) => {
-          const storageRef = ref(storage, `${uid}/${element.name}`);
-          const uploadTask = uploadBytesResumable(storageRef, element);
-          uploadTask.on(
-            "state_changed",
-            (snapshot) => {
-              setPercent(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-              );
-              switch (snapshot.state) {
-                case "paused":
-                  console.log("Upload is paused");
-                  break;
-                case "running":
-                  console.log("Upload is running");
-                  break;
-              }
-            },
-            (error) => {
-              console.log(error);
-            },
-            () => {
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                let index = ImageFile.indexOf(element);
-                ImageFile[index] = downloadURL;
-                setUniqueId("id" + Math.random().toString(36).slice(2));
-              });
+    setUniqueId("id" + Math.random().toString(36).slice(2));
+    const uid = user.uid;
+    if (ImageFile.length < 4) {
+      alert("Please upload the images");
+    } else {
+      // setFile(ImageFile);
+      ImageFile.forEach((element: any) => {
+        const storageRef = ref(storage, `${uid}/${element.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, element);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            setPercent((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            switch (snapshot.state) {
+              case "paused":
+                console.log("Upload is paused");
+                break;
+              case "running":
+                console.log("Upload is running");
+                break;
             }
-          );
-        });
-        setFile(ImageFile);
-        console.log(ImageFile)
-      }
+          },
+          (error) => {
+            console.log(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              let index = ImageFile.indexOf(element);
+              ImageFile[index] = downloadURL;
+            });
+          }
+        );
+      });
+      setFile(ImageFile);
+      console.log(ImageFile);
+      setTimeout(() => {
+        setGetImageContainer(false);
+        setshowFinallSubmit(true);
+      }, 6000);
+    }
   };
 
   const HandelSubmitBtn = async () => {
     try {
       const db = getFirestore(AdminApp);
       const uid = user.uid;
+
       try {
         const docRef = await addDoc(collection(db, "ProdData"), {
           uid: uid,
@@ -479,29 +443,25 @@ export default function MobAddIndex() {
             img4: File[3],
             img5: File[4],
           },
+          Brochure: File[5],
           ApartmentType: getApartmentTypeData.value,
           PropertyName: getPropertyNameData,
-          BuildUpArea: `${getBuildUpAreaData} Sqrt`,
-          CarpetArea: `${getCarpetAreaData} Sqrt`,
-          BHK: getBHKData.value,
-          Balcony: Balcony.value,
-          NoOfBedRooms: NoOfBedRooms,
-          NoOfBathRooms: NoOfBathRooms,
-          Facing: getFacingData.value,
+          ProjectSize: getProjectSize,
+          NoOfUnits: getNoOfUnits,
+          BHK: getBHKData,
+          ProjectArea: getProjectArea,
           PropertyAge: getPropertyAgeData.value,
           AvalibleData: getAvalibleFrom,
           Floor: getFloor,
           TotalFloor: getTotalFloor,
-          Prices: Number(getPrices.value),
-          SaleAmount: getPrices.label || 'N/A',
-          RentPrices : getRentPrices.label || 'N/A',
+          MinPrices: getMinPrice,
+          MaxPrice: getMaxPrice,
+          RentPrices: getRentPrices.label || "N/A",
           Advance: getAdvanceData,
           MaintenanceCost: getMaintenance,
           BuyOrRent: getBuyOrRentData,
           Negotiable: getPricesnegotiable.value,
           Furnishing: getFurnishing.value,
-          EmiAmount: getEmiInputData || 'N/A',
-          Emi: getEmiData.value ||'N/A' ,
           Parking: getParking.value,
           Description: getDescription,
           WaterSupply: getWater.value,
@@ -516,8 +476,6 @@ export default function MobAddIndex() {
           SaleSeed: getSaleSeedData.value,
           PropertyTax: getPropertyTaxData.value,
           OccupancyCertificate: getOccupancyCertificateData.value,
-          OwerShow: getOwerShowData.value,
-          OwnerAvalibility: getOwnerAvalibilityData,
           Amenities: {
             ClubHouse: getClubhouse,
             Gym: getGym,
@@ -592,38 +550,48 @@ export default function MobAddIndex() {
     setVisitorsParkingData(event.target.value);
   };
 
+  const enableAmenities = () => {
+    setShowPropertyDetails(false);
+    setShowAmenities(true);
+  }
+
+  const enableImagesContainer = () => {
+    setShowAmenities(false);
+    setGetImageContainer(true);
+  }
+
   return (
     <MobProjectContainer>
-       {showPropertyDetailsSlide && (
-      <MobProjectCard>
-        <LabelContainer>
-          <Label> Property Type : </Label>
-        <Select
-          styles={{
-            control: (baseStyles) => ({
-              ...baseStyles,
-              padding: "5px",
-            }),
-          }}
-          defaultValue={getApartmentTypeData}
-          onChange={setGetApartmentTypeData}
-          options={ApartmentType}
-          placeholder="ApartmentType"
-        />
-         </LabelContainer>
+      {showPropertyDetails && (
+        <MobProjectCard>
+          <LabelContainer>
+            <Label> Property Type : </Label>
+            <Select
+              styles={{
+                control: (baseStyles) => ({
+                  ...baseStyles,
+                  padding: "5px",
+                }),
+              }}
+              defaultValue={getApartmentTypeData}
+              onChange={setGetApartmentTypeData}
+              options={ApartmentType}
+              placeholder="ApartmentType"
+            />
+          </LabelContainer>
 
-        <LabelContainer>
-          <Label> Apartment Society / Project Name : </Label>
-        
+          <LabelContainer>
+            <Label> Apartment Society / Project Name : </Label>
+
             <Input
               type="text"
               value={getPropertyNameData}
               onChange={(e: any) => setPropertyNameData(e.target.value)}
               placeholder="Example : 'LG' "
             />
-            </LabelContainer>
-        <LabelContainer>
-          <Label> BHK Type : </Label>
+          </LabelContainer>
+          <LabelContainer>
+            <Label> BHK Type : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -636,95 +604,49 @@ export default function MobAddIndex() {
               options={BHKType}
               placeholder="BHK Type"
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer>
-            <Label> Super Built up area </Label>
+          <LabelContainer>
+            <Label> Project Size : </Label>
             <Input
-              maxLength={6}
-              type="tel"
-              value={getBuildUpAreaData}
-              onChange={(e: any) => setBuildUpAreaData(e.target.value)}
-              placeholder="Example : '1200' "
-              onKeyDown={handleKeyPress}
+              type="text"
+              value={getProjectSize}
+              onChange={(e: any) => setProjectSize(e.target.value)}
+              placeholder="Example : 8 Buildings-700 units "
             />
-             </LabelContainer>
+          </LabelContainer>
 
-             <LabelContainer>
-             <Label> Available from : </Label>
+          <LabelContainer>
+            <Label> Available from : </Label>
             <Input
               type="date"
               placeholder='eg : "Godrej"'
               onChange={(e: any) => setShowAvalibleFromData(e.target.value)}
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer>
-            <Label> Carpet area : </Label> 
+          <LabelContainer>
+            <Label> No of Units : </Label>
             <Input
-              type="text"
-              value={getCarpetAreaData}
-              onChange={(e: any) => setCarpetAreaData(e.target.value)}
+              maxLength={5}
+              type="tel"
+              value={getNoOfUnits}
+              onChange={(e: any) => setNoOfUnits(e.target.value)}
               placeholder="Example : '700' "
-              onKeyDown={handleKeyPress}
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer>
-            <Label>No of Balcony : </Label> 
-            <Select
-              styles={{
-                control: (baseStyles) => ({
-                  ...baseStyles,
-                  padding: "5px",
-                }),
-              }}
-              isMulti
-              onChange={setBalcony}
-              options={NoOfBalcony}
-              placeholder="No of Balcony"
-            />
-            </LabelContainer>
-
-            <LabelContainer> 
-            <Label> No of Bedroom : </Label>
+          <LabelContainer>
+            <Label> Project Area  : </Label>
             <Input
               type="text"
-              value={NoOfBedRooms}
-              onChange={(e: any) => setNoOfBedRooms(e.target.value)}
-              onKeyDown={handleKeyPress}
-              placeholder="Example : 2"
+              value={getProjectArea}
+              onChange={(e: any) => setProjectArea(e.target.value)}
+              placeholder="Example : 10.00 acres "
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer> 
-            <Label>  No of Bathroom : </Label>
-            <Input
-              type="text"
-              value={NoOfBathRooms}
-              onChange={(e: any) => setNoOfBathRooms(e.target.value)}
-              onKeyDown={handleKeyPress}
-              placeholder="Example : 2"
-              />
-            </LabelContainer>
-
-            <LabelContainer> 
-            <Label>  Facing : </Label>
-            <Select
-              styles={{
-                control: (baseStyles) => ({
-                  ...baseStyles,
-                  padding: "5px",
-                }),
-              }}
-              defaultValue={getFacingData}
-              onChange={setShowFacingData}
-              options={FacingDirection}
-              placeholder="Facing Direction"
-              />
-              </LabelContainer>
-
-            <LabelContainer>
+          <LabelContainer>
             <Label> Property Age : </Label>
             <Select
               styles={{
@@ -737,33 +659,32 @@ export default function MobAddIndex() {
               onChange={setShowFPropertyAgeData}
               options={PropertyAge}
               placeholder="Property Age"
-              />
-              </LabelContainer>
+            />
+          </LabelContainer>
 
-            <LabelContainer> 
+          <LabelContainer>
             <Label>Floor : </Label>
             <Input
               type="text"
               value={getFloor}
               onChange={(e: any) => setShowFloorData(e.target.value)}
-              onKeyDown={handleKeyPress}
-              placeholder="Example : 5"
+              placeholder="Example : 5,6,7,10,15"
             />
-             </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer> 
+          <LabelContainer>
             <Label> Total Floor : </Label>
             <Input
               type="text"
               value={getTotalFloor}
               onChange={(e: any) => setShowTotalFloorData(e.target.value)}
               onKeyDown={handleKeyPress}
-              placeholder="Example : 7"
+              placeholder="Example : 20"
             />
-             </LabelContainer>
+          </LabelContainer>
 
-             <LabelContainer>
-             <Label> Sell/Rent/Lease : </Label>
+          <LabelContainer>
+            <Label> Sell/Rent/Lease : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -777,49 +698,68 @@ export default function MobAddIndex() {
               options={BuyOrRent}
               placeholder="Bugget Range"
             />
-            </LabelContainer>
-          {(getBuyOrRentData.value === "Sale" || getBuyOrRentData.value === 'Lease') && (
+          </LabelContainer>
+          {(getBuyOrRentData.value === "Sale" ||
+            getBuyOrRentData.value === "Lease") && (
             <>
-          <LabelContainer>
-          <Label>  Bugget Range : </Label>
-            <Select
-              styles={{
-                control: (baseStyles) => ({
-                  ...baseStyles,
-                  padding: "3px",
-                  fontStyle: "italic",
-                }),
-              }}
-              defaultValue={getPrices}
-              onChange={setPricesData}
-              options={BuggetType}
-              placeholder="Bugget Range"
-            />
-           </LabelContainer>
-            </>)}
-            
-            {getBuyOrRentData.value === "Rent" && (
-            <>
-            <LabelContainer>
-            <Label> Rent Range  : </Label>
-             <Select
-              styles={{
-                control: (baseStyles) => ({
-                  ...baseStyles,
-                  padding: "3px",
-                  fontStyle: "italic",
-                }),
-              }}
-              defaultValue={getRentPrices}
-              onChange={setRentPricesData}
-              options={RentAmountType}
-              placeholder="Rent Range"
-            />
-            </LabelContainer>
-            </>   
-        )}
+              <LabelContainer>
+                <Label> Minium Price : </Label>
+                <Select
+                  styles={{
+                    control: (baseStyles) => ({
+                      ...baseStyles,
+                      padding: "3px",
+                      fontStyle: "italic",
+                    }),
+                  }}
+                  defaultValue={getMinPrice}
+                  onChange={setMinPrice}
+                  options={MiniumRange}
+                  placeholder="Bugget Range"
+                />
+              </LabelContainer>
 
-            <LabelContainer>
+              <LabelContainer>
+                <Label> Maxium Price : </Label>
+                <Select
+                  styles={{
+                    control: (baseStyles) => ({
+                      ...baseStyles,
+                      padding: "3px",
+                      fontStyle: "italic",
+                    }),
+                  }}
+                  defaultValue={getMaxPrice}
+                  onChange={setMaxPrice}
+                  options={MiniumRange}
+                  placeholder="Bugget Range"
+                />
+              </LabelContainer>
+            </>
+          )}
+
+          {getBuyOrRentData.value === "Rent" && (
+            <>
+              <LabelContainer>
+                <Label> Rent Range : </Label>
+                <Select
+                  styles={{
+                    control: (baseStyles) => ({
+                      ...baseStyles,
+                      padding: "3px",
+                      fontStyle: "italic",
+                    }),
+                  }}
+                  defaultValue={getRentPrices}
+                  onChange={setRentPricesData}
+                  options={RentAmountType}
+                  placeholder="Rent Range"
+                />
+              </LabelContainer>
+            </>
+          )}
+
+          <LabelContainer>
             <Label>Monthly Maintenance : </Label>
             <Input
               type="text"
@@ -827,11 +767,11 @@ export default function MobAddIndex() {
               onChange={(e: any) => setMaintenanceData(e.target.value)}
               placeholder="Example : 6k"
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            {getBuyOrRentData.value === "Rent" && (
-              <>
-                <LabelContainer>
+          {getBuyOrRentData.value === "Rent" && (
+            <>
+              <LabelContainer>
                 <Label> Advance : </Label>
                 <Input
                   type="text"
@@ -839,46 +779,12 @@ export default function MobAddIndex() {
                   onChange={(e: any) => setAdvanceData(e.target.value)}
                   placeholder="Example : '40k'"
                 />
-                </LabelContainer>
-              </>
-            )}
+              </LabelContainer>
+            </>
+          )}
 
-            {getBuyOrRentData.value === "Sale" && (
-              <>
-                <LabelContainer>
-                <Label> Emi : </Label>
-                <Select
-                  styles={{
-                    control: (baseStyles) => ({
-                      ...baseStyles,
-                      padding: "5px",
-                    }),
-                  }}
-                  defaultValue={getEmiData}
-                  onChange={setEmiData}
-                  options={EmiOption}
-                  placeholder="Emi Option"
-                />
-                </LabelContainer>
-              </>
-            )}
-
-            {getEmiData.value === "Yes" && (
-              <>
-                <LabelContainer>
-                <Label> Monthly Emi Amount : </Label>
-                <Input
-                  type="text"
-                  value={getEmiInputData}
-                  onChange={(e: any) => setEmiInputData(e.target.value)}
-                  placeholder="Example : '50k'"
-                />
-                </LabelContainer>
-              </>
-            )}
-
-            <LabelContainer>
-            <Label>Furnishing  : </Label>
+          <LabelContainer>
+            <Label>Furnishing : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -891,10 +797,10 @@ export default function MobAddIndex() {
               options={FurnishingType}
               placeholder="Furnishing Type"
             />
-             </LabelContainer>
+          </LabelContainer>
 
-             <LabelContainer>
-             <Label>  Negotiable / Not  : </Label>
+          <LabelContainer>
+            <Label> Negotiable / Not : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -908,9 +814,9 @@ export default function MobAddIndex() {
               options={Negotiable}
               placeholder="Negotiable/Not"
             />
-             </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer> 
+          <LabelContainer>
             <Label> Parking : </Label>
             <Select
               styles={{
@@ -925,25 +831,24 @@ export default function MobAddIndex() {
               options={ParkingType}
               placeholder="Parking Type"
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer> 
+          <LabelContainer>
             <Label> Property Description : </Label>
             <InputReviewContainer
               onChange={(e: any) => setDescriptionData(e.target.value)}
               placeholder="Write the about the project / property"
             />
-            </LabelContainer>
-            
-            <DivisionBtn> Next &gt;</DivisionBtn>
-            
-      </MobProjectCard>
+          </LabelContainer>
+
+          <DivisionBtn onClick={enableAmenities}> Next &gt;</DivisionBtn>
+        </MobProjectCard>
       )}
 
-    {showAmenitiesSlide && (
-      <MobProjectCard>
-            <LabelContainer>
-            <Label>  Water Supply : </Label>
+      {showAmenities && (
+        <MobProjectCard>
+          <LabelContainer>
+            <Label> Water Supply : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -957,11 +862,10 @@ export default function MobAddIndex() {
               placeholder="water supply"
               isSearchable
             />
-            </LabelContainer>
+          </LabelContainer>
 
-
-        <LabelContainer> 
-        <Label> Security : </Label>
+          <LabelContainer>
+            <Label> Security : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -974,9 +878,9 @@ export default function MobAddIndex() {
               options={Security}
               placeholder="Security"
             />
-           </LabelContainer>  
+          </LabelContainer>
 
-            <LabelContainer> 
+          <LabelContainer>
             <Label> Power Supply : </Label>
             <Select
               styles={{
@@ -990,10 +894,10 @@ export default function MobAddIndex() {
               options={PowerSupply}
               placeholder="Power supply"
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer> 
-             <Label> khata Certificate type  : </Label>
+          <LabelContainer>
+            <Label> khata Certificate type : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -1006,10 +910,10 @@ export default function MobAddIndex() {
               options={KhataType}
               placeholder="Khata Type"
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer>
-            <Label> Sale Seed  : </Label>
+          <LabelContainer>
+            <Label> Sale Seed : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -1022,10 +926,10 @@ export default function MobAddIndex() {
               options={SeedType}
               placeholder="Sale Seed"
             />
-             </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer> 
-            <Label> Property tax  : </Label>
+          <LabelContainer>
+            <Label> Property tax : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -1038,9 +942,9 @@ export default function MobAddIndex() {
               options={PropertyTaxType}
               placeholder="Property tax"
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer>
+          <LabelContainer>
             <Label> Occupancy Certificate : </Label>
             <Select
               styles={{
@@ -1054,44 +958,10 @@ export default function MobAddIndex() {
               options={SeedType}
               placeholder="occupancy certificate"
             />
-             </LabelContainer>
+          </LabelContainer>
 
-             <LabelContainer> 
-             <Label>Who will show the property : </Label>
-            <Select
-              styles={{
-                control: (baseStyles) => ({
-                  ...baseStyles,
-                  padding: "5px",
-                }),
-              }}
-              defaultValue={getOwerShowData}
-              onChange={setOwerShowData}
-              options={OwnerShowType}
-              placeholder="Who will show the property"
-            />
-            </LabelContainer>
-
-            {getOwerShowData.value === "I will show the property" && (
-                <LabelContainer>  
-                <Label>Availability : </Label>
-                <Select
-                  styles={{
-                    control: (baseStyles) => ({
-                      ...baseStyles,
-                      padding: "5px",
-                    }),
-                  }}
-                  defaultValue={getOwnerAvalibilityData}
-                  onChange={setOwnerAvalibilityData}
-                  options={OwnerAvalibilyType}
-                  placeholder="Availability"
-                />
-                </LabelContainer>
-            )}
-
-            <LabelContainer>
-            <Label>Area : </Label>
+          <LabelContainer>
+            <Label> Area : </Label>
             <Select
               styles={{
                 control: (baseStyles) => ({
@@ -1106,9 +976,9 @@ export default function MobAddIndex() {
               isSearchable={true}
               isClearable={true}
             />
-            </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer>
+          <LabelContainer>
             <Label> Street : </Label>
             <Input
               type="text"
@@ -1116,20 +986,20 @@ export default function MobAddIndex() {
               onChange={(e: any) => setStreetData(e.target.value)}
               placeholder="Example : 'Naganatha pura' "
             />
-             </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer>
-            <Label> Landmark  : </Label>
+          <LabelContainer>
+            <Label> Landmark : </Label>
             <Input
               type="text"
               value={getAddressData}
               onChange={(e: any) => setAddressData(e.target.value)}
               placeholder="Example : 'Full Address' "
             />
-             </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer>
-            <Label> Contact Number  : </Label>
+          <LabelContainer>
+            <Label> Contact Number : </Label>
             <Input
               type="tel"
               maxLength={10}
@@ -1138,262 +1008,289 @@ export default function MobAddIndex() {
               placeholder="Example : '93********8' "
               onKeyDown={handleKeyPress}
             />
-             </LabelContainer>
+          </LabelContainer>
 
-            <LabelContainer> 
-            <Label>  Amenities : </Label>
+          <LabelContainer>
+            <Label> Amenities : </Label>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="clubHouse"
-                value=" Club house"
-                onChange={(event: any) => setClubhouseData(event.target.value)}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="clubHouse"
+                  value=" Club house"
+                  onChange={(event: any) =>
+                    setClubhouseData(event.target.value)
+                  }
+                />
                 Club house
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="visitors parking"
-                onChange={(e: any) => {
-                  setMulitpruposeHall(e.target.value);
-                }}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="visitors parking"
+                  onChange={(e: any) => {
+                    setMulitpruposeHall(e.target.value);
+                  }}
+                />
                 Multipurpose Hall
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="visitors parking"
-                onChange={(e: any) => {
-                  setTenniusCourt(e.target.value);
-                }}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="visitors parking"
+                  onChange={(e: any) => {
+                    setTenniusCourt(e.target.value);
+                  }}
+                />
                 Outdoor Tennis Courts
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="visitors parking"
-                onChange={(e: any) => {
-                  setMeditationArea(e.target.value);
-                }}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="visitors parking"
+                  onChange={(e: any) => {
+                    setMeditationArea(e.target.value);
+                  }}
+                />
                 Meditation Area
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="playground"
-                onChange={HandlePlayground}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="playground"
+                  onChange={HandlePlayground}
+                />
                 playground
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="park"
-                onChange={HandlePark}
-              />
-              park </LabelContainerForCheckBox>
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="park"
+                  onChange={HandlePark}
+                />
+                park{" "}
+              </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="Shopping centre"
-                onChange={HandleShopping}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="Shopping centre"
+                  onChange={HandleShopping}
+                />
                 shopping centre
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="open gym "
-                onChange={HandleOpenGym}
-              />
-               open gym </LabelContainerForCheckBox>
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="open gym "
+                  onChange={HandleOpenGym}
+                />
+                open gym{" "}
+              </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="Lift"
-                onChange={HandkeLift}
-              />
-              Lift </LabelContainerForCheckBox>
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="Lift"
+                  onChange={HandkeLift}
+                />
+                Lift{" "}
+              </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="sewage system "
-                onChange={HandleSewage}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="sewage system "
+                  onChange={HandleSewage}
+                />
                 sewage system
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="fire alarm "
-                onChange={HandleFireAlarm}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="fire alarm "
+                  onChange={HandleFireAlarm}
+                />
                 fire alarm
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="inter com "
-                onChange={HandleInterCom}
-              />
-              inter com </LabelContainerForCheckBox>
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="inter com "
+                  onChange={HandleInterCom}
+                />
+                inter com{" "}
+              </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="Gym"
-                onChange={HandleGym}
-              />
-               Gym </LabelContainerForCheckBox>
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="Gym"
+                  onChange={HandleGym}
+                />
+                Gym{" "}
+              </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="swimming pool"
-                onChange={HandleSwimming}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="swimming pool"
+                  onChange={HandleSwimming}
+                />
                 swimming pool
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="visitors parking"
-                onChange={HandleVisitor}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="visitors parking"
+                  onChange={HandleVisitor}
+                />
                 visitors parking
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="visitors parking"
-                onChange={(e: any) => {
-                  setPipedGas(e.target.value);
-                }}
-              />
-              Piped Gas </LabelContainerForCheckBox>
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="visitors parking"
+                  onChange={(e: any) => {
+                    setPipedGas(e.target.value);
+                  }}
+                />
+                Piped Gas{" "}
+              </LabelContainerForCheckBox>
             </CheckBoxContainer>
 
             <CheckBoxContainer>
-            <LabelContainerForCheckBox>
-              <InputCheckContainer
-                type="checkbox"
-                name="ApartmentType"
-                value="visitors parking"
-                onChange={(e: any) => {
-                  setBatmitionCourt(e.target.value);
-                }}
-              />
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="visitors parking"
+                  onChange={(e: any) => {
+                    setBatmitionCourt(e.target.value);
+                  }}
+                />
                 Indoor Squash & Batmition Courts
               </LabelContainerForCheckBox>
             </CheckBoxContainer>
-            </LabelContainer>
-      </MobProjectCard>
+          </LabelContainer>
+          <DivisionBtn onClick={enableImagesContainer}> Next &gt;</DivisionBtn>
+        </MobProjectCard>
       )}
 
-{getImageContainer && (
-       <MobProjectCard>
-           
-            <Label>  Please upload Property Images : </Label>
-            {percent}
-            <InputImageContainer
-              type="file"
-              accept="/image/*"
-              onChange={handleChange}
-              multiple
-            />
-            <InputImageContainer
-              type="file"
-              accept="/image/*"
-              onChange={handleChange1}
-              multiple
-            />
-            <InputImageContainer
-              type="file"
-              accept="/image/*"
-              onChange={handleChange2}
-              multiple
-            />
-            <InputImageContainer
-              type="file"
-              accept="/image/*"
-              onChange={handleChange3}
-              multiple
-            />
-            <InputImageContainer
-              type="file"
-              accept="/image/*"
-              onChange={handleChange4}
-              multiple
-            />
-         
-            <DivisionBtn onClick={handleUpload}> Next &gt;</DivisionBtn>
-          </MobProjectCard>
-)}
-    
+      {getImageContainer && (
+        <MobProjectCard>
+          <Label> Please upload Property Images : </Label>
+          {percent}
+          <InputImageContainer
+            type="file"
+            accept="/image/*"
+            onChange={handleChange}
+          />
+          <InputImageContainer
+            type="file"
+            accept="/image/*"
+            onChange={handleChange1}
+          />
+          <InputImageContainer
+            type="file"
+            accept="/image/*"
+            onChange={handleChange2}
+          />
+          <InputImageContainer
+            type="file"
+            accept="/image/*"
+            onChange={handleChange3}
+          />
+          <InputImageContainer
+            type="file"
+            accept="/image/*"
+            onChange={handleChange4}
+          />
+
+          <Label> Please upload Brochure : </Label>
+          <InputImageContainer
+            type="file"
+            onChange={handleChange5}
+          />
+
+          <DivisionBtn onClick={handleUpload}> Next &gt;</DivisionBtn>
+        </MobProjectCard>
+      )}
+
+      {showFinallSubmit && (
+        <MobProjectCard>
+          <CheckBoxContainer>
+              <LabelContainerForCheckBox>
+                <InputCheckContainer
+                  type="checkbox"
+                  name="ApartmentType"
+                  value="playground"
+                  onChange={HandlePlayground}
+                />
+                I Agree that all details provided by me is accurate.
+              </LabelContainerForCheckBox>
+            </CheckBoxContainer>
+          
+
+          <DivisionBtn onClick={HandelSubmitBtn}> Submit</DivisionBtn>
+        </MobProjectCard>
+      )}
     </MobProjectContainer>
   );
 }
