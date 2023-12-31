@@ -190,6 +190,15 @@ export const MobPIBContainer = styled.div`
   margin-bottom: 0.5em;
 `;
 
+export const MobHSPBMainContainer = styled.div`
+  width: auto;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5em;
+`;
+
 export const MobPIBTittle = styled.div`
   font-size: medium;
   font-weight: 700;
@@ -276,10 +285,9 @@ export const MobHSPBContainer = styled.div`
 
 export const MobHSPBPropertyCardsContainer = styled.div`
   width: 70em;
-  height: 10em;
-  box-shadow: 0.5px 0.5px 4px #778899;
+  height: 15em;
   text-align: left;
-  border-radius: 1em;
+  border-radius: 0.8em;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -316,9 +324,8 @@ export const MobHSPBProjectSizeCard = styled(MobHSPBLabelOnImgCard)`
 export const MobHSPBImgBGonDiv = styled.img`
   width: 100%;
   height: 15em;
-  border-radius: 1em;
+  border-radius: 0.8em;
   z-index: 1;
-  transition: all 0.3s ease-in-out;
 `;
 
 export const MobHSPBSliderContainer = styled.div`

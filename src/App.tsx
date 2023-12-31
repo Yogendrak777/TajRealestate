@@ -18,6 +18,7 @@ import ProfileIndex from './MobileComponents/MobProfile/ProfileIndex';
 import MobShortlistIndex from './MobileComponents/MobShortlist/MobShortlistIndex';
 import MobAddPropIndex from './MobileComponents/MobAddPropertyData/MobAddPropIndex';
 import MobAddIndex from './MobileComponents/MobAddPropertyData/MobAddIndex';
+import MobPDIndex from './MobileComponents/MobProjectDetails/MobPDIndex';
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const MobileRouter = createBrowserRouter([
         path: "/addProjectData",
         element: <MobAddIndex/> ,
       },
+      {
+        path: "/productSearch/:queryParam",
+        element: <MobPDIndex/> ,
+      },
     ]
   },
   
@@ -119,7 +124,6 @@ const NoConnection = createBrowserRouter([
     ]
   },
 ]);
-
 
 function App() {
 

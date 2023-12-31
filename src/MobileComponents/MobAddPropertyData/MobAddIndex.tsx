@@ -123,6 +123,7 @@ export default function MobAddIndex() {
 
   const ParkingType = [
     { value: "Open car parking", label: "Open car parking" },
+    { value: "Bike and Car", label: "Bike and Car" },
     { value: "Covered car parking", label: "Covered car parking" },
     { value: "No car parking", label: "No car parking" },
   ];
@@ -165,20 +166,6 @@ export default function MobAddIndex() {
   const PropertyTaxType = [
     { value: "Upto data", label: "Upto data" },
     { value: "No", label: "No" },
-  ];
-
-  const OwnerShowType = [
-    { value: "I will show the property", label: "I will show the property" },
-    { value: "I Want Taj staff to show", label: "I Want Taj staff to show" },
-  ];
-
-  const OwnerAvalibilyType = [
-    { value: "Everyday (mon-sun)", label: "Everyday (mon-sun)" },
-    { value: "Weekdays (mon-fri)", label: "Weekdays (mon-fri)" },
-    {
-      value: "Weekends (Saturday-sunday)",
-      label: "Weekends (Saturday-sunday)",
-    },
   ];
 
   const CityOptions = [
@@ -313,36 +300,36 @@ export default function MobAddIndex() {
   ];
 
   const MiniumRange = [
-    { value: 5, label: "5 lacks" },
-    { value: 10, label: "10 lacks" },
-    { value: 15, label: "15 lacks" },
-    { value: 20, label: "20 lacks" },
-    { value: 25, label: "25 lacks" },
-    { value: 30, label: "30 lacks" },
-    { value: 35, label: "35 lacks" },
-    { value: 40, label: "40 lacks" },
-    { value: 45, label: "45 lacks" },
-    { value: 50, label: "50 lacks" },
-    { value: 55, label: "55 lacks" },
-    { value: 60, label: "60 lacks" },
-    { value: 65, label: "65 lacks" },
-    { value: 70, label: "70 lacks" },
-    { value: 75, label: "75 lacks" },
-    { value: 80, label: "80 lacks" },
-    { value: 85, label: "85 lacks" },
-    { value: 90, label: "90 lacks" },
-    { value: 95, label: "95 lacks" },
-    { value: 100, label: "1 Cr " },
-    { value: 101, label: "1.20 Cr" },
-    { value: 102, label: "1.21.50 Cr" },
-    { value: 103, label: "1.52 Cr" },
-    { value: 104, label: "2.5 Cr" },
-    { value: 105, label: "3.5 Cr" },
-    { value: 106, label: "4.5 Cr" },
-    { value: 107, label: "5.5 Cr" },
-    { value: 108, label: "6.5 Cr" },
-    { value: 109, label: "7.5 Cr" },
-    { value: 110, label: "8.5 Cr" },
+    { value: 5, label: "₹5 Lacs" },
+    { value: 10, label: "₹10 Lacs" },
+    { value: 15, label: "₹15 Lacs" },
+    { value: 20, label: "₹20 Lacs" },
+    { value: 25, label: "₹25 Lacs" },
+    { value: 30, label: "₹30 Lacs" },
+    { value: 35, label: "₹35 Lacs" },
+    { value: 40, label: "₹40 Lacs" },
+    { value: 45, label: "₹45 Lacs" },
+    { value: 50, label: "₹50 Lacs" },
+    { value: 55, label: "₹55 Lacs" },
+    { value: 60, label: "₹60 Lacs" },
+    { value: 65, label: "₹65 Lacs" },
+    { value: 70, label: "₹70 Lacs" },
+    { value: 75, label: "₹75 Lacs" },
+    { value: 80, label: "₹80 Lacs" },
+    { value: 85, label: "₹85 Lacs" },
+    { value: 90, label: "₹90 Lacs" },
+    { value: 95, label: "₹95 Lacs" },
+    { value: 100, label: "₹1 Crores " },
+    { value: 101, label: "₹1.20 Crores" },
+    { value: 102, label: "₹1.21.50 Crores" },
+    { value: 103, label: "₹1.52 Crores" },
+    { value: 104, label: "₹2.5 Crores" },
+    { value: 105, label: "₹3.5 Crores" },
+    { value: 106, label: "₹4.5 Crores" },
+    { value: 107, label: "₹5.5 Crores" },
+    { value: 108, label: "₹6.5 Crores" },
+    { value: 109, label: "₹7.5 Crores" },
+    { value: 110, label: "₹8.5 Crores" },
   ];
 
   const handleKeyPress = (e: any) => {

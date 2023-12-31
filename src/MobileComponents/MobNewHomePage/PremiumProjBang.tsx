@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import {
   MobHSPBTittle,
-  MobPIBContainer,
+  MobHSPBMainContainer,
   MobHSPBSliderContainer,
   MobHSPBPricesCard,
-  MobHSPBContainer,
   MobHSPBPropertyCardsContainer,
   MobHSPBLabelOnImgCard,
   MobHSPBProjectSizeCard,
@@ -15,121 +14,90 @@ import Banner from "../../Components/assets/Banner2.jpg";
 import ThreeBHK from "../../Components/assets/3BHK.jpg";
 import FourBHK from "../../Components/assets/4BHK.jpg";
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
 
 export default function PremiumProjBang() {
+
+  const navigate = useNavigate();
   const settings = {
-    infinite: true,
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    infinite: true,
     autoplay: true,
-    fade: true,
-    arrows: true,
-    autoplaySpeed: 30000,
+    arrows: false,
+    autoplaySpeed: 50000,
   };
 
   const [OptionCard, setOptionCards] = useState<string>("");
 
-  const handleOnclickCards = (item: string) => {
-    setOptionCards(item);
-  };
-  return (
-    <MobPIBContainer>
-      <MobHSPBTittle>Premium Project in Bangalore</MobHSPBTittle>
 
+  const handleOnclickCards = (item: any) => {
+    navigate(`/productSearch/:?City=${item}`);
+  };
+
+  const HSPData = [
+    {
+      id : 100,
+      Name : "The Prestige City Hyderabad",
+      Prices : "60Lacks to 1.5 Cr",
+      ProjectSize : "4343 units, 1.5 Acres",
+      BHK : "2,3,4",
+      Image: Banner,
+    },
+    {
+      id : 101,
+      Name : "LG",
+      Prices : "70Lacks to 90 Lacks",
+      ProjectSize : "4343 units, 1.5 Acres",
+      BHK : "2,3,4",
+      Image: ThreeBHK,
+    },
+    {
+      id : 102,
+      Name : "Brigade Sanctuary",
+      Prices : "90Lacks to 2 Cr",
+      ProjectSize : "4343 units, 1.5 Acres",
+      BHK : "2,3,4",
+      Image: FourBHK,
+    },
+    {
+      id : 103,
+      Name : "Shobha",
+      Prices : "50Lacks to 90 Lacks",
+      ProjectSize : "4343 units, 1.5 Acres",
+      BHK : "2,3,4",
+      Image: Banner,
+    },
+  ]
+  return (
+    <MobHSPBMainContainer>
+      <MobHSPBTittle>Hot Selling Project in Bangalore</MobHSPBTittle>
       <MobHSPBSliderContainer>
         <Slider {...settings}>
-          <div>
-            <MobHSPBContainer>
+            {HSPData.map((item : any)=>(
               <MobHSPBPropertyCardsContainer
-                onClick={() => handleOnclickCards("001")}
+                onClick={() => handleOnclickCards(item.id)}
               >
-                <MobHSPBImgBGonDiv src={Banner} />
+                <MobHSPBImgBGonDiv src={item.Image} />
                 <MobHSPBLabelOnImgCard>
                   {" "}
-                  Name : The Prestige City Hyderabad{" "}
+                  Name : {item.Name}
                 </MobHSPBLabelOnImgCard>
                 <MobHSPBPricesCard>
                   {" "}
-                  Prices : 60Lacks to 70 Lacks{" "}
+                  Prices : {item.Prices}
                 </MobHSPBPricesCard>
-                <MobHSPBBHKCard> BHK : 3 BHK </MobHSPBBHKCard>
+                <MobHSPBBHKCard> BHK :  {item.BHK} </MobHSPBBHKCard>
                 <MobHSPBProjectSizeCard>
                   {" "}
-                  Project size : 4343 units * 1.5 Acres{" "}
+                  Project size :  {item.ProjectSize}
                 </MobHSPBProjectSizeCard>
               </MobHSPBPropertyCardsContainer>
-            </MobHSPBContainer>
-          </div>
-          <div>
-            <MobHSPBContainer>
-              <MobHSPBPropertyCardsContainer
-                onClick={() => handleOnclickCards("001")}
-              >
-                <MobHSPBImgBGonDiv src={ThreeBHK} />
-                <MobHSPBLabelOnImgCard>
-                  {" "}
-                  Name : The Prestige City Hyderabad{" "}
-                </MobHSPBLabelOnImgCard>
-                <MobHSPBPricesCard>
-                  {" "}
-                  Prices : 60Lacks to 70 Lacks{" "}
-                </MobHSPBPricesCard>
-                <MobHSPBBHKCard> BHK : 3 BHK </MobHSPBBHKCard>
-                <MobHSPBProjectSizeCard>
-                  {" "}
-                  Project size : 4343 units * 1.5 Acres{" "}
-                </MobHSPBProjectSizeCard>
-              </MobHSPBPropertyCardsContainer>
-            </MobHSPBContainer>
-          </div>
-          <div>
-            <MobHSPBContainer>
-              <MobHSPBPropertyCardsContainer
-                onClick={() => handleOnclickCards("001")}
-              >
-                <MobHSPBImgBGonDiv src={Banner} />
-                <MobHSPBLabelOnImgCard>
-                  {" "}
-                  Name : The Prestige City Hyderabad{" "}
-                </MobHSPBLabelOnImgCard>
-                <MobHSPBPricesCard>
-                  {" "}
-                  Prices : 60Lacks to 70 Lacks{" "}
-                </MobHSPBPricesCard>
-                <MobHSPBBHKCard> BHK : 3 BHK </MobHSPBBHKCard>
-                <MobHSPBProjectSizeCard>
-                  {" "}
-                  Project size : 4343 units * 1.5 Acres{" "}
-                </MobHSPBProjectSizeCard>
-              </MobHSPBPropertyCardsContainer>
-            </MobHSPBContainer>
-          </div>
-          <div>
-            <MobHSPBContainer>
-              <MobHSPBPropertyCardsContainer
-                onClick={() => handleOnclickCards("001")}
-              >
-                <MobHSPBImgBGonDiv src={FourBHK} />
-                <MobHSPBLabelOnImgCard>
-                  {" "}
-                  Name : The Prestige City Hyderabad{" "}
-                </MobHSPBLabelOnImgCard>
-                <MobHSPBPricesCard>
-                  {" "}
-                  Prices : 60Lacks to 70 Lacks{" "}
-                </MobHSPBPricesCard>
-                <MobHSPBBHKCard> BHK : 3 BHK </MobHSPBBHKCard>
-                <MobHSPBProjectSizeCard>
-                  {" "}
-                  Project size : 4343 units * 1.5 Acres{" "}
-                </MobHSPBProjectSizeCard>
-              </MobHSPBPropertyCardsContainer>
-            </MobHSPBContainer>
-          </div>
+            ))}
         </Slider>
       </MobHSPBSliderContainer>
       <a> See all details &gt;</a>
-    </MobPIBContainer>
+    </MobHSPBMainContainer>
   );
 }

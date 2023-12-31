@@ -6,7 +6,20 @@ import Banner2 from "../../Components/assets/Banner2.jpg";
 import Banner3 from "../../Components/assets/Banner3.jpg";
 import Banner4 from "../../Components/assets/Banner4.jpg";
 
+
 export default function MobBanner() {
+
+  function SampleNextArrow(props:any) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "none", background: "red" }}
+        onClick={onClick}
+      />
+    );
+  }
+
     const settings = {
         infinite: true,
         speed: 1000,
@@ -16,6 +29,8 @@ export default function MobBanner() {
         fade : true,
         arrows: true,
         autoplaySpeed: 100000,
+        nextArrow: <SampleNextArrow />,
+        prevArrow:<SampleNextArrow />,
       };
   return (
     <SliderContainer>
