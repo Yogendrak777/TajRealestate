@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MobOptionCards from './MobOptionCards'
 import  { MobBaseContainer } from './Skins'
 import MobBanner from './MobBanner'
@@ -8,8 +8,13 @@ import MobPropSaleInBang from './MobPropSaleInBang'
 import MobHotSelling from './MobHotSelling'
 import PremiumProjBang from './PremiumProjBang'
 import MobReview from './MobReview'
+import { useNavigate } from 'react-router-dom'
 
 export default function MobHomeIndex() {
+  const navigate = useNavigate();
+  useEffect(()=>{
+    navigate("/")
+  },[])
   return (
     <>
     <MobBaseContainer>

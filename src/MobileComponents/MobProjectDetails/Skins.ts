@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+interface ColumnAlign {
+  Align?: string;
+  Margin? : string;
+  Width? : string;
+}
+interface RowAlign {
+  Align?: string;
+  Margin? : string;
+}
+
 export const MobBaseContainer = styled.div`
   width: auto;
   margin-top: 2.5em;
@@ -98,7 +108,7 @@ margin: 0.5em 1.2em;
 `;
 
 export const PropertyPrices = styled.h3`
-font-size : 22px;
+font-size : 24px;
 font-weight : 600;
 margin: 0.5em 0.8em;
 `;
@@ -109,34 +119,42 @@ font-weight : 500;
 margin: 0.5em 1.2em;
 `;
 
-export const Column = styled.section`
-  width: auto;
+export const Column = styled.section<ColumnAlign>`
+  width: ${(props) => (props.Width ? props.Width : "auto")};
   height: auto;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+  text-align: ${(props) => (props.Align ? props.Align : "center")};
+  justify-content: ${(props) => (props.Align ? props.Align : "center")};
+  align-items: ${(props) => (props.Align ? props.Align : "center")};
   display : flex;
   flex-direction : column;
+  margin : ${(props) => (props.Margin ? props.Margin : "0 0")};
 `;
 
-export const Row = styled.section`
+export const Row = styled.section<RowAlign>`
   width: auto;
   height: auto;
-  text-align: center;
-  justify-content: space-evenly;
-  align-items: center;
+  text-align: ${(props) => (props.Align ? props.Align : "center")};
+  justify-content: ${(props) => (props.Align ? props.Align : "center")};
+  align-items: ${(props) => (props.Align ? props.Align : "center")};
   display : flex;
   flex-direction : row;
+  margin : ${(props) => (props.Margin ? props.Margin : "0 0")};
 `;
 
-export const IconImage = styled.svg`
-  width :  2.5em;
-  height :  2.5em;
-  fill : #00BF63;
+export const OverviewTittle = styled.span`
+font-size : 13px;
+font-weight : 500;
 `;
 
-// export const IconImage1 = styled.section`
-//   width :  2.5em;
-//   height :  2.5em;
-//   color :  #00BF63;
-// `;
+export const OverviewData = styled.span`
+font-size : 14px;
+font-weight : 600;
+`;
+
+export const OverviewImage = styled.span`
+text-align: center;
+justify-content: center;
+align-items: center;
+display : flex;
+flex-direction : column;
+`;

@@ -96,7 +96,9 @@ export default function SignUp() {
           const user = userCredential.user;
           console.log(userCredential + '    userCredential')
           alert(JSON.stringify(user))
-          SubmitToDB(user)
+          setTimeout(() => {
+            SubmitToDB(user)
+          }, 2000);
   
         })
         .catch((error) => {

@@ -28,7 +28,7 @@ export default function SignIn() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
-        // navigate("/");
+        //navigate("/");
       }
     })
   }, []);
@@ -40,6 +40,7 @@ export default function SignIn() {
             .then((userCredential) => {
               const user = userCredential.user;
               alert("signIn Successfull")
+              navigate("/");
             })
             .catch((error) => {
               const errorCode = error.code;

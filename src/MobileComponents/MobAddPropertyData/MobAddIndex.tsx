@@ -38,7 +38,7 @@ export default function MobAddIndex() {
   const [getPropertyNameData, setPropertyNameData] = useState<any>("");
   const [getProjectSize, setProjectSize] = useState<any>("");
   const [getNoOfUnits, setNoOfUnits] = useState<any>("");
-  const [getBHKData, setShowBHKData] = useState<any>("N/A");
+  const [getBHKData, setShowBHKData] = useState<any>([]);
   const [getPropertyAgeData, setShowFPropertyAgeData] = useState<any>("N/A");
   const [getAvalibleFrom, setShowAvalibleFromData] = useState<any>("");
   const [getFloor, setShowFloorData] = useState<any>("");
@@ -84,9 +84,10 @@ export default function MobAddIndex() {
   const [TenniusCourt, setTenniusCourt] = useState<any>("N/A");
   const [MeditationArea, setMeditationArea] = useState<any>("N/A");
   const [BatmitionCourt, setBatmitionCourt] = useState<any>("N/A");
+  const [BHKArray, setBHKArray] = useState<any>([]);
 
   const ApartmentType = [
-    { value: "Flats", label: "Flats" },
+    { value: "Apartment", label: "Apartment" },
     { value: "Gated community Villa", label: "Gated community Villa" },
     { value: "Independent Houses/Villa", label: "Independent Houses/Villa" },
     { value: "Stand Alone Building", label: "Stand Alone Building" },
@@ -122,18 +123,19 @@ export default function MobAddIndex() {
   ];
 
   const ParkingType = [
-    { value: "Open car parking", label: "Open car parking" },
+    { value: "Open car", label: "Open car" },
     { value: "Bike and Car", label: "Bike and Car" },
-    { value: "Covered car parking", label: "Covered car parking" },
+    { value: "Covered car", label: "Covered car" },
     { value: "No car parking", label: "No car parking" },
+    { value: "Only Bike", label: "Only Bike" },
   ];
 
   const WaterSupply = [
     { value: "Borewell", label: "Borewell" },
     { value: "Cooperation", label: "Cooperation" },
     {
-      value: "Both Borewell and Cooperation",
-      label: "Both Borewell and Cooperation",
+      value: "Borewell and Cooperation",
+      label: "Borewell and Cooperation",
     },
   ];
 
@@ -321,7 +323,7 @@ export default function MobAddIndex() {
     { value: 95, label: "₹95 Lacs" },
     { value: 100, label: "₹1 Crores " },
     { value: 101, label: "₹1.20 Crores" },
-    { value: 102, label: "₹1.21.50 Crores" },
+    { value: 102, label: "₹1.35 Crores" },
     { value: 103, label: "₹1.52 Crores" },
     { value: 104, label: "₹2.5 Crores" },
     { value: 105, label: "₹3.5 Crores" },
@@ -368,8 +370,27 @@ export default function MobAddIndex() {
     ImageFile[4] = event.target.files[0];
   }
 
-  function handleChange5(event: any) {
+  function handleChange5 (event: any) {
     ImageFile[5] = event.target.files[0];
+  }
+
+  function handleBHK1 (event: any) {
+    ImageFile[6] = event.target.files[0];
+  }
+  function handleBHK2 (event: any) {
+    ImageFile[7] = event.target.files[0];
+  }
+  function handleBHK3 (event: any) {
+    ImageFile[8] = event.target.files[0];
+  }
+  function handleBHK4 (event: any) {
+    ImageFile[9] = event.target.files[0];
+  }
+  function handleBHK5 (event: any) {
+    ImageFile[10] = event.target.files[0];
+  }
+  function handleBHK5plus (event: any) {
+    ImageFile[11] = event.target.files[0];
   }
 
   const handleUpload = () => {
@@ -411,7 +432,7 @@ export default function MobAddIndex() {
       setTimeout(() => {
         setGetImageContainer(false);
         setshowFinallSubmit(true);
-      }, 6000);
+      }, 3000);
     }
   };
 
@@ -419,18 +440,25 @@ export default function MobAddIndex() {
     try {
       const db = getFirestore(AdminApp);
       const uid = user.uid;
+    
 
       try {
         const docRef = await addDoc(collection(db, "ProdData"), {
           uid: uid,
           images: {
-            img1: File[0],
-            img2: File[1],
-            img3: File[2],
-            img4: File[3],
-            img5: File[4],
+            img1: File[0] || "N/A",
+            img2: File[1] || "N/A",
+            img3: File[2] || "N/A",
+            img4: File[3] || "N/A",
+            img5: File[4] || "N/A",
+            img6: File[6] || "N/A",
+            img7: File[7] || "N/A",
+            img8: File[8] || "N/A",
+            img9: File[9] || "N/A",
+            img10: File[10] || "N/A",
+            img11: File[11] || "N/A",
           },
-          Brochure: File[5],
+          Brochure: File[5] || "N/A",
           ApartmentType: getApartmentTypeData.value,
           PropertyName: getPropertyNameData,
           ProjectSize: getProjectSize,
@@ -541,10 +569,11 @@ export default function MobAddIndex() {
     setShowPropertyDetails(false);
     setShowAmenities(true);
   }
-
   const enableImagesContainer = () => {
+    setBHKArray(getBHKData.map((item: any) => (item.value)));
     setShowAmenities(false);
     setGetImageContainer(true);
+    console.log(BHKArray)
   }
 
   return (
@@ -1255,6 +1284,67 @@ export default function MobAddIndex() {
             type="file"
             onChange={handleChange5}
           />
+
+          {BHKArray.includes("1") &&
+          <>
+          <Label> Please upload 1 BHK Floor plan : </Label>
+          <InputImageContainer
+            type="file" 
+            accept="/image/*"
+            onChange={handleBHK1}
+          />
+          </>
+        }
+          {BHKArray.includes("2") &&
+          <>
+          <Label> Please upload 2 BHK Floor plan : </Label>
+          <InputImageContainer
+            type="file" 
+            accept="/image/*"
+            onChange={handleBHK2}
+          />
+          </>
+        }
+          {BHKArray.includes("3") &&
+          <>
+          <Label> Please upload 3 BHK Floor plan : </Label>
+          <InputImageContainer
+            type="file" 
+            accept="/image/*"
+            onChange={handleBHK3}
+          />
+          </>
+        }
+          {BHKArray.includes("4") &&
+          <>
+          <Label> Please upload 4 BHK Floor plan : </Label>
+          <InputImageContainer
+            type="file" 
+            accept="/image/*"
+            onChange={handleBHK4}
+          />
+          </>
+        }
+          {BHKArray.includes("5") &&
+          <>
+          <Label> Please upload 5 BHK Floor plan : </Label>
+          <InputImageContainer
+            type="file" 
+            accept="/image/*"
+            onChange={handleBHK5}
+          />
+          </>
+        }
+          {BHKArray.includes("5+") &&
+          <>
+          <Label> Please upload 5+ BHK Floor plan : </Label>
+          <InputImageContainer
+            type="file" 
+            accept="/image/*"
+            onChange={handleBHK5plus}
+          />
+          </>
+        }
 
           <DivisionBtn onClick={handleUpload}> Next &gt;</DivisionBtn>
         </MobProjectCard>
