@@ -11,7 +11,5 @@ export default function ListNavbar() {
     <NavBarInList>
       <CompanyLogoOnNav src={CompanyLogo} />
      </NavBarInList>
-     
-  
   );
 }

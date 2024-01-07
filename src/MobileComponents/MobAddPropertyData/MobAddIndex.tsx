@@ -91,6 +91,7 @@ export default function MobAddIndex() {
     { value: "Gated community Villa", label: "Gated community Villa" },
     { value: "Independent Houses/Villa", label: "Independent Houses/Villa" },
     { value: "Stand Alone Building", label: "Stand Alone Building" },
+    { value: "Farm House", label: "Farm House" },
   ];
 
   const BHKType = [
@@ -1034,7 +1035,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="clubHouse"
-                  value=" Club house"
+                  value="Club house"
                   onChange={(event: any) =>
                     setClubhouseData(event.target.value)
                   }
@@ -1048,7 +1049,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="visitors parking"
+                  value="Multi purpose hall"
                   onChange={(e: any) => {
                     setMulitpruposeHall(e.target.value);
                   }}
@@ -1062,7 +1063,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="visitors parking"
+                  value="Tennius Court"
                   onChange={(e: any) => {
                     setTenniusCourt(e.target.value);
                   }}
@@ -1076,7 +1077,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="visitors parking"
+                  value="Meditation Area"
                   onChange={(e: any) => {
                     setMeditationArea(e.target.value);
                   }}
@@ -1126,7 +1127,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="open gym "
+                  value="Open Gym "
                   onChange={HandleOpenGym}
                 />
                 open gym{" "}
@@ -1150,7 +1151,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="sewage system "
+                  value="Sewage system "
                   onChange={HandleSewage}
                 />
                 sewage system
@@ -1162,7 +1163,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="fire alarm "
+                  value="Fire alarm "
                   onChange={HandleFireAlarm}
                 />
                 fire alarm
@@ -1174,7 +1175,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="inter com "
+                  value="Intercom "
                   onChange={HandleInterCom}
                 />
                 inter com{" "}
@@ -1210,7 +1211,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="visitors parking"
+                  value="Visitors parking"
                   onChange={HandleVisitor}
                 />
                 visitors parking
@@ -1222,7 +1223,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="visitors parking"
+                  value="Piped Gas"
                   onChange={(e: any) => {
                     setPipedGas(e.target.value);
                   }}
@@ -1236,7 +1237,7 @@ export default function MobAddIndex() {
                 <InputCheckContainer
                   type="checkbox"
                   name="ApartmentType"
-                  value="visitors parking"
+                  value="Batmition Court"
                   onChange={(e: any) => {
                     setBatmitionCourt(e.target.value);
                   }}

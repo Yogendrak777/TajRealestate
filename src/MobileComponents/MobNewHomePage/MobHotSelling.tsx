@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   MobHSPBTittle,
   MobHSPBSliderContainer,
@@ -35,7 +35,7 @@ export default function MobHotSelling() {
 
   const HSPData = [
     {
-      id : "id3udsp4q9fge",
+      id : "ida8abwtnvd9",
       Name : "The Prestige City Hyderabad",
       Prices : "60Lacks to 1.5 Cr",
       ProjectSize : "4343 units, 1.5 Acres",
@@ -43,7 +43,7 @@ export default function MobHotSelling() {
       Image: Banner,
     },
     {
-      id : "101",
+      id : "ida8abwtnvd9",
       Name : "LG",
       Prices : "70Lacks to 90 Lacks",
       ProjectSize : "4343 units, 1.5 Acres",
@@ -51,7 +51,7 @@ export default function MobHotSelling() {
       Image: ThreeBHK,
     },
     {
-      id : "102",
+      id : "ida8abwtnvd9",
       Name : "Brigade Sanctuary",
       Prices : "90Lacks to 2 Cr",
       ProjectSize : "4343 units, 1.5 Acres",
@@ -59,7 +59,7 @@ export default function MobHotSelling() {
       Image: FourBHK,
     },
     {
-      id : "103",
+      id : "ida8abwtnvd9",
       Name : "Shobha",
       Prices : "50Lacks to 90 Lacks",
       ProjectSize : "4343 units, 1.5 Acres",
@@ -94,7 +94,7 @@ export default function MobHotSelling() {
             ))}
         </Slider>
       </MobHSPBSliderContainer>
-      <a> See all details &gt;</a>
+      <span onClick={() => navigate("/mobProjectList")}> See all details &gt;</span>
     </MobHSPBMainContainer>
   );
 }

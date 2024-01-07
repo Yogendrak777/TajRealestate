@@ -34,7 +34,7 @@ export const PropertyCardsContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0.1em 0.5em 0.1em 0.5em;
-  border-radius: 50px;
+  border-radius: 0.5em;
   border: 1px solid #778899;
   margin-left: 0.5em;
 `;
@@ -51,7 +51,7 @@ export const CardTittle = styled.span`
 
 export const CardContainer = styled.div`
   overflow-x: auto;
-  height: 3em;
+  height: 2.5em;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -113,7 +113,9 @@ export const SearchUpperCard = styled.div`
 export const SelectContainer = styled.div`
   margin: 0.5em;
   width: 80%;
-  cursor: pointer;
+  text-align: left;
+  justify-content: left;
+  align-items: left;
 `;
 
 export const MobSearchBtn = styled.img`
@@ -222,49 +224,35 @@ export const TypeOfPropsBang = styled.button<TypeOfProps>`
   text-align: center;
   justify-content: center;
   align-items: center;
-  border: 2px solid #00bf63;
+  border: 1px solid #00bf63;
   box-shadow: 0.5px 0.5px 4px #778899;
-  border-radius: 5em;
+  border-radius: 0.5em;
   font-size: small;
   margin: 0.3em;
-  padding: 0.2em 0.7em 0.2em 0.7em;
+  padding: 0.4em 0.6em;
   cursor: pointer;
   background-color: ${(props) => (props.BGColor ? props.BGColor : "")};
   color: ${(props) => (props.Clr ? props.Clr : "Black")};
 `;
 
-export const PIBContainer = styled.div`
-  width: 100%;
-  height: 10em;
-  box-shadow: 0.5px 0.5px 4px #778899;
-  text-align: left;
-  border-radius: 1em;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  margin: 1em;
-  cursor: pointer;
-`;
-
 export const ImgBGonDiv = styled.img`
   width: 100%;
   height: 10em;
-  border-radius: 1em;
+  border-radius: 0.5em;
   z-index: 1;
-  transition: all 0.3s ease-in-out;
 `;
 
 export const LabelOnImgCard = styled.span`
   z-index: 5;
   position: absolute;
-  left: 0.3em;
+  left: 0.5em;
   top: 1em;
   color: white;
   font-weight: 500;
-  font-size: small;
+  font-size: 12px;
   background-color: #00bf63;
-  padding: 5px;
-  border-radius: 10px;
+  padding: 4px;
+  border-radius: 0.5em;
   width: fit-content;
 `;
 
@@ -304,7 +292,7 @@ export const MobHSPBLabelOnImgCard = styled.span`
   font-size: small;
   background-color: #00bf63;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 0.5em;
   width: fit-content;
 `;
 
@@ -362,16 +350,16 @@ export const ReviewCard = styled.section`
   display: flex;
   flex-direction: column;
   width: auto;
-  height: 12em;
-  padding: 0.1em 0.5em 0.1em 0.5em;
-  border-radius: 15px;
+  height: auto;
+  padding: 0.5em;
+  border-radius: 0.5em;
   border: 1px solid #778899;
   margin-left: 0.5em;
 `;
 export const ReviewOptionContainer = styled.div`
   width: 95%;
   overflow-x: auto;
-  height: auto;
+  height: fit-content;
   text-align: left;
   justify-content: left;
   align-items: left;
@@ -381,6 +369,29 @@ export const ReviewOptionContainer = styled.div`
 
 export const ReviewDecs = styled.span`
   font-size: small;
-  width: 20em;
+  width: 25em;
   justify-content: justify;
+`;
+
+export const MobPIBInsideContainer = styled.div`
+width: 100%;
+height: auto;
+text-align: center;
+justify-content: space-evenly;
+align-items: center;
+display: flex;
+flex-wrap: wrap;
+background-color: white;
+`;
+
+export const MobPIBInsideDiv = styled.div`
+width: 40%;
+height: 10em;
+display: flex;
+box-shadow: 0.5px 0.5px 4px #778899;
+background-color: white;
+border-radius: 0.5em;
+margin : 3%;
+position: relative;
+text-align: left;
 `;

@@ -4,7 +4,7 @@ export const MobBaseContainer = styled.div`
   width: auto;
   margin-top: 2.5em;
   padding-bottom: 2em;
-  height: 35rem;
+  height: 80vh;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -33,9 +33,9 @@ export const DivTittle = styled.strong`
 
 export const DivisionBtn = styled.span`
   background-color: #00BF63;
-  padding : 0.5em 1em; 0.5em 1em;
-  border-radius : 5px;
-  margin: 1em 0 0 0;
+  padding : 0.5em 1em;
+  border-radius : 0.5em;
+  margin: 1em 0;
   box-shadow: 0.5px 0.5px 4px #00BF63;
   color : white;
 `;

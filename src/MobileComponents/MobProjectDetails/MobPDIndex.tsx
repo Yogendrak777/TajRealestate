@@ -28,9 +28,19 @@ import {
   OverviewTittle,
   OverviewData,
   OverviewImage,
+  AmenitiesContainer,
+  AmenitiesDiv,
+  FloorPlanDiv,
+  FloorPlanImage,
+  FloorPlanTittle,
 } from "./Skins";
 import Carousel from "./Carousel";
 import { FaBed } from "react-icons/fa";
+import { FaParking } from "react-icons/fa";
+import { FaHouseFloodWater } from "react-icons/fa6";
+import { MdMapsHomeWork } from "react-icons/md";
+import { ImPower } from "react-icons/im";
+import { AiOutlineExpand } from "react-icons/ai";
 
 export default function MobPDIndex() {
   const params = new URLSearchParams(window.location.search);
@@ -87,7 +97,7 @@ export default function MobPDIndex() {
           <MobImageContainer>
             <MobImage src={getDBData[0].images.img1} onClick={handleCarousel} />
             <ImageTittle>
-              <span> 5 Photos</span>
+              <span> All Photos</span>
             </ImageTittle>
           </MobImageContainer>
           <PropertyName>{getDBData[0].PropertyName}</PropertyName>
@@ -114,7 +124,7 @@ export default function MobPDIndex() {
               </Row>
               <Row Align="left" Margin="1em 1em">
                 <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
+                  <MdMapsHomeWork color="#00BF63" size="1.5em" />
                 </OverviewImage>
                 <Column Align="left" Margin="0 1em">
                   <OverviewData>{getDBData[0].ApartmentType}</OverviewData>
@@ -123,19 +133,18 @@ export default function MobPDIndex() {
               </Row>
               <Row Align="left" Margin="1em 1em">
                 <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
+                  <ImPower color="#00BF63" size="1.5em" />
                 </OverviewImage>
                 <Column Align="left" Margin="0 1em">
                   <OverviewData>
                     {getDBData[0].Power}
-                    BHK
                   </OverviewData>
                   <OverviewTittle>Power </OverviewTittle>
                 </Column>
               </Row>
               <Row Align="left" Margin="1em 1em">
                 <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
+                  <AiOutlineExpand color="#00BF63" size="1.5em" />
                 </OverviewImage>
                 <Column Align="left" Margin="0 1em">
                   <OverviewData>{getDBData[0].ProjectArea}</OverviewData>
@@ -155,7 +164,7 @@ export default function MobPDIndex() {
             <Column Width="50%" Align="left" Margin="0 0">
               <Row Align="left" Margin="1em 1em">
                 <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
+                  <FaParking color="#00BF63" size="1.5em" />
                 </OverviewImage>
                 <Column Align="left" Margin="0 1em">
                   <OverviewData>{getDBData[0].Parking}</OverviewData>
@@ -164,7 +173,7 @@ export default function MobPDIndex() {
               </Row>
               <Row Align="left" Margin="1em 1em">
                 <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
+                  <FaHouseFloodWater color="#00BF63" size="1.5em" />
                 </OverviewImage>
                 <Column Align="left" Margin="0 1em">
                   <OverviewData>{getDBData[0].WaterSupply}</OverviewData>
@@ -199,185 +208,248 @@ export default function MobPDIndex() {
             </Column>
           </Row>
           <PropertyOverviewTittle>Amenities</PropertyOverviewTittle>
-          <Row>
-            <Column Width="50%" Align="left" Margin="0 0">
-           {getDBData[0].Amenities.BatmitionCourt == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Badminton Court</OverviewTittle>
-                </Column>
-              </Row>
-            }
-               {getDBData[0].Amenities.ClubHouse == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Club House</OverviewTittle>
-                </Column>
-              </Row>
-            }
-               {getDBData[0].Amenities.FireAlarm == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Fire Alarm</OverviewTittle>
-                </Column>
-              </Row>
-            }
-               {getDBData[0].Amenities.Gym == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Gym </OverviewTittle>
-                </Column>
-              </Row>
-            }
-               {getDBData[0].Amenities.InterCom == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Inter Com</OverviewTittle>
-                </Column>
-              </Row>
-            }
-               {getDBData[0].Amenities.PipedGas == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Piped Gas</OverviewTittle>
-                </Column>
-              </Row>
-            }
-               {getDBData[0].Amenities.PlayGround == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Play Ground</OverviewTittle>
-                </Column>
-              </Row>
-            }
-              {getDBData[0].Amenities.TenniusCourt == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Tennis Court</OverviewTittle>
-                </Column>
-              </Row>
-            }
-              {getDBData[0].Amenities.VisitorsParking == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Visitors Parking</OverviewTittle>
-                </Column>
-              </Row>
-            }
-            </Column>
 
-            <Column Width="50%" Align="left" Margin="0 0">
-            {getDBData[0].Amenities.Lift == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Lift</OverviewTittle>
+          <AmenitiesContainer>
+            
+              {getDBData[0].Amenities.BatmitionCourt === "N/A" ? null : (
+                <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.BatmitionCourt}
+                  </OverviewTittle>
                 </Column>
-              </Row>
-            }
-            {getDBData[0].Amenities.MeditationArea == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Meditation Area</OverviewTittle>
+                </AmenitiesDiv>
+              )}
+           
+              {getDBData[0].Amenities.ClubHouse === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.ClubHouse}
+                  </OverviewTittle>
                 </Column>
-              </Row>
-            }
-            {getDBData[0].Amenities.MulitpruposeHall == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Multipurpose Hall</OverviewTittle>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.FireAlarm === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.FireAlarm}
+                  </OverviewTittle>
                 </Column>
-              </Row>
-            }
-            {getDBData[0].Amenities.OpenGym == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Open Gym</OverviewTittle>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.Gym === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.Gym}
+                  </OverviewTittle>
                 </Column>
-              </Row>
-            }
-            {getDBData[0].Amenities.Park == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Park</OverviewTittle>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.InterCom === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.InterCom}
+                  </OverviewTittle>
                 </Column>
-              </Row>
-            }
-            {getDBData[0].Amenities.SewageSystem == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Sewage System</OverviewTittle>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.Lift === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.Lift}
+                  </OverviewTittle>
                 </Column>
-              </Row>
-            }
-            {getDBData[0].Amenities.ShoppingCentre == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Shopping Centre</OverviewTittle>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.MeditationArea === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.MeditationArea}
+                  </OverviewTittle>
                 </Column>
-              </Row>
-            }
-            {getDBData[0].Amenities.SwimmingPool == "N/A" ? null : 
-              <Row Align="left" Margin="1em 1em">
-                <OverviewImage>
-                  <FaBed color="#00BF63" size="1.5em" />
-                </OverviewImage>
-                <Column Align="left" Margin="0 1em">
-                  <OverviewTittle>Swimming Pool</OverviewTittle>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.MulitpruposeHall === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.MulitpruposeHall}
+                  </OverviewTittle>
                 </Column>
-              </Row>
-            }
-             
-            </Column>
-          </Row>
-          <PropertyOverviewTittle>Floor Plan</PropertyOverviewTittle>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.OpenGym === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.OpenGym}
+                  </OverviewTittle>
+                </Column>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.Park === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.Park}
+                  </OverviewTittle>
+                </Column>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.PipedGas === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.PipedGas}
+                  </OverviewTittle>
+                </Column>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.PlayGround === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.PlayGround}
+                  </OverviewTittle>
+                </Column>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.SewageSystem === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.SewageSystem}
+                  </OverviewTittle>
+                </Column>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.ShoppingCentre === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.ShoppingCentre}
+                  </OverviewTittle>
+                </Column>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.SwimmingPool === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.SwimmingPool}
+                  </OverviewTittle>
+                </Column>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.TenniusCourt === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.TenniusCourt}
+                  </OverviewTittle>
+                </Column>
+            </AmenitiesDiv>
+              )}
+              {getDBData[0].Amenities.VisitorsParking === "N/A" ? null : (
+            <AmenitiesDiv>
+                <Column>
+                  <OverviewImage>
+                    <FaBed color="#00BF63" size="1.5em" />
+                  </OverviewImage>
+                  <OverviewTittle>
+                    {getDBData[0].Amenities.VisitorsParking}
+                  </OverviewTittle>
+                </Column>
+            </AmenitiesDiv>
+              )}
+          </AmenitiesContainer>
+
+          <PropertyOverviewTittle> {getDBData[0].PropertyName} Floor Plans</PropertyOverviewTittle>
+          {getDBData[0].images.img6 !== "N/A" ?
+          <FloorPlanDiv>
+                <FloorPlanImage src={getDBData[0].images.img6}/>
+                <FloorPlanTittle>1 BHK Floor Plan</FloorPlanTittle>
+          </FloorPlanDiv> : null}
+          {getDBData[0].images.img7 !== "N/A" ?
+          <FloorPlanDiv>
+                <FloorPlanImage src={getDBData[0].images.img7}/>
+                <FloorPlanTittle>2 BHK Floor Plan</FloorPlanTittle>
+          </FloorPlanDiv> : null}
+          {getDBData[0].images.img8 !== "N/A" ?
+          <FloorPlanDiv>
+                <FloorPlanImage src={getDBData[0].images.img8}/>
+                <FloorPlanTittle>3 BHK Floor Plan</FloorPlanTittle>
+          </FloorPlanDiv> : null}
+          {getDBData[0].images.img9 !== "N/A" ?
+          <FloorPlanDiv>
+                <FloorPlanImage src={getDBData[0].images.img9}/>
+                <FloorPlanTittle>4 BHK Floor Plan</FloorPlanTittle>
+          </FloorPlanDiv> : null}
+          {getDBData[0].images.img10 !== "N/A" ?
+          <FloorPlanDiv>
+                <FloorPlanImage src={getDBData[0].images.img10}/>
+                <FloorPlanTittle>5 BHK Floor Plan</FloorPlanTittle>
+          </FloorPlanDiv> : null}
+          {getDBData[0].images.img11 !== "N/A" ?
+          <FloorPlanDiv>
+                <FloorPlanImage src={getDBData[0].images.img11}/>
+                <FloorPlanTittle>5+ BHK Floor Plan</FloorPlanTittle>
+          </FloorPlanDiv> : null}
+
           {getCarouselOpen && getDBData[0] && (
             <div>
               <PopUpContainer onClick={handleCarousel}></PopUpContainer>
@@ -388,6 +460,12 @@ export default function MobPDIndex() {
                   Img3={getDBData[0].images.img3}
                   Img4={getDBData[0].images.img4}
                   Img5={getDBData[0].images.img5}
+                  Img6={getDBData[0].images.img6}
+                  Img7={getDBData[0].images.img7}
+                  Img8={getDBData[0].images.img8}
+                  Img9={getDBData[0].images.img9}
+                  Img10={getDBData[0].images.img10}
+                  Img11={getDBData[0].images.img11}
                 />
               </PopUpInsideContainer>
             </div>

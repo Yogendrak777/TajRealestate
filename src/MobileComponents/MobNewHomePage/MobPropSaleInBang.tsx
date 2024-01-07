@@ -4,9 +4,10 @@ import {
   MobPIBTittle,
   Row,
   TypeOfPropsBang,
-  PIBContainer,
   ImgBGonDiv,
   LabelOnImgCard,
+  MobPIBInsideContainer,
+  MobPIBInsideDiv
 } from "./Skins";
 import { useNavigate } from "react-router-dom";
 import Banner from "../../Components/assets/Banner2.jpg";
@@ -53,15 +54,23 @@ export default function MobPropSaleInBang() {
     setBHK(false);
   };
 
-  const handleBHK = () => {
-    setMostPopular(false);
-    setBudget(false);
-    setPropertyType(false);
-    setBHK(true);
+  // const handleBHK = () => {
+  //   setMostPopular(false);
+  //   setBudget(false);
+  //   setPropertyType(false);
+  //   setBHK(true);
+  // };
+
+  const HandleBudget = (budget: number) => {
+    navigate(`/mobPLBudget/:?Prices=${budget}`);
   };
 
-  const HandleBudgetWithIn90Lacks = (budget: any) => {
-    navigate(`/BudgetSearch/:?Prices=${budget}`);
+  const HandelBHK = (budget: number) => {
+    navigate(`/mobPLBudget/:?BHK=${budget}`);
+  };
+
+  const HandleApartmentType = (ApartmentType: string) => {
+    navigate(`/mobPLApartments/:?ApartmentType=${ApartmentType}`);
   };
 
   return (
@@ -81,126 +90,110 @@ export default function MobPropSaleInBang() {
           Clr={Budget && "white"}
           onClick={handleByBudget}
         >
-          By Budget
+          Budget
         </TypeOfPropsBang>
         <TypeOfPropsBang
           BGColor={PropertyType ? "#00bf63" : ""}
           Clr={PropertyType && "white"}
           onClick={handleByPropertyType}
         >
-          By Property Type
+          Property Type
         </TypeOfPropsBang>
-        <TypeOfPropsBang
+        {/* <TypeOfPropsBang
           BGColor={BHK ? "#00bf63" : ""}
           Clr={BHK && "white"}
           onClick={handleBHK}
         >
-          By BHK
-        </TypeOfPropsBang>
+         BHK
+        </TypeOfPropsBang> */}
       </Row>
 
       {mostPopular && (
-        <>
-          <Row>
-            <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+        <MobPIBInsideContainer>
+            <MobPIBInsideDiv onClick={() =>HandleBudget(90)}>
               <ImgBGonDiv src={Banner} />
               <LabelOnImgCard> Budget within 90 Lacks</LabelOnImgCard>
-            </PIBContainer>
-            <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+            </MobPIBInsideDiv>
+            <MobPIBInsideDiv onClick={() => HandleBudget(105)}>
               <ImgBGonDiv src={ThreeBHK} />
-              <LabelOnImgCard>  3 BHK Apartments</LabelOnImgCard>
-            </PIBContainer>
-          </Row>
-
-          <Row>
-            <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+              <LabelOnImgCard> Budget within 1.6 Crores</LabelOnImgCard>
+            </MobPIBInsideDiv>
+     
+            <MobPIBInsideDiv onClick={() =>HandleApartmentType("Apartment")}>
               <ImgBGonDiv src={Flats} />
-              <LabelOnImgCard> Flats</LabelOnImgCard>
-            </PIBContainer>
-            <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+              <LabelOnImgCard> Apartment </LabelOnImgCard>
+            </MobPIBInsideDiv>
+            <MobPIBInsideDiv onClick={() =>HandleBudget(87)}>
               <ImgBGonDiv src={Frams} />
               <LabelOnImgCard> Residential Plots</LabelOnImgCard>
-            </PIBContainer>
-          </Row>
-        </>
+            </MobPIBInsideDiv>
+        </MobPIBInsideContainer>
       )}
 
  {Budget && (
-   <>
-   <Row>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+   <MobPIBInsideContainer>
+     <MobPIBInsideDiv onClick={() =>HandleBudget(50)}>
        <ImgBGonDiv src={Banner} />
        <LabelOnImgCard> Budget within 50 Lacks</LabelOnImgCard>
-     </PIBContainer>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+     </MobPIBInsideDiv>
+     <MobPIBInsideDiv onClick={() =>HandleBudget(60)}>
        <ImgBGonDiv src={FiftyLakhs} />
        <LabelOnImgCard>  Budget within 60 Lacks </LabelOnImgCard>
-     </PIBContainer>
-   </Row>
-
-   <Row>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+     </MobPIBInsideDiv>
+   
+     <MobPIBInsideDiv onClick={() =>HandleBudget(90)}>
        <ImgBGonDiv src={NintyLakhs} />
        <LabelOnImgCard>  Budget within 90 Lacks</LabelOnImgCard>
-     </PIBContainer>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+     </MobPIBInsideDiv>
+     <MobPIBInsideDiv onClick={() =>HandleBudget(100)}>
        <ImgBGonDiv src={OneCr} />
        <LabelOnImgCard> Budget within 1 crores</LabelOnImgCard>
-     </PIBContainer>
-   </Row>
- </>
+     </MobPIBInsideDiv>
+ </MobPIBInsideContainer>
  )}
 
 {PropertyType && (
-   <>
-   <Row>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+   <MobPIBInsideContainer>
+     <MobPIBInsideDiv onClick={() => HandleApartmentType("Apartment")}>
        <ImgBGonDiv src={Flats} />
-       <LabelOnImgCard> Flats</LabelOnImgCard>
-     </PIBContainer>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+       <LabelOnImgCard> Apartment</LabelOnImgCard>
+     </MobPIBInsideDiv>
+     <MobPIBInsideDiv onClick={() =>HandleApartmentType("Independent Houses/Villa")}>
        <ImgBGonDiv src={Independent} />
        <LabelOnImgCard> Independent Houses/Villa </LabelOnImgCard>
-     </PIBContainer>
-   </Row>
+     </MobPIBInsideDiv>
 
-   <Row>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+     <MobPIBInsideDiv onClick={() =>HandleApartmentType("Stand Alone Building")}>
        <ImgBGonDiv src={Banner4} />
        <LabelOnImgCard> Stand Alone Building</LabelOnImgCard>
-     </PIBContainer>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+     </MobPIBInsideDiv>
+     <MobPIBInsideDiv onClick={() =>HandleApartmentType("Farm House")}>
        <ImgBGonDiv src={Frams} />
        <LabelOnImgCard> Farm House </LabelOnImgCard>
-     </PIBContainer>
-   </Row>
- </>
+     </MobPIBInsideDiv>
+ </MobPIBInsideContainer>
  )}
 
 {BHK && (
-   <>
-   <Row>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+   <MobPIBInsideContainer>
+     <MobPIBInsideDiv onClick={() =>HandleBudget(87)}>
        <ImgBGonDiv src={OneBHK} />
        <LabelOnImgCard> 1 BHK Apartments</LabelOnImgCard>
-     </PIBContainer>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+     </MobPIBInsideDiv>
+     <MobPIBInsideDiv onClick={() =>HandleBudget(87)}>
        <ImgBGonDiv src={TwoBHK} />
        <LabelOnImgCard> 2 BHK Apartments </LabelOnImgCard>
-     </PIBContainer>
-   </Row>
+     </MobPIBInsideDiv>
 
-   <Row>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+     <MobPIBInsideDiv onClick={() =>HandleBudget(87)}>
        <ImgBGonDiv src={ThreeBHK} />
        <LabelOnImgCard> 3 BHK Apartments</LabelOnImgCard>
-     </PIBContainer>
-     <PIBContainer onClick={() => HandleBudgetWithIn90Lacks(87)}>
+     </MobPIBInsideDiv>
+     <MobPIBInsideDiv onClick={() =>HandleBudget(87)}>
        <ImgBGonDiv src={FourBHK} />
        <LabelOnImgCard> 4 BHK Apartments </LabelOnImgCard>
-     </PIBContainer>
-   </Row>
- </>
+     </MobPIBInsideDiv>
+ </MobPIBInsideContainer>
  )}
     </MobPIBContainer>
   );

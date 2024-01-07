@@ -13,7 +13,7 @@ interface RowAlign {
 export const MobBaseContainer = styled.div`
   width: auto;
   margin-top: 2.5em;
-  padding-bottom: 2em;
+  padding-bottom: 5em;
   height: auto;
   text-align: left;
   justify-content: left;
@@ -72,13 +72,9 @@ bottom: 0;
 background-color: black;
 z-index: 2;
 opacity : 0.8;
-display : flex;
-flex-direction : column;
-text-align: center;
-justify-content: center;
-align-items: center;
 width: 100%;
 height: auto; 
+
 `;
 
 export const PopUpInsideContainer = styled.div`
@@ -157,4 +153,55 @@ justify-content: center;
 align-items: center;
 display : flex;
 flex-direction : column;
+`;
+
+export const AmenitiesContainer = styled.div`
+width: 100%;
+height: auto;
+text-align: center;
+justify-content: space-evenly;
+align-items: center;
+display: flex;
+flex-wrap: wrap;
+background-color: white;
+`;
+
+export const AmenitiesDiv = styled.div`
+width: 30%;
+height: 4em;
+text-align: center;
+justify-content: center;
+align-items: center;
+display: flex;
+box-shadow: 0.5px 0.5px 4px #778899;
+background-color: white;
+border-radius: 0.3em;
+padding: 1em;
+margin : 3%;
+`;
+
+export const FloorPlanDiv = styled.span`
+text-align: center;
+justify-content: center;
+align-items: center;
+display : flex;
+flex-direction : column;
+width : 100%;
+height : 20em;
+`;
+
+export const FloorPlanImage = styled.img`
+text-align: center;
+justify-content: center;
+align-items: center;
+display : flex;
+flex-direction : column;
+width : 92%;
+height : 15em;
+`;
+
+export const FloorPlanTittle = styled.span`
+margin : 0.5em;
+font-size : 15px;
+font-weight : 600;
 `;

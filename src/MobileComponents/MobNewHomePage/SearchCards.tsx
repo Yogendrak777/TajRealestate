@@ -15,7 +15,7 @@ export default function SearchCards() {
 
   const HandleSearchBtn = () => {
     if (selectedOption !== null && getBHKData !== null && getApartmentTypeData !== null){
-      navigate(`/productSearch/:?City=${selectedOption.value}&&BHK=${getBHKData.value}&&ApartmentType=${getApartmentTypeData.value}&&Prices=${getBuggetData.value}&&PropertyAge=${getPropertyAgeData.value}`)
+      navigate(`/mainSearch/:?City=${selectedOption.value}&&ApartmentType=${getApartmentTypeData.value}&&MaxPrice=${getBuggetData.value}&&PropertyAge=${getPropertyAgeData.value}`);
     } else {
       alert("please search")
     }
@@ -125,16 +125,41 @@ export default function SearchCards() {
     { value: "Varthur", label: "Varthur" },
   ];
 
-  const BHKType = [
-    { value: "1 BHK", label: "1 BHK" },
-    { value: "2 BHK", label: "2 BHK" },
-    { value: "3 BHK", label: "3 BHK" },
-    { value: "4 BHK", label: "4 BHK" },
-    { value: "4 BHK Plus", label: "4 BHK Plus" },
+  const MiniumRange = [
+    { value: 5, label: "₹5 Lacs" },
+    { value: 10, label: "₹10 Lacs" },
+    { value: 15, label: "₹15 Lacs" },
+    { value: 20, label: "₹20 Lacs" },
+    { value: 25, label: "₹25 Lacs" },
+    { value: 30, label: "₹30 Lacs" },
+    { value: 35, label: "₹35 Lacs" },
+    { value: 40, label: "₹40 Lacs" },
+    { value: 45, label: "₹45 Lacs" },
+    { value: 50, label: "₹50 Lacs" },
+    { value: 55, label: "₹55 Lacs" },
+    { value: 60, label: "₹60 Lacs" },
+    { value: 65, label: "₹65 Lacs" },
+    { value: 70, label: "₹70 Lacs" },
+    { value: 75, label: "₹75 Lacs" },
+    { value: 80, label: "₹80 Lacs" },
+    { value: 85, label: "₹85 Lacs" },
+    { value: 90, label: "₹90 Lacs" },
+    { value: 95, label: "₹95 Lacs" },
+    { value: 100, label: "₹1 Crores " },
+    { value: 101, label: "₹1.20 Crores" },
+    { value: 102, label: "₹1.35 Crores" },
+    { value: 103, label: "₹1.52 Crores" },
+    { value: 104, label: "₹2.5 Crores" },
+    { value: 105, label: "₹3.5 Crores" },
+    { value: 106, label: "₹4.5 Crores" },
+    { value: 107, label: "₹5.5 Crores" },
+    { value: 108, label: "₹6.5 Crores" },
+    { value: 109, label: "₹7.5 Crores" },
+    { value: 110, label: "₹8.5 Crores" },
   ];
 
   const ApartmentType = [
-    { value: "Flats", label: "Flats" },
+    { value: "Apartment", label: "Apartment" },
     { value: "Gated community Villa", label: "Gated community Villa" },
     { value: "Independent Houses/Villa", label: "Independent Houses/Villa" },
     { value: "Stand Alone Building", label: "Stand Alone Building" },
@@ -148,40 +173,6 @@ export default function SearchCards() {
     { value: "7-10 years", label: "7-10 years" },
     { value: "More than 10 years", label: "More than 10 years" },
   ];
-
-  const BuggetType = [
-    { value: 3, label: "1 to 5 lacks" },
-    { value: 7, label: "6 to 10 lacks" },
-    { value: 13, label: "11 to 15 lacks" },
-    { value: 17, label: "16 to 20 lacks" },
-    { value: 23, label: "21 to 25 lacks" },
-    { value: 27, label: "26 to 30 lacks" },
-    { value: 33, label: "31 to 35 lacks" },
-    { value: 37, label: "36 to 40 lacks" },
-    { value: 43, label: "41 to 45 lacks" },
-    { value: 47, label: "46 to 50 lacks" },
-    { value: 53, label: "51 to 55 lacks" },
-    { value: 57, label: "56 to 60 lacks" },
-    { value: 63, label: "61 to 65 lacks" },
-    { value: 67, label: "66 to 70 lacks" },
-    { value: 73, label: "71 to 75 lacks" },
-    { value: 77, label: "76 to 80 lacks" },
-    { value: 83, label: "81 to 85 lacks" },
-    { value: 87, label: "86 to 90 lacks" },
-    { value: 93, label: "91 to 95 lacks" },
-    { value: 97, label: "96 lacks to 1 Cr " },
-    { value: 101, label: "1 Cr to 1.20 Cr" },
-    { value: 102, label: "1.20 Cr to 1.50 Cr" },
-    { value: 103, label: "1.50 Cr to 2 Cr" },
-    { value: 104, label: "2 Cr to 2.5 Cr" },
-    { value: 105, label: "3 Cr to 3.5 Cr" },
-    { value: 106, label: "4 Cr to 4.5 Cr" },
-    { value: 107, label: "5 Cr to 5.5 Cr" },
-    { value: 108, label: "6 Cr to 6.5 Cr" },
-    { value: 109, label: "7 Cr to 7.5 Cr" },
-    { value: 110, label: "8 Cr to 8.5 Cr" },
-    { value: 111, label: "10+ Cr" },
-  ]
 
   return (
     <SearchBaseContainer>
@@ -206,28 +197,10 @@ export default function SearchCards() {
             />
             </SelectContainer>
               <MobSearchBtn onClick={HandleSearchBtn} src={MobSearch}/>
-
             </SearchUpperCard>
 
             {selectedOption && 
-          <>
-          <SelectContainer>
-          <Select
-           styles={{
-            control: (baseStyles) => ({
-              ...baseStyles,
-              padding: "3px",
-              fontStyle: "italic",
-            }),
-          }}
-              defaultValue={getBHKData}
-              onChange={setShowBHKData}
-              options={BHKType}
-              placeholder="BHK Type"
-              isClearable={true}
-            />
-          </SelectContainer>
-
+          <>     
           <SelectContainer>
           <Select
               styles={{
@@ -273,7 +246,7 @@ export default function SearchCards() {
             }}
               defaultValue={getBuggetData}
               onChange={setShowgetBuggetData}
-              options={BuggetType}
+              options={MiniumRange}
               placeholder="Bugget Range"
               isClearable={true}
             />

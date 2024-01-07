@@ -19,6 +19,12 @@ import MobShortlistIndex from './MobileComponents/MobShortlist/MobShortlistIndex
 import MobAddPropIndex from './MobileComponents/MobAddPropertyData/MobAddPropIndex';
 import MobAddIndex from './MobileComponents/MobAddPropertyData/MobAddIndex';
 import MobPDIndex from './MobileComponents/MobProjectDetails/MobPDIndex';
+import MobSignIn from './MobileComponents/MobLogin/MobSignIn';
+import MobSignUp from './MobileComponents/MobLogin/MobSignUp';
+import MobPList from './MobileComponents/MobProjectList/MobPList';
+import MobPLBudget from './MobileComponents/MobProjectList/MobPLBudget';
+import MobPLApartments from './MobileComponents/MobProjectList/MobPLApartments';
+import MobPLMainSearch from './MobileComponents/MobProjectList/MobPLMainSearch';
 
 const router = createBrowserRouter([
   {
@@ -71,14 +77,34 @@ const MobileRouter = createBrowserRouter([
         element: <MobHomeIndex/> ,
       },
       {
+        path: "/mobSignIn",
+        element: <MobSignIn/>,
+      },
+      {
+        path: "/mobSignUp",
+        element: <MobSignUp/> ,
+      },
+      {
         path: "/profile",
         element: <ProfileIndex/> ,
+      },
+      {
+        path: "/mobPLBudget/:queryParam",
+        element: <MobPLBudget/> ,
+      },
+      {
+        path: "/mobPLApartments/:queryParam",
+        element: <MobPLApartments/> ,
       },
       {
         path: "/shortlist",
         element: <MobShortlistIndex/> ,
       },
       {
+        path: "/mobProjectList",
+        element: <MobPList/>,
+      },
+      { 
         path: "/addDataDivision",
         element: <MobAddPropIndex/> ,
       },
@@ -89,6 +115,10 @@ const MobileRouter = createBrowserRouter([
       {
         path: "/productSearch/:queryParam",
         element: <MobPDIndex/> ,
+      },
+      {
+        path: "/mainSearch/:queryParam",
+        element: <MobPLMainSearch/>,
       },
     ]
   },
