@@ -81,7 +81,7 @@ export const SearchBaseContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: -5%;
+  margin-top: -9%;
   z-index: 1;
   cursor: pointer;
   position: relative;
@@ -395,3 +395,19 @@ margin : 3%;
 position: relative;
 text-align: left;
 `;
+
+export const LoaderInsideContainer = styled.div`
+display : flex;
+flex-direction : column;
+width: 100%;
+height: 80vh; 
+z-index: 5;
+text-align: center;
+justify-content: center;
+align-items: center;
+`;
+
+export const VideoContainer = styled.img`
+width : 50%;
+height : auto;
+`

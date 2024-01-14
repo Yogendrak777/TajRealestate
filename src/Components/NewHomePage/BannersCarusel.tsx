@@ -4,7 +4,6 @@ import { SliderContainer,  ImageContainer, } from './Skins'
 import Banner1 from "../assets/Banner1.jpg";
 import Banner2 from "../assets/Banner2.jpg";
 import Banner3 from "../assets/Banner3.jpg";
-import Banner4 from "../assets/Banner4.jpg";
 export default function BannersCarousel() {
     const settings = {
         infinite: true,
@@ -27,9 +26,6 @@ export default function BannersCarousel() {
     </div>
     <div>
     <ImageContainer src={Banner3} />
-    </div>
-    <div>
-    <ImageContainer src={Banner4} />
     </div>
   </Slider>
   </SliderContainer>

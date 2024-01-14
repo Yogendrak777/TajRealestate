@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { AddCardContainer, DivisionAddCard, AddCard, AddCardHeaer, AddCardPara, MobAddCardImage, MobAddCardArrow } from './Skins'
+import React, {memo} from 'react'
+import { AddCardContainer, DivisionAddCard, AddCard, AddCardHeaer, AddCardPara } from './Skins'
 import { MdAddHomeWork } from "react-icons/md";
 import { RiHomeOfficeFill } from "react-icons/ri";
 import { RiHomeWifiFill } from "react-icons/ri";
@@ -7,24 +7,18 @@ import { IoIosPersonAdd } from "react-icons/io";
 import { FaGreaterThan } from "react-icons/fa";
 import {
   getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut
 } from "firebase/auth";
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { useNavigate } from 'react-router-dom'
 
-export default function MobAddCard() {
+const MobAddCard = memo(() => {
   const navigate = useNavigate()
-
-  const [isLogout, setIsLogOut] = useState<any>(true);
 
   const handelAddData = () => {  
    const auth = getAuth(AdminApp);
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const uid = user.uid;
        navigate('/addDataDivision');
       } else {
         navigate('/mobSignIn');
@@ -77,4 +71,5 @@ export default function MobAddCard() {
       </DivisionAddCard>
     </AddCardContainer>
   );
-}
+})
+export default MobAddCard;

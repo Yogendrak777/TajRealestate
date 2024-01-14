@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState,memo } from 'react'
 import { OptionContainer,CardContainer, PropertyCardsContainer, CardImage, CardTittle } from './Skins' 
-import  Rent  from '../../Components/assets/rent.png'
-import SaleIcons from "../../Components/assets//sale.png";
-import BuyIcon from "../../Components/assets//mansion.png";
-import NewProjectsIcons from "../../Components/assets//skyscraper.png";
-import FarmLandIcons from "../../Components/assets//farming.png";
-import CommercialIcons from "../../Components/assets//bank.png";
-import LoanIconIcons from "../../Components/assets//loan.png";
+import {
+    Rent,
+    SaleIcons,
+    BuyIcon,
+    NewProjectsIcons,
+    FarmLandIcons,
+    CommercialIcons,
+    LoanIconIcons
+  } from '../../Components/assets';
 
-export default function MobOptionCards() {
+const MobOptionCards = memo(() => {
 
     const  [OptionCard, setOptionCards] = useState<string>("")
     const TopDataCards = [
@@ -59,4 +61,5 @@ export default function MobOptionCards() {
         </CardContainer>
     </OptionContainer>
   )
-}
+})
+export default MobOptionCards;

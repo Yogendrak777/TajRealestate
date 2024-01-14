@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   MobHSPBTittle,
   MobHSPBSliderContainer,
@@ -10,13 +10,11 @@ import {
   MobHSPBImgBGonDiv,
   MobHSPBMainContainer
 } from "./Skins";
-import Banner from "../../Components/assets/Banner2.jpg";
-import ThreeBHK from "../../Components/assets/3BHK.jpg";
-import FourBHK from "../../Components/assets/4BHK.jpg";
+import { Banner, SevetyLakhs, NintyLakhs } from '../../Components/assets';
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 
-export default function MobHotSelling() {
+const MobHotSelling = memo(() =>  {
 
   const navigate = useNavigate();
   const settings = {
@@ -48,7 +46,7 @@ export default function MobHotSelling() {
       Prices : "70Lacks to 90 Lacks",
       ProjectSize : "4343 units, 1.5 Acres",
       BHK : "2,3,4",
-      Image: ThreeBHK,
+      Image: SevetyLakhs,
     },
     {
       id : "ida8abwtnvd9",
@@ -56,7 +54,7 @@ export default function MobHotSelling() {
       Prices : "90Lacks to 2 Cr",
       ProjectSize : "4343 units, 1.5 Acres",
       BHK : "2,3,4",
-      Image: FourBHK,
+      Image: NintyLakhs,
     },
     {
       id : "ida8abwtnvd9",
@@ -97,4 +95,6 @@ export default function MobHotSelling() {
       <span onClick={() => navigate("/mobProjectList")}> See all details &gt;</span>
     </MobHSPBMainContainer>
   );
-}
+})
+
+export default MobHotSelling;

@@ -33,7 +33,6 @@ export default function MobAddIndex() {
   const [showPropertyDetails, setShowPropertyDetails] = useState<boolean>(true);
   const [showAmenities, setShowAmenities] = useState<boolean>(false);
   const [showFinallSubmit, setshowFinallSubmit] = useState<boolean>(false);
-
   const [getApartmentTypeData, setGetApartmentTypeData] = useState<any>("N/A");
   const [getPropertyNameData, setPropertyNameData] = useState<any>("");
   const [getProjectSize, setProjectSize] = useState<any>("");

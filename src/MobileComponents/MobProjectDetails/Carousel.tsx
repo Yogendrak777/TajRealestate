@@ -17,7 +17,6 @@ export default function Carousel(props:any) {
   return (
     <SliderContainer>
     <Slider {...settings}>
-      
     <div>
     <ImageContainer src={Img1} />
     </div>

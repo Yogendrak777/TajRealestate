@@ -1,30 +1,31 @@
 import React, {useState, useEffect} from 'react';
-import './App.css';
-import Navbar from './Components/NavBar/Navbar';
-import ProductIndex from './Components/ProductScreen/ProductIndex';
-import { createBrowserRouter,  RouterProvider } from 'react-router-dom';
-import Index from './Components/NewHomePage/Index';
+import loadable from '@loadable/component';
 import { isMobile } from 'react-device-detect';
-import AddIndex from './Components/AddProperty/AddIndex';
-import IndexSearch from './Components/ProductSearch/IndexSearch';
-import NoInternetIndex from './Components/NoInternet/NoInternetIndex';
-import BudgetSearch from './Components/ProductSearch/BudgetSearch';
-import ProductFullInfoIndex from './Components/ProductFullInfo/ProductFullInfoIndex';
-import SignIn from './Components/Login/SignIn';
-import SignUp from './Components/Login/SignUp';
-import MobNavbar from './MobileComponents/MobNavBar/MobNavbar';
-import MobHomeIndex from './MobileComponents/MobNewHomePage/MobHomeIndex';
-import ProfileIndex from './MobileComponents/MobProfile/ProfileIndex';
-import MobShortlistIndex from './MobileComponents/MobShortlist/MobShortlistIndex';
-import MobAddPropIndex from './MobileComponents/MobAddPropertyData/MobAddPropIndex';
-import MobAddIndex from './MobileComponents/MobAddPropertyData/MobAddIndex';
-import MobPDIndex from './MobileComponents/MobProjectDetails/MobPDIndex';
-import MobSignIn from './MobileComponents/MobLogin/MobSignIn';
-import MobSignUp from './MobileComponents/MobLogin/MobSignUp';
-import MobPList from './MobileComponents/MobProjectList/MobPList';
-import MobPLBudget from './MobileComponents/MobProjectList/MobPLBudget';
-import MobPLApartments from './MobileComponents/MobProjectList/MobPLApartments';
-import MobPLMainSearch from './MobileComponents/MobProjectList/MobPLMainSearch';
+import { createBrowserRouter,  RouterProvider } from 'react-router-dom';
+import './App.css';
+const Navbar = loadable(()=> import('./Components/NavBar/Navbar'));
+const Index = loadable(()=> import('./Components/NewHomePage/Index'));
+const AddIndex = loadable(()=> import('./Components/AddProperty/AddIndex'));
+const IndexSearch = loadable(()=> import('./Components/ProductSearch/IndexSearch'));
+const NoInternetIndex = loadable(()=> import('./Components/NoInternet/NoInternetIndex'));
+const BudgetSearch = loadable(()=> import('./Components/ProductSearch/BudgetSearch'));
+const ProductFullInfoIndex = loadable(()=> import('./Components/ProductFullInfo/ProductFullInfoIndex'));
+const SignIn = loadable(()=> import('./Components/Login/SignIn'));
+const SignUp = loadable(()=> import('./Components/Login/SignUp'));
+const MobNavbar = loadable(()=> import('./MobileComponents/MobNavBar/MobNavbar'));
+const ProfileIndex = loadable(()=> import('./MobileComponents/MobProfile/ProfileIndex'));
+const MobShortlistIndex = loadable(()=> import('./MobileComponents/MobShortlist/MobShortlistIndex'));
+const MobAddPropIndex = loadable(()=> import('./MobileComponents/MobAddPropertyData/MobAddPropIndex'));
+const MobAddIndex = loadable(()=> import('./MobileComponents/MobAddPropertyData/MobAddIndex'));
+const MobPDIndex = loadable(()=>import('./MobileComponents/MobProjectDetails/MobPDIndex'));
+const MobSignIn = loadable(()=>import('./MobileComponents/MobLogin/MobSignIn'));
+const MobSignUp = loadable(()=> import('./MobileComponents/MobLogin/MobSignUp'));
+const MobPList = loadable(()=> import('./MobileComponents/MobProjectList/MobPList'));
+const MobPLBudget = loadable(()=>import('./MobileComponents/MobProjectList/MobPLBudget'));
+const MobPLApartments = loadable(()=>import('./MobileComponents/MobProjectList/MobPLApartments'));
+const MobPLMainSearch = loadable(()=>import('./MobileComponents/MobProjectList/MobPLMainSearch'));
+const LoaderPD = loadable(()=> import('./MobileComponents/MobNewHomePage/LoaderPD'));
+const MobHomeIndex = loadable(() => import('./MobileComponents/MobNewHomePage/MobHomeIndex'), {fallback: <LoaderPD/>});
 
 const router = createBrowserRouter([
   {
@@ -54,10 +55,6 @@ const router = createBrowserRouter([
       {
         path: "/BudgetSearch/:queryParam",
         element:  <BudgetSearch/>,
-      },
-      {
-        path: "/product",
-        element: <ProductIndex/>,
       },
       {
         path: "/productFullInfo/:queryParam",
@@ -122,8 +119,6 @@ const MobileRouter = createBrowserRouter([
       },
     ]
   },
-  
-
 ]);
 
 const NoConnection = createBrowserRouter([

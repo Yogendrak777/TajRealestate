@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react'
-import MobOptionCards from './MobOptionCards'
-import  { MobBaseContainer } from './Skins'
-import MobBanner from './MobBanner'
-import SearchCards from './SearchCards'
-import MobAddCard from './MobAddCard'
-import MobPropSaleInBang from './MobPropSaleInBang'
-import MobHotSelling from './MobHotSelling'
-import PremiumProjBang from './PremiumProjBang'
-import MobReview from './MobReview'
+import React, { useEffect, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
+import  { MobBaseContainer } from './Skins'
+import loadable from '@loadable/component';
+const MobOptionCards = loadable(()=> import('./MobOptionCards'));
+const MobBanner = loadable(()=> import('./MobBanner'));
+const SearchCards = loadable(()=> import('./SearchCards'));
+const MobAddCard = loadable(()=> import('./MobAddCard'));
+const MobHotSelling = loadable(()=> import('./MobHotSelling'));
+const PremiumProjBang = loadable(() => import('./PremiumProjBang'));
+const MobReview = loadable(()=> import('./MobReview'));
+const LoaderPD = loadable(()=> import('./LoaderPD'));
+const MobPropSaleInBang = loadable(() => import('./MobPropSaleInBang'),{fallback : <LoaderPD/>});
 
-export default function MobHomeIndex() {
+const MobHomeIndex = memo(() => {
   const navigate = useNavigate();
   useEffect(()=>{
     navigate("/")
@@ -25,8 +27,9 @@ export default function MobHomeIndex() {
         <MobPropSaleInBang/>
         <MobHotSelling/>
         <PremiumProjBang/>
-        <MobReview/> 
+        <MobReview/>
     </MobBaseContainer>
     </>
   )
-}
+})
+export default MobHomeIndex;

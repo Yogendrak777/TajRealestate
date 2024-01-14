@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {
   ReviewContainer,
   MobHSPBTittle,
@@ -14,7 +14,7 @@ import Banner from "../../Components/assets/Banner2.jpg";
 import { AiFillStar } from "react-icons/ai";
 import { BsStarHalf } from "react-icons/bs";
 
-export default function MobReview() {
+const MobReview = memo(() => {
   const ReviewArray = [
     {
       id: 1,
@@ -194,4 +194,5 @@ export default function MobReview() {
       </ReviewOptionContainer>
     </ReviewContainer>
   );
-}
+})
+export default MobReview;

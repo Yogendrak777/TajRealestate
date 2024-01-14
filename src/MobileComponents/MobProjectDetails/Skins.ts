@@ -74,7 +74,6 @@ z-index: 2;
 opacity : 0.8;
 width: 100%;
 height: auto; 
-
 `;
 
 export const PopUpInsideContainer = styled.div`
@@ -205,3 +204,31 @@ margin : 0.5em;
 font-size : 15px;
 font-weight : 600;
 `;
+
+export const PropertyNameAndLike = styled.div`
+width: 95%;
+height: auto;
+margin-top: 0.4em;
+text-align: center;
+justify-content: space-between;
+align-items: center;
+display: flex;
+flex-wrap: wrap;
+background-color: white;
+`;
+
+export const LoaderInsideContainer = styled.div`
+display : flex;
+flex-direction : column;
+width: 100%;
+height: 80vh; 
+z-index: 5;
+text-align: center;
+justify-content: center;
+align-items: center;
+`;
+
+export const VideoContainer = styled.img`
+width : 50%;
+height : auto;
+`

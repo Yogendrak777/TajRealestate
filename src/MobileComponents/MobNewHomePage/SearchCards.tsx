@@ -1,25 +1,31 @@
-import React, {useState} from 'react'
-import { SearchBaseContainer, SearchCard, SelectContainer, SearchUpperCard, MobSearchBtn } from './Skins'
+import React, { useState, memo } from "react";
+import {
+  SearchBaseContainer,
+  SearchCard,
+  SelectContainer,
+  SearchUpperCard,
+  MobSearchBtn,
+} from "./Skins";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
-import MobSearch from '../../Components/assets/Mobsearch.png'
+import MobSearch from "../../Components/assets/Mobsearch.png";
 
-export default function SearchCards() {
-  const navigate = useNavigate()
-
+const SearchCards = memo(() => {
+  const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<any>(null);
-  const [getBHKData, setShowBHKData] = useState<any>("N/A");
   const [getApartmentTypeData, setGetApartmentTypeData] = useState<any>("N/A");
   const [getPropertyAgeData, setShowFPropertyAgeData] = useState<any>("N/A");
   const [getBuggetData, setShowgetBuggetData] = useState<any>("N/A");
 
   const HandleSearchBtn = () => {
-    if (selectedOption !== null && getBHKData !== null && getApartmentTypeData !== null){
-      navigate(`/mainSearch/:?City=${selectedOption.value}&&ApartmentType=${getApartmentTypeData.value}&&MaxPrice=${getBuggetData.value}&&PropertyAge=${getPropertyAgeData.value}`);
+    if (selectedOption !== null && getApartmentTypeData !== null) {
+      navigate(
+        `/mainSearch/:?City=${selectedOption.value}&&ApartmentType=${getApartmentTypeData.value}&&MaxPrice=${getBuggetData.value}&&PropertyAge=${getPropertyAgeData.value}`
+      );
     } else {
-      alert("please search")
+      alert("please search");
     }
-  }
+  };
 
   const options = [
     { value: "Jayanagar", label: "Jayanagar" },
@@ -176,8 +182,8 @@ export default function SearchCards() {
 
   return (
     <SearchBaseContainer>
-        <SearchCard>
-          <SearchUpperCard >
+      <SearchCard>
+        <SearchUpperCard>
           <SelectContainer>
             <Select
               styles={{
@@ -185,7 +191,7 @@ export default function SearchCards() {
                   ...baseStyles,
                   padding: "3px",
                   fontStyle: "italic",
-                  fontSize:'small',
+                  fontSize: "small",
                 }),
               }}
               defaultValue={selectedOption}
@@ -195,66 +201,66 @@ export default function SearchCards() {
               isSearchable={true}
               isClearable={true}
             />
+          </SelectContainer>
+          <MobSearchBtn onClick={HandleSearchBtn} src={MobSearch} />
+        </SearchUpperCard>
+
+        {selectedOption && (
+          <>
+            <SelectContainer>
+              <Select
+                styles={{
+                  control: (baseStyles) => ({
+                    ...baseStyles,
+                    padding: "3px",
+                    fontStyle: "italic",
+                  }),
+                }}
+                defaultValue={getApartmentTypeData}
+                onChange={setGetApartmentTypeData}
+                options={ApartmentType}
+                placeholder="ApartmentType"
+                isClearable={true}
+              />
             </SelectContainer>
-              <MobSearchBtn onClick={HandleSearchBtn} src={MobSearch}/>
-            </SearchUpperCard>
 
-            {selectedOption && 
-          <>     
-          <SelectContainer>
-          <Select
-              styles={{
-                control: (baseStyles) => ({
-                  ...baseStyles,
-                  padding: "3px",
-                  fontStyle: "italic",
-                }),
-              }}
-              defaultValue={getApartmentTypeData}
-              onChange={setGetApartmentTypeData}
-              options={ApartmentType}
-              placeholder="ApartmentType"
-              isClearable={true}
-            />
-          </SelectContainer>
+            <SelectContainer>
+              <Select
+                styles={{
+                  control: (baseStyles) => ({
+                    ...baseStyles,
+                    padding: "3px",
+                    fontStyle: "italic",
+                  }),
+                }}
+                defaultValue={getPropertyAgeData}
+                onChange={setShowFPropertyAgeData}
+                options={PropertyAge}
+                placeholder="Property Age"
+                isClearable={true}
+              />
+            </SelectContainer>
 
-          <SelectContainer>
-          <Select
-             styles={{
-              control: (baseStyles) => ({
-                ...baseStyles,
-                padding: "3px",
-                fontStyle: "italic",
-              }),
-            }}
-              defaultValue={getPropertyAgeData}
-              onChange={setShowFPropertyAgeData}
-              options={PropertyAge}
-              placeholder="Property Age"
-              isClearable={true}
-            />
-          </SelectContainer>
-
-          <SelectContainer>
-          <Select
-             styles={{
-              control: (baseStyles) => ({
-                ...baseStyles,
-                padding: "3px",
-                fontStyle: "italic",
-              }),
-            }}
-              defaultValue={getBuggetData}
-              onChange={setShowgetBuggetData}
-              options={MiniumRange}
-              placeholder="Bugget Range"
-              isClearable={true}
-            />
-          </SelectContainer>
-
-        </> }
-           
-        </SearchCard>
+            <SelectContainer>
+              <Select
+                styles={{
+                  control: (baseStyles) => ({
+                    ...baseStyles,
+                    padding: "3px",
+                    fontStyle: "italic",
+                  }),
+                }}
+                defaultValue={getBuggetData}
+                onChange={setShowgetBuggetData}
+                options={MiniumRange}
+                placeholder="Bugget Range"
+                isClearable={true}
+              />
+            </SelectContainer>
+          </>
+        )}
+      </SearchCard>
     </SearchBaseContainer>
-  )
-}
+  );
+});
+export default SearchCards;

@@ -18,14 +18,9 @@ import Select from "react-select";
 import {
   getFirestore,
   collection,
-  addDoc,
   getDocs,
-  setDoc,
-  doc,
-  getDocFromCache,
   query,
   where,
-  getDoc,
 } from "firebase/firestore";
 import { AdminApp } from "../FirebaseConfig/AdminFirebase";
 import Carousel from "./Carousel";
