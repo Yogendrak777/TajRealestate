@@ -2,6 +2,7 @@ import React, { useEffect, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import  { MobBaseContainer } from './Skins'
 import loadable from '@loadable/component';
+import { Helmet } from 'react-helmet-async';
 const MobOptionCards = loadable(()=> import('./MobOptionCards'));
 const MobBanner = loadable(()=> import('./MobBanner'));
 const SearchCards = loadable(()=> import('./SearchCards'));
@@ -19,6 +20,11 @@ const MobHomeIndex = memo(() => {
   },[])
   return (
     <>
+    <Helmet>
+      <title>Welcome to Legacy Properties</title>
+      <meta name="description" content='Legacy Properties Limited builds luxury homes in sought-after locations' />
+      <link rel="canonical" href="https://legacyproperties.in/"/>
+    </Helmet>
     <MobBaseContainer>
         <MobOptionCards/>
         <MobBanner/>

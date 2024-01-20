@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import loadable from '@loadable/component';
+import { HelmetProvider } from 'react-helmet-async';
 const LoaderPD = loadable(()=> import('./MobileComponents/MobProjectDetails/LoaderPD'));
 const App = loadable(()=> import('./App'), {fallback: <LoaderPD/>});
 
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <HelmetProvider>
     <App />
+    </HelmetProvider>
   </React.StrictMode>
 );
 

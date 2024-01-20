@@ -23,6 +23,7 @@ import {
 } from "firebase/storage";
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import Select from "react-select";
+import { Helmet } from "react-helmet-async";
 
 export default function MobAddIndex() {
   const navigate = useNavigate();
@@ -577,6 +578,12 @@ export default function MobAddIndex() {
   }
 
   return (
+    <>
+    <Helmet>
+    <title>Add your Project in Legacy Properties</title>
+      <meta name="description" content='Add your Project in Legacy Properties to explore luxury homes in sought-after locations' />
+      <link rel="canonical" href="https://legacyproperties.in/addProjectData"/>
+    </Helmet>
     <MobProjectContainer>
       {showPropertyDetails && (
         <MobProjectCard>
@@ -1369,5 +1376,6 @@ export default function MobAddIndex() {
         </MobProjectCard>
       )}
     </MobProjectContainer>
+    </>
   );
 }

@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { AdminApp } from "../FirebaseConfig/AdminFirebase";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 
 export default function SignIn() {
 
@@ -61,6 +62,12 @@ export default function SignIn() {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>signIn to Legacy Properties</title>
+      <meta name="description" content='signIn to Legacy Properties to explore luxury homes in sought-after locations' />
+      <link rel="canonical" href="https://legacyproperties.in/signIn"/>
+    </Helmet>
     <BaseContainer>
         <SignInContainer>
              <h2> Sign In </h2>
@@ -79,5 +86,6 @@ export default function SignIn() {
             <NewToTP> New to Taj Properties?  <Link to={'/signUp'}>SingUp</Link> </NewToTP> 
         </SignInContainer>
     </BaseContainer>
+    </>
   )
 }

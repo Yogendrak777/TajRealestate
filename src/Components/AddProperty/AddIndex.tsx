@@ -29,6 +29,7 @@ import {
 } from "firebase/storage";
 import { AdminApp } from "../FirebaseConfig/AdminFirebase";
 import Select from "react-select";
+import { Helmet } from "react-helmet-async";
 
 export default function Index(props: any) {
   const [File, setFile] = useState<any>([]);
@@ -666,6 +667,12 @@ export default function Index(props: any) {
   ];
 
   return (
+    <>
+    <Helmet>
+    <title>Add your Project in Legacy Properties</title>
+      <meta name="description" content='Add your Project in Legacy Properties to explore luxury homes in sought-after locations' />
+      <link rel="canonical" href="https://legacyproperties.in/addProjectData"/>
+    </Helmet>
     <BaseContainer>
       {showPropertyDetailsSlide && (
         <CardContainer marginTop="3em" AnimationStart={showAnimation}>
@@ -1525,5 +1532,6 @@ export default function Index(props: any) {
         </CardContainer>
       )}
     </BaseContainer>
+    </>
   );
 }

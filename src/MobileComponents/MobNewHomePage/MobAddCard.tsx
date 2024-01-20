@@ -21,7 +21,7 @@ const MobAddCard = memo(() => {
       if (user) {
        navigate('/addDataDivision');
       } else {
-        navigate('/mobSignIn');
+        navigate('/signIn');
       }
     })
   }

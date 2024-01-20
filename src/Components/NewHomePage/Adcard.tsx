@@ -16,7 +16,7 @@ export default function Adcard() {
   const navigate = useNavigate();
 
   const HandleAddData = () => {
-    navigate('/addData')
+    navigate('/addProjectData')
   }
 
   return (

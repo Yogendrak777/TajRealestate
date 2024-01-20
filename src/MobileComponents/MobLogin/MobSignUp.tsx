@@ -16,6 +16,7 @@ import { phoneNumber, Name, Email, Password } from "../../Components/assets";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
+import { Helmet } from "react-helmet-async";
 
 export default function MobSignUp() {
   const [NameData, setNameData] = useState<any>("");
@@ -82,6 +83,12 @@ export default function MobSignUp() {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>signUp to Legacy Properties</title>
+      <meta name="description" content='signUp to Legacy Properties to explore luxury homes in sought-after locations' />
+      <link rel="canonical" href="https://legacyproperties.in/signUp"/>
+    </Helmet>
     <BaseContainer>
       <SignInContainer>
         <h2> Sign Up </h2>
@@ -128,9 +135,10 @@ export default function MobSignUp() {
         <NewToTP>
           {" "}
           Already Registered with Taj Properties?{" "}
-          <Link to={"/mobSignIn"}>SingIn</Link>{" "}
+          <Link to={"/signIn"}>SingIn</Link>{" "}
         </NewToTP>
       </SignInContainer>
     </BaseContainer>
+    </>
   );
 }

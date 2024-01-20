@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         element:  <SignUp/> ,
       },
       {
-        path: "/addData",
+        path: "/addProjectData",
         element:  <AddIndex/> ,
       },
       {
@@ -74,11 +74,11 @@ const MobileRouter = createBrowserRouter([
         element: <MobHomeIndex/> ,
       },
       {
-        path: "/mobSignIn",
+        path: "/signIn",
         element: <MobSignIn/>,
       },
       {
-        path: "/mobSignUp",
+        path: "/signUp",
         element: <MobSignUp/> ,
       },
       {
@@ -131,7 +131,7 @@ const NoConnection = createBrowserRouter([
         element:  <NoInternetIndex/> ,
       },
       {
-        path: "/addData",
+        path: "/addProjectData",
         element:  <NoInternetIndex/> ,
       },
       {

@@ -57,7 +57,7 @@ export default function MobNavbar() {
     <>
     <NavbarMainDiv>
       <TajLogo src = {CompantLogo}/>
-      <TajName onClick={HandleGoBack}> Taj Properties </TajName>
+      <TajName onClick={HandleGoBack}> Legacy Properties </TajName>
       {/* <RightContainer>
        {isLogout ? 
        <LoginBtn onClick={HandleSignIn}>
