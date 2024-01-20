@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const BaseContainer = styled.div`
   width: auto;
-  margin-top: 2.5em;
+  margin-top: 3em;
   min-height: 80vh;
   text-align: center;
   justify-content: center;

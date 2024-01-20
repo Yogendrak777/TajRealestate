@@ -40,7 +40,6 @@ export default function SignIn() {
           signInWithEmailAndPassword(auth, emailId, password)
             .then((userCredential) => {
               const user = userCredential.user;
-              alert("signIn Successfull")
               navigate("/");
             })
             .catch((error) => {

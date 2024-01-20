@@ -74,11 +74,11 @@ const MobileRouter = createBrowserRouter([
         element: <MobHomeIndex/> ,
       },
       {
-        path: "/signIn",
+        path: "/signIn/:queryParam",
         element: <MobSignIn/>,
       },
       {
-        path: "/signUp",
+        path: "/signUp/:queryParam",
         element: <MobSignUp/> ,
       },
       {

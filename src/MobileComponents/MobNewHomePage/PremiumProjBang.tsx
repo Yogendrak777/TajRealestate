@@ -32,7 +32,7 @@ const PremiumProjBang = memo(() => {
 
   const HSPData = [
     {
-      id : "ida8abwtnvd9",
+      id : "idonkkovo141",
       Name : "The Prestige City Hyderabad",
       Prices : "60Lacks to 1.5 Cr",
       ProjectSize : "4343 units, 1.5 Acres",
@@ -40,7 +40,7 @@ const PremiumProjBang = memo(() => {
       Image: Banner,
     },
     {
-      id : "ida8abwtnvd9",
+      id : "idonkkovo141",
       Name : "LG",
       Prices : "70Lacks to 90 Lacks",
       ProjectSize : "4343 units, 1.5 Acres",
@@ -48,7 +48,7 @@ const PremiumProjBang = memo(() => {
       Image: NintyLakhs,
     },
     {
-      id : "ida8abwtnvd9",
+      id : "idonkkovo141",
       Name : "Brigade Sanctuary",
       Prices : "90Lacks to 2 Cr",
       ProjectSize : "4343 units, 1.5 Acres",
@@ -56,7 +56,7 @@ const PremiumProjBang = memo(() => {
       Image: SeventyLakhs,
     },
     {
-      id : "ida8abwtnvd9",
+      id : "idonkkovo141",
       Name : "Shobha",
       Prices : "50Lacks to 90 Lacks",
       ProjectSize : "4343 units, 1.5 Acres",

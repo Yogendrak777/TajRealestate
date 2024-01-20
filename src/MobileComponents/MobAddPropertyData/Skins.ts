@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MobBaseContainer = styled.div`
   width: auto;
-  margin-top: 2.5em;
+  margin-top: 3em;
   padding-bottom: 2em;
   height: 80vh;
   text-align: center;
@@ -42,7 +42,7 @@ export const DivisionBtn = styled.span`
 
 export const MobProjectContainer = styled.section`
   width: auto;
-  margin-top: 2.5em;
+  margin-top: 3em;
   padding-bottom: 2em;
   height: auto;
   text-align: center;

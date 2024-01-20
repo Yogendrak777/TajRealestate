@@ -402,7 +402,7 @@ export default function MobAddIndex() {
     } else {
       // setFile(ImageFile);
       ImageFile.forEach((element: any) => {
-        const storageRef = ref(storage, `${uid}/${element.name}`);
+        const storageRef = ref(storage, `PropData/${uid}/${element.name}`);
         const uploadTask = uploadBytesResumable(storageRef, element);
         uploadTask.on(
           "state_changed",

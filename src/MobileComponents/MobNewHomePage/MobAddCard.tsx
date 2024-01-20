@@ -5,25 +5,13 @@ import { RiHomeOfficeFill } from "react-icons/ri";
 import { RiHomeWifiFill } from "react-icons/ri";
 import { IoIosPersonAdd } from "react-icons/io";
 import { FaGreaterThan } from "react-icons/fa";
-import {
-  getAuth,
-  onAuthStateChanged,
-} from "firebase/auth";
-import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { useNavigate } from 'react-router-dom'
 
 const MobAddCard = memo(() => {
   const navigate = useNavigate()
 
-  const handelAddData = () => {  
-   const auth = getAuth(AdminApp);
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-       navigate('/addDataDivision');
-      } else {
-        navigate('/signIn');
-      }
-    })
+  const handelAddData = () => { 
+    navigate('/signIn/:?sendTo=/addDataDivision');  
   }
 
   return (

@@ -43,12 +43,14 @@ import { MdMapsHomeWork } from "react-icons/md";
 import { ImPower } from "react-icons/im";
 import { FaHeart } from "react-icons/fa";
 import { AiOutlineExpand } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 const LoaderPD = loadable(()=> import('./LoaderPD'));
 const Carousel = loadable(()=> import('./Carousel'), {fallback:<LoaderPD/>});
 
 export default function MobPDIndex() {
   const params = new URLSearchParams(window.location.search);
   const uniqueId = params.get("id");
+  const navigate = useNavigate();
 
   const [getDBData, setDBData] = useState<any>([]);
   const [shortList, setShortList] = useState<any>(false);
@@ -75,7 +77,7 @@ export default function MobPDIndex() {
           querySnapshot.docs.map((doc) => setDocId(doc.id));
           setDBData(data);
           setUid(user.uid);
-          setShortList(data[0].ShortList.includes(user.uid));
+          setShortList(data[0].ShortList?.includes(user.uid));
           const formattedDate = new Date(
             data[0].AvalibleData
           ).toLocaleDateString("en-US", {
@@ -88,6 +90,11 @@ export default function MobPDIndex() {
         } catch (e) {
           alert(e);
         }
+      }
+      else {
+        setLoader(false);
+        alert("please login in to see the property details");
+        navigate(`/signIn/:?sendTo=/productSearch/:?id=${uniqueId}`)
       }
     });
   };

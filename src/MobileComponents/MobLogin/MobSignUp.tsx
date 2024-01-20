@@ -19,6 +19,8 @@ import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { Helmet } from "react-helmet-async";
 
 export default function MobSignUp() {
+  const params = new URLSearchParams(window.location.search);
+  const sendTo = params?.get("sendTo");   
   const [NameData, setNameData] = useState<any>("");
   const [EmailData, setEmailData] = useState<any>("");
   const [PasswordData, setPasswordData] = useState<any>("");
@@ -61,6 +63,11 @@ export default function MobSignUp() {
     } catch (error) {
       alert(error);
     }
+    if(sendTo){
+      navigate(sendTo);
+    } else {
+      navigate("/");
+    }
   }
   };
 
@@ -74,10 +81,10 @@ export default function MobSignUp() {
         })
         .catch((error) => {
           const errorMessage = error.message;
-          alert(errorMessage);
+          console.error(errorMessage);
         });
     } catch (e) {
-      alert("Error adding document: " + e);
+      console.error(e);
     }
   }
   };
@@ -87,7 +94,7 @@ export default function MobSignUp() {
     <Helmet>
       <title>signUp to Legacy Properties</title>
       <meta name="description" content='signUp to Legacy Properties to explore luxury homes in sought-after locations' />
-      <link rel="canonical" href="https://legacyproperties.in/signUp"/>
+      <link rel="canonical" href="https://legacyproperties.in/signUp/:?sendTo=/"/>
     </Helmet>
     <BaseContainer>
       <SignInContainer>
@@ -135,7 +142,7 @@ export default function MobSignUp() {
         <NewToTP>
           {" "}
           Already Registered with Taj Properties?{" "}
-          <Link to={"/signIn"}>SingIn</Link>{" "}
+          <Link to={`/signIn/:?sendTo=${sendTo}`}>SingIn</Link>{" "}
         </NewToTP>
       </SignInContainer>
     </BaseContainer>

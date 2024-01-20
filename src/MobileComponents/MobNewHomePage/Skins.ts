@@ -7,7 +7,7 @@ interface TypeOfProps {
 
 export const MobBaseContainer = styled.div`
   width: auto;
-  margin-top: 2.5em;
+  margin-top: 3em;
   padding-bottom: 2em;
   height: auto;
   text-align: center;

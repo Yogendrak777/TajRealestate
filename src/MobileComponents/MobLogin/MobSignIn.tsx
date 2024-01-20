@@ -22,6 +22,8 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 export default function MobSignIn() {
+  const params = new URLSearchParams(window.location.search);   
+  const sendTo = params?.get("sendTo");
   const [emailId, setEmailId] = useState<any>("");
   const [password, setPassword] = useState<any>("");
   const navigate = useNavigate();
@@ -35,7 +37,11 @@ export default function MobSignIn() {
     const auth = getAuth(AdminApp);
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate("/");
+        if(sendTo){
+          navigate(sendTo);
+        } else {
+          navigate("/");
+        }
       }
     });
   }, []);
@@ -68,9 +74,8 @@ export default function MobSignIn() {
    <Helmet>
       <title>signIn to Legacy Properties</title>
       <meta name="description" content='signIn to Legacy Properties to explore luxury homes in sought-after locations' />
-      <link rel="canonical" href="https://legacyproperties.in/signIn"/>
+      <link rel="canonical" href="https://legacyproperties.in/signIn/:?sendTo=/"/>
     </Helmet>
-
     <BaseContainer>
       <SignInContainer>
         <h2> SignIn </h2>
@@ -97,8 +102,7 @@ export default function MobSignIn() {
         <br />
         <br />
         <NewToTP>
-          {" "}
-          New to Taj Properties? <Link to={"/signUp"}>SingUp</Link>{" "}
+          New to Taj Properties? <Link to={`/signUp/:?sendTo=${sendTo}`}>SingUp</Link>{" "}
         </NewToTP>
       </SignInContainer>
     </BaseContainer>

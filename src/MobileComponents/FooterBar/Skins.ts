@@ -33,9 +33,7 @@ export const Column = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
-  padding : 0.5em;
- // filter: invert(56%) sepia(87%) saturate(3368%) hue-rotate(119deg) brightness(98%) contrast(101%);
-  
+  padding : 0.1em;
 `;
 
 export const ImageContainer = styled.img`

@@ -2,13 +2,16 @@ import styled from "styled-components";
 
 export const NavbarMainDiv = styled.div`
 width : 100%;
-height : auto;
+height : 3em;
 position: fixed;
 top:0px;
-background-image: linear-gradient(180deg, #00BF63, transparent);
+background-color: white;
+box-shadow: 1px 1px 7px #778899;
+// background-image: linear-gradient(180deg, #00BF63, transparent);
 align-items: center;
 display: flex;
 flex-direction: row;
+border-radius: 0 0 0.5em 0.5em;
 z-index : 100;
 `;
 
