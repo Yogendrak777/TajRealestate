@@ -11,18 +11,13 @@ import {
 import {
   getFirestore,
   collection,
-  addDoc,
   getDocs,
-  setDoc,
-  doc,
-  getDocFromCache,
   query,
   where,
-  getDoc,
 } from "firebase/firestore";
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function MobshortlistIndex() {
   const [getDBData, setDBData] = useState<any>([]);
@@ -31,16 +26,21 @@ export default function MobshortlistIndex() {
   const getDisaplyData = async () => {
     const db = getFirestore(AdminApp);
     const auth = getAuth(AdminApp);
-    const user: any = auth.currentUser;
+
     try {
-      console.log(user.uid)
-      const q = query(
-        collection(db, "ProdData"), where("ShortList", "array-contains", user && user.uid)
-      );
-      const querySnapshot = await getDocs(q);
-      const data = querySnapshot.docs.map((doc) => doc.data());
-      setDBData(data);
-      console.log(data);
+      onAuthStateChanged(auth, async(user) => {
+        if (user) {
+          const q = query(
+            collection(db, "ProdData"), where("ShortList", "array-contains", user && user.uid)
+          );
+          const querySnapshot = await getDocs(q);
+          const data = querySnapshot.docs.map((doc) => doc.data());
+          setDBData(data);
+        }
+        else {
+          navigate(`/signIn/:?sendTo=/shortlist`);
+        }
+      });
     } catch (e) {
       alert(e);
     }

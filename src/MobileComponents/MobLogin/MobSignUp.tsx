@@ -59,6 +59,10 @@ export default function MobSignUp() {
         Name: NameData,
         EmailID: EmailData,
         Password: PasswordData,
+        ChartList:[{
+          "Id": "Agent",
+          "Message": "Hello, I am Yogendra, How can I help you"
+        }]
       });
     } catch (error) {
       alert(error);

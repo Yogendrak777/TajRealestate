@@ -33,7 +33,6 @@ export default function MobPList() {
       const querySnapshot = await getDocs(collection(db, "ProdData"));
       const data = querySnapshot.docs.map((doc) => doc.data());
       setDBData(data);
-      console.log(getDBData);
     } catch (e) {
       alert(e);
     }

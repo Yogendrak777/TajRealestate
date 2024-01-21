@@ -9,7 +9,7 @@ export const MobBottomContainer = styled.div`
   align-items: center;
   z-index: 20;
   position: fixed;
-  bottom: 1px;
+  bottom: 0px;
   background-color: white;
 `;
 

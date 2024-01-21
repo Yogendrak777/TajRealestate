@@ -114,7 +114,6 @@ export default function MobPDIndex() {
       }
       else {
         setLoader(false);
-        alert("please login in to see the property details");
         navigate(`/signIn/:?sendTo=/productSearch/:?id=${uniqueId}`)
       }
     });
