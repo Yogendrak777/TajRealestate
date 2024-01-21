@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MobBaseContainer = styled.div`
   width: auto;
   margin-top: 3.5em;
-  padding-bottom: 5em;
+  padding-bottom: 2em;
   height: auto;
   overflow-y: auto;
   display : flex;
@@ -35,24 +35,28 @@ export const AgentSection = styled.section`
 export const BottomCards = styled.div`
   margin-bottom: 0em;
   position: fixed;
-  bottom: 6em;
+  bottom: 3.5em;
+  background-color: white;
   width: 100%;
-  height: auto;
+  height: 4em;;
   text-align: center;
   justify-content: space-evenly;
   align-items: center;
   display: flex;
   flex-direction: row;
+  padding-bottom: 1em;
 `;
 
 export const InputText = styled.input`
   width: 80%;
-  margin: 0.5em 0;
+  margin: 0em 0.5em;
+  font-size:medium;
+  height : 1.5em;
   border: none;
   outline: none;
   border-bottom: 1px solid #ccc;
 
-  &:focus {
-    border-bottom: 1px solid #00BF63;
-  }
+   &:focus {
+        border-bottom: 1px solid #00BF63;
+      }
 `;
