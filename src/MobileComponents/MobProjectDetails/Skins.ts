@@ -38,7 +38,7 @@ export const ImageTittle = styled.div`
   background-color: black;
   color: white;
   position: absolute;
-  top: 5em;
+  top: 7em;
   right: 4%;
   padding: 0.5em;
   font-size: 10px;
@@ -91,9 +91,9 @@ align-items: center;
 `;
 
 export const PropertyName = styled.h3`
-font-size : 18px;
+font-size : 20px;
 font-weight : 500;
-margin: 0.5em 1em;
+margin: 0.5em 0.8em;
 `;
 
 export const PropertyAddress = styled.h3`
@@ -108,10 +108,10 @@ font-weight : 600;
 margin: 0.5em 0.8em;
 `;
 
-export const PropertyOverviewTittle = styled.h6`
-font-size : 16px;
-font-weight : 500;
+export const PropertyOverviewTittle = styled.h5`
+font-weight : 550;
 margin: 0.5em 1.2em;
+font-size: medium;
 `;
 
 export const Column = styled.section<ColumnAlign>`
@@ -137,8 +137,8 @@ export const Row = styled.section<RowAlign>`
 `;
 
 export const OverviewTittle = styled.span`
-font-size : 13px;
-font-weight : 500;
+font-size : medium;
+font-weight : 300;
 `;
 
 export const OverviewData = styled.span`
@@ -173,7 +173,7 @@ justify-content: center;
 align-items: center;
 display: flex;
 box-shadow: 0.5px 0.5px 4px #778899;
-background-color: white;
+background: radial-gradient(#E5F8EF, white );
 border-radius: 0.3em;
 padding: 1em;
 margin : 3%;
@@ -186,7 +186,7 @@ align-items: center;
 display : flex;
 flex-direction : column;
 width : 100%;
-height : 20em;
+height : auto;
 `;
 
 export const FloorPlanImage = styled.img`
@@ -202,7 +202,6 @@ height : 15em;
 export const FloorPlanTittle = styled.span`
 margin : 0.5em;
 font-size : 15px;
-font-weight : 600;
 `;
 
 export const PropertyNameAndLike = styled.div`
@@ -231,4 +230,13 @@ align-items: center;
 export const VideoContainer = styled.img`
 width : 50%;
 height : auto;
-`
+`;
+
+export const Description = styled.p`
+display : flex;
+flex-direction : column;
+width :auto;
+height : auto;
+margin: 0 1.2em;
+text-align: justify;
+`;

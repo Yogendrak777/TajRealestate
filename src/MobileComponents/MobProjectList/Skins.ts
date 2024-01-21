@@ -10,7 +10,7 @@ export const MobBaseContainer = styled.div`
   align-items: center;
   overflow-y: auto;
   display : flex;
-flex-direction: column;
+  flex-direction: column;
 `;
 
 export const MobPListContainer = styled.section`

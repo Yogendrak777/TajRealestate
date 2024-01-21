@@ -34,6 +34,7 @@ import {
   FloorPlanImage,
   FloorPlanTittle,
   PropertyNameAndLike,
+  Description,
 } from "./Skins";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { FaBed } from "react-icons/fa";
@@ -43,6 +44,26 @@ import { MdMapsHomeWork } from "react-icons/md";
 import { ImPower } from "react-icons/im";
 import { FaHeart } from "react-icons/fa";
 import { AiOutlineExpand } from "react-icons/ai";
+import { IoIosPricetags } from "react-icons/io";
+import { SiSpringsecurity } from "react-icons/si";
+import { CgSize } from "react-icons/cg";
+import { SiClubhouse } from "react-icons/si";
+import { MdDateRange } from "react-icons/md";
+import { GiTennisCourt } from "react-icons/gi";
+import { CgGym } from "react-icons/cg";
+import { FaFireExtinguisher } from "react-icons/fa6";
+import { FaIntercom } from "react-icons/fa6";
+import { FaWarehouse } from "react-icons/fa";
+import { GiMeditation } from "react-icons/gi";
+import { PiParkBold } from "react-icons/pi";
+import { MdSportsGymnastics } from "react-icons/md";
+import { GiElevator } from "react-icons/gi";
+import { TbPlayFootball } from "react-icons/tb";
+import { MdOutlineGasMeter } from "react-icons/md";
+import { FaTableTennis } from "react-icons/fa";
+import { FaArrowUpFromGroundWater } from "react-icons/fa6";
+import { FaShoppingCart } from "react-icons/fa";
+import { PiSwimmingPoolBold } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 const LoaderPD = loadable(()=> import('./LoaderPD'));
 const Carousel = loadable(()=> import('./Carousel'), {fallback:<LoaderPD/>});
@@ -156,8 +177,8 @@ export default function MobPDIndex() {
               <PropertyPrices>
                 {getDBData[0].MinPrices.label} - {getDBData[0].MaxPrice.label}
               </PropertyPrices>
-              <PropertyOverviewTittle>Overview</PropertyOverviewTittle>
-              <Row>
+              <PropertyOverviewTittle>Overview : </PropertyOverviewTittle>
+              <Row Margin="0em 0.5em">
                 <Column Width="50%" Align="left" Margin="0 0">
                   <Row Align="left" Margin="1em 1em">
                     <OverviewImage>
@@ -204,11 +225,11 @@ export default function MobPDIndex() {
                   </Row>
                   <Row Align="left" Margin="1em 1em">
                     <OverviewImage>
-                      <FaBed color="#00BF63" size="1.5em" />
+                      <SiSpringsecurity color="#00BF63" size="1.5em" />
                     </OverviewImage>
                     <Column Align="left" Margin="0 1em">
-                      <OverviewData>{getAvaliableDate}</OverviewData>
-                      <OverviewTittle>Possesion Date </OverviewTittle>
+                      <OverviewData>{getDBData[0].Security}</OverviewData>
+                      <OverviewTittle>Security</OverviewTittle>
                     </Column>
                   </Row>
                 </Column>
@@ -233,7 +254,7 @@ export default function MobPDIndex() {
                   </Row>
                   <Row Align="left" Margin="1em 1em">
                     <OverviewImage>
-                      <FaBed color="#00BF63" size="1.5em" />
+                      <CgSize color="#00BF63" size="1.5em" />
                     </OverviewImage>
                     <Column Align="left" Margin="0 1em">
                       <OverviewData>{getDBData[0].ProjectSize}</OverviewData>
@@ -241,7 +262,7 @@ export default function MobPDIndex() {
                     </Column>
                   </Row>
                   <Row Align="left" Margin="1em 1em">
-                    <FaBed color="#00BF63" size="1.5em" />
+                    <IoIosPricetags color="#00BF63" size="1.5em" />
                     <Column Align="left" Margin="0 1em">
                       <OverviewData>
                         {getDBData[0].MinPrices.label}
@@ -251,23 +272,22 @@ export default function MobPDIndex() {
                   </Row>
                   <Row Align="left" Margin="1em 1em">
                     <OverviewImage>
-                      <FaBed color="#00BF63" size="1.5em" />
+                      <MdDateRange color="#00BF63" size="1.5em" />
                     </OverviewImage>
                     <Column Align="left" Margin="0 1em">
-                      <OverviewData>{getDBData[0].Security}</OverviewData>
-                      <OverviewTittle>Security</OverviewTittle>
+                      <OverviewData>{getAvaliableDate}</OverviewData>
+                      <OverviewTittle>Possesion Date </OverviewTittle>
                     </Column>
-                  </Row>
+                  </Row>        
                 </Column>
               </Row>
-              <PropertyOverviewTittle>Amenities</PropertyOverviewTittle>
-
+              <PropertyOverviewTittle>Amenities : </PropertyOverviewTittle>
               <AmenitiesContainer>
                 {getDBData[0].Amenities.BatmitionCourt === "N/A" ? null : (
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <GiTennisCourt color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.BatmitionCourt}
@@ -280,7 +300,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <SiClubhouse color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.ClubHouse}
@@ -292,7 +312,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <FaFireExtinguisher color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.FireAlarm}
@@ -304,7 +324,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <CgGym color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.Gym}
@@ -316,7 +336,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <FaIntercom color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.InterCom}
@@ -328,7 +348,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <GiElevator color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.Lift}
@@ -340,7 +360,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <GiMeditation color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.MeditationArea}
@@ -352,7 +372,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <FaWarehouse color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.MulitpruposeHall}
@@ -364,7 +384,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <MdSportsGymnastics color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.OpenGym}
@@ -376,7 +396,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <PiParkBold color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.Park}
@@ -388,7 +408,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <MdOutlineGasMeter color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.PipedGas}
@@ -400,7 +420,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <TbPlayFootball color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.PlayGround}
@@ -412,7 +432,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <FaArrowUpFromGroundWater color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.SewageSystem}
@@ -424,7 +444,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <FaShoppingCart color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.ShoppingCentre}
@@ -436,7 +456,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <PiSwimmingPoolBold color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.SwimmingPool}
@@ -448,7 +468,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <FaTableTennis color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.TenniusCourt}
@@ -460,7 +480,7 @@ export default function MobPDIndex() {
                   <AmenitiesDiv>
                     <Column>
                       <OverviewImage>
-                        <FaBed color="#00BF63" size="1.5em" />
+                        <FaParking color="#00BF63" size="1.5em" />
                       </OverviewImage>
                       <OverviewTittle>
                         {getDBData[0].Amenities.VisitorsParking}
@@ -472,7 +492,7 @@ export default function MobPDIndex() {
 
               <PropertyOverviewTittle>
                 {" "}
-                {getDBData[0].PropertyName} Floor Plans
+                {getDBData[0].PropertyName} Floor Plans : 
               </PropertyOverviewTittle>
               {getDBData[0].images.img6 !== "N/A" ? (
                 <FloorPlanDiv>
@@ -510,6 +530,11 @@ export default function MobPDIndex() {
                   <FloorPlanTittle>5+ BHK Floor Plan</FloorPlanTittle>
                 </FloorPlanDiv>
               ) : null}
+
+               <PropertyOverviewTittle>Description : </PropertyOverviewTittle>
+              <Description>
+               {getDBData[0].Description}
+                </Description>
 
               {getCarouselOpen && getDBData[0] && (
                 <div>

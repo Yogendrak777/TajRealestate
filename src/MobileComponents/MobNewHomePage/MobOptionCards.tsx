@@ -7,7 +7,8 @@ import {
     NewProjectsIcons,
     FarmLandIcons,
     CommercialIcons,
-    LoanIconIcons
+    LoanIconIcons,
+    ComingSoon
   } from '../../Components/assets';
 
 const MobOptionCards = memo(() => {
@@ -15,32 +16,37 @@ const MobOptionCards = memo(() => {
     const  [OptionCard, setOptionCards] = useState<string>("")
     const TopDataCards = [
         {
-            "title" :  "Rent",
-            "Image" :  Rent,
-        },
-        {
             "title" :  "Sale",
             "Image" :  SaleIcons,
-        },
-        {
-            "title" :  "Buy",
-            "Image" :  BuyIcon,
         },
         {
             "title" :  "NewProject",
             "Image" :  NewProjectsIcons,
         },
         {
+            "title" :  "Rent",
+            "Image" :  Rent,
+            'comingSoon' : ComingSoon,
+        },
+        {
+            "title" :  "Buy",
+            "Image" :  BuyIcon,
+            'comingSoon' : ComingSoon,
+        },
+        {
             "title" :  "Plot",
             "Image" :  FarmLandIcons,
+            'comingSoon' : ComingSoon,
         },
         {
             "title" :  "Commercial",
             "Image" :  CommercialIcons,
+            'comingSoon' : ComingSoon,
         },
         {
             "title" :  "Loan",
             "Image" :  LoanIconIcons,
+            'comingSoon' : ComingSoon,
         },
 
     ]
@@ -56,6 +62,7 @@ const MobOptionCards = memo(() => {
         <PropertyCardsContainer onClick={() => handleOnclickCards(item.title)}>
             <CardImage src={item.Image}/>
             <CardTittle> {item.title} </CardTittle>
+            {item.comingSoon && <CardImage src={item.comingSoon}/>}
         </PropertyCardsContainer>
             ))}
         </CardContainer>

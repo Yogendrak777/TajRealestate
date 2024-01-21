@@ -460,6 +460,7 @@ export default function MobAddIndex() {
             img11: File[11] || "N/A",
           },
           Brochure: File[5] || "N/A",
+          ShortList:[],
           ApartmentType: getApartmentTypeData.value,
           PropertyName: getPropertyNameData,
           ProjectSize: getProjectSize,

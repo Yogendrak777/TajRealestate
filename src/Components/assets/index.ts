@@ -21,3 +21,4 @@ export { default as phoneNumber } from './phone-call.png';
 export { default as Name } from './user.png';
 export { default as Email } from './email.png';
 export { default as Password } from './lock.png';
+export { default as ComingSoon } from './comingSoon.png';

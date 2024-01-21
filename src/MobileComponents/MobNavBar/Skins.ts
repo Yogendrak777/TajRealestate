@@ -16,8 +16,8 @@ z-index : 100;
 `;
 
 export const TajName = styled.span`
-color : #30373C;
-font-size: medium;
+color : #00bf63;
+font-size: large;
 font-weight: 700;
 `;
 

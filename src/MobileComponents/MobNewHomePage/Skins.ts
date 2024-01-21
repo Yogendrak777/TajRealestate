@@ -14,6 +14,7 @@ export const MobBaseContainer = styled.div`
   justify-content: center;
   align-items: center;
   overflow-y: auto;
+  font-family: sans-serif, Helvetica, Arial,;
 `;
 
 export const OptionContainer = styled.div`
@@ -225,13 +226,12 @@ export const TypeOfPropsBang = styled.button<TypeOfProps>`
   justify-content: center;
   align-items: center;
   border: 1px solid #00bf63;
-  box-shadow: 0.5px 0.5px 4px #778899;
   border-radius: 0.5em;
   font-size: small;
   margin: 0.3em;
-  padding: 0.4em 0.6em;
+  padding: 0.5em 0.7em;
   cursor: pointer;
-  background-color: ${(props) => (props.BGColor ? props.BGColor : "")};
+  background-color: ${(props) => (props.BGColor ? props.BGColor : "white")};
   color: ${(props) => (props.Clr ? props.Clr : "Black")};
 `;
 

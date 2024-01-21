@@ -48,7 +48,7 @@ export default function FooterNavBar() {
     setAbout(false);
     setChart(true);
     setAddProperties(false);
-    navigate('/profile')
+    navigate('/chartWithUs')
   }
 
   const handleAddProperties = () => {

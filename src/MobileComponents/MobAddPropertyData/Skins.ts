@@ -33,7 +33,7 @@ export const DivTittle = styled.strong`
 
 export const DivisionBtn = styled.span`
   background-color: #00BF63;
-  padding : 0.5em 1em;
+  padding : 0.5em 2em;
   border-radius : 0.5em;
   margin: 1em 0;
   box-shadow: 0.5px 0.5px 4px #00BF63;
@@ -52,7 +52,7 @@ export const MobProjectContainer = styled.section`
 
 export const MobProjectCard = styled.section`
   width: auto;
-  height: 51em;
+  height: auto;
   // box-shadow: 1px 1px 5px gray;
   margin: 1em;
   align-items: center;
@@ -62,6 +62,7 @@ export const MobProjectCard = styled.section`
   flex-direction: column;
   border-radius: 0.5em;
   padding-bottom : 0.5em;
+  margin-bottom: 2em;
   overflow-Y: auto;
 `;
 

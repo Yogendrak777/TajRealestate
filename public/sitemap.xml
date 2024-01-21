@@ -4,17 +4,16 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
     <url>
       <loc>https://legacyproperties.in/</loc>
     </url>
     <url>
-    <loc>https://legacyproperties.in/addProjectData</loc>
+      <loc>https://legacyproperties.in/addProjectData</loc>
     </url>
     <url>
-    <loc>https://legacyproperties.in/signUp</loc>
+      <loc>https://legacyproperties.in/signUp/:?sendTo=/</loc>
     </url>
     <url>
-      <loc>https://legacyproperties.in/signIn</loc>
+      <loc>https://legacyproperties.in/signIn/:?sendTo=/</loc>
     </url>
   </urlset> 

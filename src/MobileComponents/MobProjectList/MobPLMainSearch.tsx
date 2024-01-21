@@ -11,14 +11,9 @@ import {
 import {
   getFirestore,
   collection,
-  addDoc,
   getDocs,
-  setDoc,
-  doc,
-  getDocFromCache,
   query,
   where,
-  getDoc,
 } from "firebase/firestore";
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { useNavigate } from "react-router-dom";
@@ -28,17 +23,16 @@ export default function MobPLMainSearch() {
   const [getDBData, setDBData] = useState<any>([]);
   const navigate = useNavigate();
 
-  //, where("MaxPrice.value", "<=", Number(params.get("MaxPrice"))), where("PropertyAge", "==", params.get("PropertyAge"))
-
   const getDisaplyData = async () => {
     try {
       const db = getFirestore(AdminApp);
       const q = query(
-        collection(db, "ProdData"), where("City", "==", params.get("City")), where("ApartmentType", "==", params.get("ApartmentType")),  where("PropertyAge", "==", params.get("PropertyAge")), where("MaxPrice.value", "<=", Number(params.get("MaxPrice")))
+        collection(db, "ProdData"), where("City", "==", params.get("City")), where("ApartmentType", "==", params.get("ApartmentType")),  where("PropertyAge", "==", params.get("PropertyAge")),
       );
       const querySnapshot = await getDocs(q);
       const data = querySnapshot.docs.map((doc) => doc.data());
-      setDBData(data);
+      const filterData = data.filter((item)=> item.MaxPrice?.value <= Number(params.get("MaxPrice")))
+      setDBData(filterData);
     } catch (e) {
       alert(e);
     }
