@@ -298,7 +298,7 @@ export const MobHSPBLabelOnImgCard = styled.span`
 
 export const MobHSPBPricesCard = styled(MobHSPBLabelOnImgCard)`
   left: 0.3em;
-  top: 3em;
+  top: 3.2em;
 `;
 export const MobHSPBBHKCard = styled(MobHSPBLabelOnImgCard)`
   left: 0.3em;

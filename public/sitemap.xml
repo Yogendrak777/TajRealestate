@@ -7,13 +7,5 @@
     <url>
       <loc>https://legacyproperties.in/</loc>
     </url>
-    <url>
-      <loc>https://legacyproperties.in/addProjectData</loc>
-    </url>
-    <url>
-      <loc>https://legacyproperties.in/signUp/:?sendTo=/</loc>
-    </url>
-    <url>
-      <loc>https://legacyproperties.in/signIn/:?sendTo=/</loc>
-    </url>
+   
   </urlset> 

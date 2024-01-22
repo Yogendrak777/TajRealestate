@@ -83,11 +83,6 @@ const MobHotSelling = memo(() =>  {
                   {" "}
                   Prices : {item.Prices}
                 </MobHSPBPricesCard>
-                <MobHSPBBHKCard> BHK :  {item.BHK} </MobHSPBBHKCard>
-                <MobHSPBProjectSizeCard>
-                  {" "}
-                  Project size :  {item.ProjectSize}
-                </MobHSPBProjectSizeCard>
               </MobHSPBPropertyCardsContainer>
             ))}
         </Slider>

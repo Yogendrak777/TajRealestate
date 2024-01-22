@@ -7,7 +7,6 @@ position: fixed;
 top:0px;
 background-color: white;
 box-shadow: 1px 1px 7px #778899;
-// background-image: linear-gradient(180deg, #00BF63, transparent);
 align-items: center;
 display: flex;
 flex-direction: row;

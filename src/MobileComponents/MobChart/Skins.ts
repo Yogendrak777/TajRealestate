@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const MobBaseContainer = styled.div`
   width: auto;
   margin-top: 3.5em;
-  padding-bottom: 2em;
-  height: auto;
+  padding-bottom: 18em;
+  min-height:60vh;
   overflow-y: auto;
   display : flex;
   flex-direction: column;

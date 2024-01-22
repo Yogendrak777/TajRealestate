@@ -19,7 +19,6 @@ import {
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import LoaderPD from "../MobNewHomePage/LoaderPD";
 import { IoSend } from "react-icons/io5";
 
 export default function ChartIndex() {
@@ -32,7 +31,6 @@ export default function ChartIndex() {
   const [getDBData, setDBData] = useState<any>([]);
   const [DocId, setDocId] = useState("");
   const [Input, setInput] = useState("");
-  const [showLoader, setShowLoader] = useState<boolean>(false);
 
   const db = getFirestore(AdminApp);
   const auth = getAuth(AdminApp);
@@ -53,7 +51,7 @@ export default function ChartIndex() {
           alert(e);
         }
       } else {
-        navigate(`/signIn/:?sendTo=/shortlist`);
+        navigate(`/signIn/:?sendTo=/chartWithUs`);
       }
     });
   };
@@ -75,13 +73,11 @@ export default function ChartIndex() {
   };
 
   useEffect(() => {
-    setShowLoader(true);
     getDisaplyData();
-    setShowLoader(false);
   }, []);
+  
   return (
     <>
-      {showLoader && <LoaderPD />}
       <MobBaseContainer>
         {getDBData?.map((item: any) => (
           <div>
@@ -92,6 +88,7 @@ export default function ChartIndex() {
             )}
           </div>
         ))}
+          </MobBaseContainer>
         <BottomCards>
           <InputText
             type="text"
@@ -101,7 +98,7 @@ export default function ChartIndex() {
           />
           <IoSend onClick={handelSend} color="#00BF63" size="1.5em" />
         </BottomCards>
-      </MobBaseContainer>
+    
     </>
   );
 }

@@ -21,8 +21,8 @@ const MobHomeIndex = memo(() => {
   return (
     <>
     <Helmet>
-      <title>Welcome to Legacy Properties</title>
-      <meta name="description" content='Legacy Properties Limited builds luxury homes in sought-after locations' />
+      <title>Legacy Properties</title>
+      <meta name="description" content='Legacy Properties.Ltd builds luxury homes in Bangalore locations' />
       <link rel="canonical" href="https://legacyproperties.in/"/>
     </Helmet>
     <MobBaseContainer>
