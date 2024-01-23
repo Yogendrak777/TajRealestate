@@ -4,6 +4,7 @@ import { isMobile } from 'react-device-detect';
 import { createBrowserRouter,  RouterProvider } from 'react-router-dom';
 import './App.css';
 import ChartIndex from './MobileComponents/MobChart/ChartIndex';
+import MobRequestProp from './MobileComponents/MobRequestProp/MobRequestProp';
 const Navbar = loadable(()=> import('./Components/NavBar/Navbar'));
 const Index = loadable(()=> import('./Components/NewHomePage/Index'));
 const AddIndex = loadable(()=> import('./Components/AddProperty/AddIndex'));
@@ -121,6 +122,10 @@ const MobileRouter = createBrowserRouter([
       {
         path: "/chartWithUs",
         element: <ChartIndex/>,
+      },
+      {
+        path: "/requestProp",
+        element: <MobRequestProp/>,
       },
     ]
   },

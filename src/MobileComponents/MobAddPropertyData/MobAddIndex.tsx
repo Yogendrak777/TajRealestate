@@ -441,8 +441,7 @@ export default function MobAddIndex() {
     try {
       const db = getFirestore(AdminApp);
       const uid = user.uid;
-    
-
+  
       try {
         const docRef = await addDoc(collection(db, "ProdData"), {
           uid: uid,

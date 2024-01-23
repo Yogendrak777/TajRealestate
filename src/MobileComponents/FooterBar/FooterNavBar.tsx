@@ -70,7 +70,7 @@ export default function FooterNavBar() {
 
         <Column onClick={handleChartPage}>
         <BsChatTextFill  color={ chart && "#00BF63"} size="1.5em" />
-        <Tittle>Chart</Tittle>
+        <Tittle>Chat</Tittle>
         </Column>
 
         <Column onClick={handleAddProperties}>

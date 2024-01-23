@@ -14,6 +14,10 @@ const MobAddCard = memo(() => {
     navigate('/signIn/:?sendTo=/addDataDivision');  
   }
 
+  const handelRequestProp = () => { 
+    navigate('/signIn/:?sendTo=/requestProp');  
+  }
+
   return (
     <AddCardContainer>
       <DivisionAddCard onClick={handelAddData}>
@@ -27,7 +31,7 @@ const MobAddCard = memo(() => {
         <FaGreaterThan  color="#00BF63" size="1em" />
       </DivisionAddCard>
 
-      <DivisionAddCard>
+      <DivisionAddCard onClick={handelRequestProp}>
       <RiHomeOfficeFill  color="#00BF63" size="2.5em" />
         <AddCard>
           <AddCardHeaer> Find Your Dream Property </AddCardHeaer>

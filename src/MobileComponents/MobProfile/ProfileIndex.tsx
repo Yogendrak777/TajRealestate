@@ -11,10 +11,8 @@ import {
   arrayUnion,
 } from "firebase/firestore";
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-
-
 
 export default function ProfileIndex() {
   const navigate = useNavigate();
@@ -44,6 +42,17 @@ export default function ProfileIndex() {
     });
   };
 
+  const HandleLagOut = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        alert("Sign Out")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
 
   useEffect(() => {
     getDisaplyData();
@@ -56,6 +65,9 @@ export default function ProfileIndex() {
       </MobImageRow>
       <MobProfileBtnContainer>
       <MobProfileEditBtn> View and Edit Profile</MobProfileEditBtn>
+      </MobProfileBtnContainer>
+      <MobProfileBtnContainer>
+      <MobProfileEditBtn onClick={HandleLagOut}> LogOut</MobProfileEditBtn>
       </MobProfileBtnContainer>
     </MobBaseContainer>
   )
