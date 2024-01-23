@@ -134,7 +134,7 @@ export default function MobRequestProp() {
             navigate(`/signIn/:?sendTo=/profile`);
           }
         });
-      })
+      },[])
     
   return (
     <MobBaseContainer>
