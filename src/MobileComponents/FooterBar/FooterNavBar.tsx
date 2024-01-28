@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import { MobBottomContainer, BottomCards, Column,Tittle } from './Skins'
 import { useNavigate } from 'react-router-dom'
 import { IoHomeSharp } from "react-icons/io5";
@@ -13,7 +13,9 @@ export default function FooterNavBar() {
   const [about, setAbout] = useState<any>(false);
   const [chart, setChart] = useState<any>(false);
   const [addProperties, setAddProperties] = useState<any>(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const pathname : string = window.location.pathname;
+
 
   const handleHomePage = () => {
     sethomePage(true);
@@ -21,7 +23,7 @@ export default function FooterNavBar() {
     setAbout(false);
     setChart(false);
     setAddProperties(false);
-    navigate('/')
+    navigate('/');
   }
 
   const handleShortListPage = () => {
@@ -30,7 +32,7 @@ export default function FooterNavBar() {
     setAbout(false);
     setChart(false);
     setAddProperties(false);
-    navigate('/shortlist')
+    navigate('/shortlist');
   }
 
   const handleAbouttPage = () => {
@@ -39,7 +41,7 @@ export default function FooterNavBar() {
     setAbout(true);
     setChart(false);
     setAddProperties(false);
-    navigate('/profile')
+    navigate('/profile');
   }
 
   const handleChartPage = () => {
@@ -48,7 +50,7 @@ export default function FooterNavBar() {
     setAbout(false);
     setChart(true);
     setAddProperties(false);
-    navigate('/chartWithUs')
+    navigate('/chartWithUs');
   }
 
   const handleAddProperties = () => {
@@ -59,6 +61,47 @@ export default function FooterNavBar() {
     setAddProperties(true);
     navigate(`/signIn/:?sendTo=/addDataDivision`);
   }
+
+  useEffect(()=>{
+    switch(pathname){
+      case "/chartWithUs":
+        sethomePage(false);
+        setShortList(false);
+        setAbout(false);
+        setChart(true);
+        setAddProperties(false);
+        break;
+      case "/profile":
+        sethomePage(false);
+        setShortList(false);
+        setAbout(true);
+        setChart(false);
+        setAddProperties(false);
+        break;
+      case "/shortlist":
+        sethomePage(false);
+        setShortList(true);
+        setAbout(false);
+        setChart(false);
+        setAddProperties(false);
+        break;
+      case "/addDataDivision":
+        sethomePage(false);
+        setShortList(false);
+        setAbout(false);
+        setChart(false);
+        setAddProperties(true);
+        break;
+      case "/":
+        sethomePage(true);
+        setShortList(false);
+        setAbout(false);
+        setChart(false);
+        setAddProperties(false);
+        break;
+    }
+  },[pathname])
+
 
   return (
     <MobBottomContainer>

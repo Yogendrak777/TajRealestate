@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function MobAddPropIndex() {
     const native = useNavigate();
+    
   return (
     <MobBaseContainer>
         <DivisionContainer>

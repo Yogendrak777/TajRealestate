@@ -24,6 +24,7 @@ import { FaGreaterThan } from "react-icons/fa";
 import { VscSignOut } from "react-icons/vsc";
 import { MdOutlinePolicy } from "react-icons/md";
 import { MdOutlineLibraryBooks } from "react-icons/md";
+import { FaBuildingCircleCheck } from "react-icons/fa6";
 
 export default function ProfileIndex() {
   const navigate = useNavigate();
@@ -157,7 +158,7 @@ export default function ProfileIndex() {
       <AddCardContainer>
 
       <DivisionAddCard >
-        <MdAddHomeWork color="#00BF63" size="2.5em" />
+        <FaBuildingCircleCheck color="#00BF63" size="2.5em" />
         <AddCard>
           <AddCardHeaer> About us </AddCardHeaer>
         </AddCard>
