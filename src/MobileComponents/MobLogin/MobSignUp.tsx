@@ -12,7 +12,6 @@ import {
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { phoneNumber, Name, Email, Password } from "../../Components/assets";
-
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
@@ -59,6 +58,7 @@ export default function MobSignUp() {
         Name: NameData,
         EmailID: EmailData,
         Password: PasswordData,
+        UserImage:"",
         ChartList:[{
           "Id": "Agent",
           "Message": "Hello, I am Yogendra, How can I help you"
@@ -68,8 +68,10 @@ export default function MobSignUp() {
       alert(error);
     }
     if(sendTo){
+      sessionStorage.setItem("DeviceId", User.uid)
       navigate(sendTo);
     } else {
+      sessionStorage.setItem("DeviceId", User.uid)
       navigate("/");
     }
   }

@@ -82,12 +82,11 @@ export default function MobPDIndex() {
   const [Uid, setUid] = useState("");
 
   const db = getFirestore(AdminApp);
-  const auth: any = getAuth(AdminApp);
 
   const getDisaplyData = async () => {
     setLoader(true);
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
+    const userId = sessionStorage.getItem("DeviceId");
+      if (userId) {
         try {
           const q = query(
             collection(db, "ProdData"),
@@ -97,8 +96,8 @@ export default function MobPDIndex() {
           const data = querySnapshot.docs.map((doc) => doc.data());
           querySnapshot.docs.map((doc) => setDocId(doc.id));
           setDBData(data);
-          setUid(user.uid);
-          setShortList(data[0].ShortList?.includes(user.uid));
+          setUid(userId);
+          setShortList(data[0].ShortList?.includes(userId));
           const formattedDate = new Date(
             data[0].AvalibleData
           ).toLocaleDateString("en-US", {
@@ -116,7 +115,6 @@ export default function MobPDIndex() {
         setLoader(false);
         navigate(`/signIn/:?sendTo=/productSearch/:?id=${uniqueId}`)
       }
-    });
   };
 
   useEffect(() => {

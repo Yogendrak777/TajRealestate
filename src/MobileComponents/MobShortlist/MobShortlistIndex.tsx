@@ -17,7 +17,6 @@ import {
 } from "firebase/firestore";
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function MobshortlistIndex() {
   const [getDBData, setDBData] = useState<any>([]);
@@ -25,13 +24,12 @@ export default function MobshortlistIndex() {
 
   const getDisaplyData = async () => {
     const db = getFirestore(AdminApp);
-    const auth = getAuth(AdminApp);
 
     try {
-      onAuthStateChanged(auth, async(user) => {
-        if (user) {
+      const Uid = sessionStorage.getItem("DeviceId");
+        if (Uid) {
           const q = query(
-            collection(db, "ProdData"), where("ShortList", "array-contains", user && user.uid)
+            collection(db, "ProdData"), where("ShortList", "array-contains", Uid)
           );
           const querySnapshot = await getDocs(q);
           const data = querySnapshot.docs.map((doc) => doc.data());
@@ -40,7 +38,6 @@ export default function MobshortlistIndex() {
         else {
           navigate(`/signIn/:?sendTo=/shortlist`);
         }
-      });
     } catch (e) {
       alert(e);
     }

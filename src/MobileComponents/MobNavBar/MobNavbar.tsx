@@ -1,74 +1,44 @@
 import React, { useEffect, useState } from 'react'
-import { NavbarMainDiv, TajLogo, RightContainer, TajName, LoginBtn } from "./Skins"
+import { NavbarMainDiv, TajLogo, TajName } from "./Skins"
 import CompantLogo from "../../Components/assets/CompanyLogo.jpeg"
 import { Outlet, useNavigate } from 'react-router-dom'
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from "firebase/auth";
-import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import FooterNavBar from '../FooterBar/FooterNavBar';
 
 export default function MobNavbar() {
 
   const navigate = useNavigate();
-
-  const [isLogout, serIsLpgout] = useState<any>(true)
+  const pathname : string = window.location.pathname;
+  const [getHeader, setHeader] = useState<any>("LegacyProperties");
 
   const HandleGoBack = () => {
-    navigate('/')
+    navigate('/');
   }
 
-  const HandleSignIn = () => {
-    navigate('/signIn')
-  }
-
-  const HandleLagOut = () => {
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {
-        alert("Sign Out")
-        serIsLpgout(true)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  useEffect(() => {
-    // Disable the back button
-    window.history.pushState(null, window.location.href);
-    window.onpopstate = function () {
-      window.history.pushState(null, window.location.href);
-    };
-    const auth = getAuth(AdminApp);
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        serIsLpgout(false)
-      }
-    })
-  }, []);
+  useEffect(()=>{
+    switch(pathname){
+      case "/chartWithUs":
+        setHeader("ChartWithUs");
+        break;
+      case "/profile":
+        setHeader("Profile");
+        break;
+      case "/shortlist":
+        setHeader("ShortList");
+        break;
+      case "/addDataDivision":
+        setHeader("AddProperty");
+        break;
+      case "/":
+        setHeader("LegacyProperties");
+        break;
+    }
+  },[pathname])
 
   return (
     <>
     <NavbarMainDiv>
       <TajLogo src = {CompantLogo}/>
-      <TajName onClick={HandleGoBack}> LegacyProperties </TajName>
-      {/* <RightContainer>
-       {isLogout ? 
-       <LoginBtn onClick={HandleSignIn}>
-          SignIn / SignUp
-        </LoginBtn>
-         : 
-        <LoginBtn onClick={HandleLagOut}>
-        LogOut
-      </LoginBtn>
-      }
-      </RightContainer> */}
+      <TajName onClick={HandleGoBack}> {getHeader} </TajName>
     </NavbarMainDiv>
     <Outlet/>
     <FooterNavBar/>

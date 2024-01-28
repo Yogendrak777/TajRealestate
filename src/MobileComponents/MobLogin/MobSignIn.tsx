@@ -29,17 +29,14 @@ export default function MobSignIn() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Disable the back button
-    window.history.pushState(null, window.location.href);
-    window.onpopstate = function () {
-      window.history.pushState(null, window.location.href);
-    };
     const auth = getAuth(AdminApp);
     onAuthStateChanged(auth, (user) => {
       if (user) {
         if(sendTo){
+          sessionStorage.setItem("DeviceId", user.uid)
           navigate(sendTo);
         } else {
+          sessionStorage.setItem("DeviceId", user.uid)
           navigate("/");
         }
       }

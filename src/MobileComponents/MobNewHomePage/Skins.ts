@@ -237,7 +237,7 @@ export const TypeOfPropsBang = styled.button<TypeOfProps>`
 
 export const ImgBGonDiv = styled.img`
   width: 100%;
-  height: 10em;
+  height: 9em;
   border-radius: 0.5em;
   z-index: 1;
 `;
@@ -273,7 +273,7 @@ export const MobHSPBContainer = styled.div`
 
 export const MobHSPBPropertyCardsContainer = styled.div`
   width: 70em;
-  height: 15em;
+  height: 13em;
   text-align: left;
   border-radius: 0.8em;
   position: relative;
@@ -311,14 +311,14 @@ export const MobHSPBProjectSizeCard = styled(MobHSPBLabelOnImgCard)`
 
 export const MobHSPBImgBGonDiv = styled.img`
   width: 100%;
-  height: 15em;
+  height: 13em;
   border-radius: 0.8em;
   z-index: 1;
 `;
 
 export const MobHSPBSliderContainer = styled.div`
   width: auto;
-  height: 15em;
+  height: 13em;
   text-align: center;
   padding: 0 1em;
   margin: 0.2em;
@@ -386,7 +386,7 @@ background-color: white;
 
 export const MobPIBInsideDiv = styled.div`
 width: 40%;
-height: 10em;
+height: 9em;
 display: flex;
 box-shadow: 0.5px 0.5px 4px #778899;
 background-color: white;

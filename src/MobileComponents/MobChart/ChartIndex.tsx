@@ -16,9 +16,9 @@ import {
   where,
   arrayUnion,
 } from "firebase/firestore";
+import { getAnalytics, logEvent } from "firebase/analytics";
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { IoSend } from "react-icons/io5";
 
 export default function ChartIndex() {
@@ -33,15 +33,16 @@ export default function ChartIndex() {
   const [Input, setInput] = useState("");
 
   const db = getFirestore(AdminApp);
-  const auth = getAuth(AdminApp);
 
   const getDisaplyData = async () => {
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
+    const analytics = getAnalytics(AdminApp);
+    logEvent(analytics, 'chartWithUsPage');
+    const Uid = sessionStorage.getItem("DeviceId")
+      if (Uid) {
         try {
           const q = query(
             collection(db, "Profile"),
-            where("uid", "==", user && user.uid)
+            where("uid", "==", Uid)
           );
           const querySnapshot = await getDocs(q);
           const data = querySnapshot.docs.map((doc) => doc.data());
@@ -53,7 +54,6 @@ export default function ChartIndex() {
       } else {
         navigate(`/signIn/:?sendTo=/chartWithUs`);
       }
-    });
   };
 
   const handleShortList = async (chartList: any) => {
@@ -98,7 +98,6 @@ export default function ChartIndex() {
           />
           <IoSend onClick={handelSend} color="#00BF63" size="1.5em" />
         </BottomCards>
-    
     </>
   );
 }

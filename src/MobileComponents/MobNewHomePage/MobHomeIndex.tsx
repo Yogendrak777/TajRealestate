@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import  { MobBaseContainer } from './Skins'
 import loadable from '@loadable/component';
 import { Helmet } from 'react-helmet-async';
+import { getAnalytics, logEvent } from "firebase/analytics";
+import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
+import { getAuth, onAuthStateChanged} from "firebase/auth";
 const MobOptionCards = loadable(()=> import('./MobOptionCards'));
 const MobBanner = loadable(()=> import('./MobBanner'));
 const SearchCards = loadable(()=> import('./SearchCards'));
@@ -15,8 +18,17 @@ const MobPropSaleInBang = loadable(() => import('./MobPropSaleInBang'),{fallback
 
 const MobHomeIndex = memo(() => {
   const navigate = useNavigate();
-  useEffect(()=>{
+  const auth = getAuth(AdminApp);
+
+  useEffect(()=> {
+    const analytics = getAnalytics(AdminApp);
+    logEvent(analytics, 'HomePage');
     navigate("/")
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        sessionStorage.setItem("DeviceId" ,user.uid)
+      }
+    });
   },[])
   return (
     <>

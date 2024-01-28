@@ -18,6 +18,10 @@ const MobAddCard = memo(() => {
     navigate('/signIn/:?sendTo=/requestProp');  
   }
 
+  const handelBroker = () => { 
+    navigate('/signIn/:?sendTo=/addBroker');  
+  }
+
   return (
     <AddCardContainer>
       <DivisionAddCard onClick={handelAddData}>
@@ -51,7 +55,7 @@ const MobAddCard = memo(() => {
         </AddCard>
         <FaGreaterThan  color="#00BF63" size="1em" />
       </DivisionAddCard>
-      <DivisionAddCard>
+      <DivisionAddCard onClick={handelBroker}>
       <IoIosPersonAdd  color="#00BF63" size="2.5em" />
         <AddCard>
           <AddCardHeaer>  Are you a broker?  </AddCardHeaer>

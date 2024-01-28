@@ -24,6 +24,8 @@ import {
 import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import Select from "react-select";
 import { Helmet } from "react-helmet-async";
+import ProcessingStatus from "../MobStatus/ProcessingStatus";
+import LoaderPD from "../MobProjectDetails/LoaderPD";
 
 export default function MobAddIndex() {
   const navigate = useNavigate();
@@ -85,6 +87,8 @@ export default function MobAddIndex() {
   const [MeditationArea, setMeditationArea] = useState<any>("N/A");
   const [BatmitionCourt, setBatmitionCourt] = useState<any>("N/A");
   const [BHKArray, setBHKArray] = useState<any>([]);
+  const [showProcessingScreen, setShowProcessingScreen] = useState<boolean>(false);
+  const [showLoader, setShowLoader] = useState<any>(false);
 
   const ApartmentType = [
     { value: "Apartment", label: "Apartment" },
@@ -396,7 +400,7 @@ export default function MobAddIndex() {
 
   const handleUpload = () => {
     setUniqueId("id" + Math.random().toString(36).slice(2));
-    const uid = user.uid;
+    const uid = sessionStorage.getItem("DeviceId");
     if (ImageFile.length < 4) {
       alert("Please upload the images");
     } else {
@@ -429,97 +433,101 @@ export default function MobAddIndex() {
         );
       });
       setFile(ImageFile);
-      console.log(ImageFile);
+      setShowLoader(true);
       setTimeout(() => {
         setGetImageContainer(false);
         setshowFinallSubmit(true);
-      }, 3000);
+        setShowLoader(false);
+      }, 5000);
     }
   };
 
   const HandelSubmitBtn = async () => {
-    try {
-      const db = getFirestore(AdminApp);
-      const uid = user.uid;
-  
       try {
-        const docRef = await addDoc(collection(db, "ProdData"), {
-          uid: uid,
-          images: {
-            img1: File[0] || "N/A",
-            img2: File[1] || "N/A",
-            img3: File[2] || "N/A",
-            img4: File[3] || "N/A",
-            img5: File[4] || "N/A",
-            img6: File[6] || "N/A",
-            img7: File[7] || "N/A",
-            img8: File[8] || "N/A",
-            img9: File[9] || "N/A",
-            img10: File[10] || "N/A",
-            img11: File[11] || "N/A",
-          },
-          Brochure: File[5] || "N/A",
-          ShortList:[],
-          ApartmentType: getApartmentTypeData.value,
-          PropertyName: getPropertyNameData,
-          ProjectSize: getProjectSize,
-          NoOfUnits: getNoOfUnits,
-          BHK: getBHKData,
-          ProjectArea: getProjectArea,
-          PropertyAge: getPropertyAgeData.value,
-          AvalibleData: getAvalibleFrom,
-          Floor: getFloor,
-          TotalFloor: getTotalFloor,
-          MinPrices: getMinPrice,
-          MaxPrice: getMaxPrice,
-          RentPrices: getRentPrices.label || "N/A",
-          Advance: getAdvanceData,
-          MaintenanceCost: getMaintenance,
-          BuyOrRent: getBuyOrRentData,
-          Negotiable: getPricesnegotiable.value,
-          Furnishing: getFurnishing.value,
-          Parking: getParking.value,
-          Description: getDescription,
-          WaterSupply: getWater.value,
-          Power: getPower.value,
-          Security: getSecurity.value,
-          uniqueId: getUniqueid,
-          City: getcityData.value,
-          Locality: getstreetData,
-          Address: getAddressData,
-          ContactNumber: getContentData,
-          KhataType: getKathaData.value,
-          SaleSeed: getSaleSeedData.value,
-          PropertyTax: getPropertyTaxData.value,
-          OccupancyCertificate: getOccupancyCertificateData.value,
-          Amenities: {
-            ClubHouse: getClubhouse,
-            Gym: getGym,
-            PlayGround: getplayground,
-            OpenGym: getOpenGym,
-            Lift: getLift,
-            SewageSystem: getSewageSystem,
-            FireAlarm: getFireAlarm,
-            Park: getPark,
-            ShoppingCentre: getShoppingCentre,
-            InterCom: getInterCom,
-            SwimmingPool: getSwimmingPool,
-            VisitorsParking: getVisitorsParking,
-            PipedGas: PipedGas,
-            MulitpruposeHall: MulitpruposeHall,
-            TenniusCourt: TenniusCourt,
-            MeditationArea: MeditationArea,
-            BatmitionCourt: BatmitionCourt,
-          },
-        });
-        alert("Upload Successful  id : " + docRef.id);
-        navigate("/");
+        const db = getFirestore(AdminApp);
+        const uid = sessionStorage.getItem("DeviceId");
+    
+        try {
+          const docRef = await addDoc(collection(db, "ProdData"), {
+            uid: uid,
+            images: {
+              img1: File[0] || "N/A",
+              img2: File[1] || "N/A",
+              img3: File[2] || "N/A",
+              img4: File[3] || "N/A",
+              img5: File[4] || "N/A",
+              img6: File[6] || "N/A",
+              img7: File[7] || "N/A",
+              img8: File[8] || "N/A",
+              img9: File[9] || "N/A",
+              img10: File[10] || "N/A",
+              img11: File[11] || "N/A",
+            },
+            Brochure: File[5] || "N/A",
+            ShortList:[],
+            ApartmentType: getApartmentTypeData.value,
+            PropertyName: getPropertyNameData,
+            ProjectSize: getProjectSize,
+            NoOfUnits: getNoOfUnits,
+            BHK: getBHKData,
+            ProjectArea: getProjectArea,
+            PropertyAge: getPropertyAgeData.value,
+            AvalibleData: getAvalibleFrom,
+            Floor: getFloor,
+            TotalFloor: getTotalFloor,
+            MinPrices: getMinPrice,
+            MaxPrice: getMaxPrice,
+            RentPrices: getRentPrices.label || "N/A",
+            Advance: getAdvanceData,
+            MaintenanceCost: getMaintenance,
+            BuyOrRent: getBuyOrRentData,
+            Negotiable: getPricesnegotiable.value,
+            Furnishing: getFurnishing.value,
+            Parking: getParking.value,
+            Description: getDescription,
+            WaterSupply: getWater.value,
+            Power: getPower.value,
+            Security: getSecurity.value,
+            uniqueId: getUniqueid,
+            City: getcityData.value,
+            Locality: getstreetData,
+            Address: getAddressData,
+            ContactNumber: getContentData,
+            KhataType: getKathaData.value,
+            SaleSeed: getSaleSeedData.value,
+            PropertyTax: getPropertyTaxData.value,
+            OccupancyCertificate: getOccupancyCertificateData.value,
+            Amenities: {
+              ClubHouse: getClubhouse,
+              Gym: getGym,
+              PlayGround: getplayground,
+              OpenGym: getOpenGym,
+              Lift: getLift,
+              SewageSystem: getSewageSystem,
+              FireAlarm: getFireAlarm,
+              Park: getPark,
+              ShoppingCentre: getShoppingCentre,
+              InterCom: getInterCom,
+              SwimmingPool: getSwimmingPool,
+              VisitorsParking: getVisitorsParking,
+              PipedGas: PipedGas,
+              MulitpruposeHall: MulitpruposeHall,
+              TenniusCourt: TenniusCourt,
+              MeditationArea: MeditationArea,
+              BatmitionCourt: BatmitionCourt,
+            },
+          });
+          setShowProcessingScreen(true);
+          setTimeout(() => {
+            setShowProcessingScreen(false);
+            navigate("/");
+          }, 4000);
+        } catch (e) {
+          console.error(e)
+        }
       } catch (e) {
-        alert("Error adding document: " + e);
+        console.error(e);
       }
-    } catch (e) {
-      alert("Error adding document: " + e);
-    }
   };
 
   const HandleGym = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -584,6 +592,9 @@ export default function MobAddIndex() {
       <meta name="description" content='Add your Project in Legacy Properties to explore luxury homes in sought-after locations' />
       <link rel="canonical" href="https://legacyproperties.in/addProjectData"/>
     </Helmet>
+    {showLoader && <LoaderPD/>}
+
+    {showProcessingScreen ? <ProcessingStatus/> : 
     <MobProjectContainer>
       {showPropertyDetails && (
         <MobProjectCard>
@@ -1376,6 +1387,7 @@ export default function MobAddIndex() {
         </MobProjectCard>
       )}
     </MobProjectContainer>
+  }
     </>
   );
 }

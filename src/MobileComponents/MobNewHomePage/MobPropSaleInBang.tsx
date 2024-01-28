@@ -49,9 +49,9 @@ const MobPropSaleInBang = memo(() => {
     navigate(`/mobPLBudget/:?Prices=${budget}`);
   };
 
-  const HandelBHK = (budget: number) => {
-    navigate(`/mobPLBudget/:?BHK=${budget}`);
-  };
+  // const HandelBHK = (budget: number) => {
+  //   navigate(`/mobPLBudget/:?BHK=${budget}`);
+  // };
 
   const HandleApartmentType = (ApartmentType: string) => {
     navigate(`/mobPLApartments/:?ApartmentType=${ApartmentType}`);
@@ -100,7 +100,7 @@ const MobPropSaleInBang = memo(() => {
             <ImgBGonDiv src={Flats} />
             <LabelOnImgCard> Apartment </LabelOnImgCard>
           </MobPIBInsideDiv>
-          <MobPIBInsideDiv onClick={() => HandleBudget(87)}>
+          <MobPIBInsideDiv onClick={() => HandleApartmentType("Plot")}>
             <ImgBGonDiv src={Frams} />
             <LabelOnImgCard> Residential Plots</LabelOnImgCard>
           </MobPIBInsideDiv>

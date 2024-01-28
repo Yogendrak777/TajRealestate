@@ -5,6 +5,7 @@ import { createBrowserRouter,  RouterProvider } from 'react-router-dom';
 import './App.css';
 import ChartIndex from './MobileComponents/MobChart/ChartIndex';
 import MobRequestProp from './MobileComponents/MobRequestProp/MobRequestProp';
+import ProcessingStatus from './MobileComponents/MobStatus/ProcessingStatus';
 const Navbar = loadable(()=> import('./Components/NavBar/Navbar'));
 const Index = loadable(()=> import('./Components/NewHomePage/Index'));
 const AddIndex = loadable(()=> import('./Components/AddProperty/AddIndex'));
@@ -28,6 +29,7 @@ const MobPLApartments = loadable(()=>import('./MobileComponents/MobProjectList/M
 const MobPLMainSearch = loadable(()=>import('./MobileComponents/MobProjectList/MobPLMainSearch'));
 const LoaderPD = loadable(()=> import('./MobileComponents/MobNewHomePage/LoaderPD'));
 const MobHomeIndex = loadable(() => import('./MobileComponents/MobNewHomePage/MobHomeIndex'), {fallback: <LoaderPD/>});
+const MobBrokerIndex = loadable(()=> import('./MobileComponents/MobBrocker/MobBrokerIndex'));
 
 const router = createBrowserRouter([
   {
@@ -127,6 +129,14 @@ const MobileRouter = createBrowserRouter([
         path: "/requestProp",
         element: <MobRequestProp/>,
       },
+      {
+        path: "/addBroker",
+        element: <MobBrokerIndex/>,
+      },
+      {
+        path: "/processingScreen",
+        element: <ProcessingStatus/>,
+      },
     ]
   },
 ]);
@@ -174,9 +184,9 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <>
       <RouterProvider router={ Online ? isMobile ? MobileRouter : router : NoConnection }/>
-    </div>
+    </>
   );
 }
 
