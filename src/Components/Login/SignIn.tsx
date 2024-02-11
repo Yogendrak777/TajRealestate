@@ -1,53 +1,59 @@
-import React, { useState, useEffect } from 'react'
-import { BaseContainer, SignInContainer, EmailInput, PasswordInput, SignInBtn, ForgetPassword, NewToTP, Row, ImgForSign } from './Skins'
-import { Link } from 'react-router-dom'
-import Email from "../assets/email.png";
-import Password from '../assets/lock.png';
+import React, { useState, useEffect } from "react";
+import {
+  BaseContainer,
+  SignInContainer,
+  EmailInput,
+  PasswordInput,
+  SignInBtn,
+  ForgetPassword,
+  NewToTP,
+  Row,
+  ImgForSign,
+} from "./Skins";
+import { Link } from "react-router-dom";
+import { Email, Password } from '../../Components/assets';
 import {
   getAuth,
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { AdminApp } from "../FirebaseConfig/AdminFirebase";
+import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-export default function SignIn() {
-
+export default function MobSignIn() {
+  const params = new URLSearchParams(window.location.search);   
+  const sendTo = params?.get("sendTo");
   const [emailId, setEmailId] = useState<any>("");
   const [password, setPassword] = useState<any>("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Disable the back button
-    window.history.pushState(null, window.location.href);
-    window.onpopstate = function () {
-      window.history.pushState(null, window.location.href);
-    };
     const auth = getAuth(AdminApp);
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const uid = user.uid;
-        //navigate("/");
+        if(sendTo){
+          sessionStorage.setItem("DeviceId", user.uid)
+          navigate(sendTo);
+        } else {
+          sessionStorage.setItem("DeviceId", user.uid)
+          navigate("/");
+        }
       }
-    })
+    });
   }, []);
 
   const SendAuthData = () => {
     const auth = getAuth(AdminApp);
     if (emailId !== "" && password !== "") {
-          signInWithEmailAndPassword(auth, emailId, password)
-            .then((userCredential) => {
-              const user = userCredential.user;
-              navigate("/");
-            })
-            .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              alert(errorMessage)
-            });
-        } else {
+      signInWithEmailAndPassword(auth, emailId, password)
+        .then((userCredential) => {
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+    } else {
       alert("Enter the email and password Correctly");
     }
   };
@@ -61,30 +67,42 @@ export default function SignIn() {
   };
 
   return (
-    <>
-    <Helmet>
+  <>
+   <Helmet>
       <title>signIn to Legacy Properties</title>
       <meta name="description" content='signIn to Legacy Properties to explore luxury homes in sought-after locations' />
-      <link rel="canonical" href="https://legacyproperties.in/signIn"/>
+      <link rel="canonical" href="https://legacyproperties.in/signIn/:?sendTo=/"/>
     </Helmet>
     <BaseContainer>
-        <SignInContainer>
-             <h2> Sign In </h2>
-             <Row>
-             <ImgForSign src={Email}/>
-            <EmailInput type='email' placeholder='Enter Email ID' required onChange={handeEmailId}/>
-             </Row> 
-             <Row>
-             <ImgForSign src={Password}/>
-            <PasswordInput  type='password' placeholder='Enter password' required onChange={handelPassword} />
-             </Row>
-            <ForgetPassword> Forgot password? </ForgetPassword>
-            <SignInBtn onClick={SendAuthData}> Continue &gt; </SignInBtn>
-            <br/>
-            <br/>
-            <NewToTP> New to Taj Properties?  <Link to={'/signUp'}>SingUp</Link> </NewToTP> 
-        </SignInContainer>
+      <SignInContainer>
+        <h2> SignIn </h2>
+        <Row>
+          <ImgForSign src={Email} />
+          <EmailInput
+            type="email"
+            placeholder="Enter Email ID"
+            required
+            onChange={handeEmailId}
+          />
+        </Row>
+        <Row>
+          <ImgForSign src={Password} />
+          <PasswordInput
+            type="password"
+            placeholder="Enter password"
+            required
+            onChange={handelPassword}
+          />
+        </Row>
+        <ForgetPassword> Forgot password? </ForgetPassword>
+        <SignInBtn onClick={SendAuthData}> Continue &gt; </SignInBtn>
+        <br />
+        <br />
+        <NewToTP>
+          New to Taj Properties? <Link to={`/signUp/:?sendTo=${sendTo}`}>SignUp</Link>{" "}
+        </NewToTP>
+      </SignInContainer>
     </BaseContainer>
     </>
-  )
+  );
 }

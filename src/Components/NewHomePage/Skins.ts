@@ -4,6 +4,15 @@ interface TypeOfProps {
   BGColor?: string;
   Clr?: string;
 }
+interface TypeOfLabelOnImgCard {
+  top?: '1em' | '2em' | '3em' | '4em';
+}
+interface TypeOfHotSaleContainer {
+  Height?: '2em' | '4em' | '6em' | '8em' | '10em' | '12em' | '14em' | '16em' | '18em' | '20em';
+}
+interface TypeOfPropSaleContainer {
+  Height?: '2em' | '4em' | '6em' | '8em' | '10em' | '12em' | '14em' | '15em' | '16em' | '18em' | '20em';
+}
 
 export const BaseContainer = styled.div`
   width: auto;
@@ -75,9 +84,8 @@ export const CardContentColContainer = styled.div`
 `;
 
 export const CardContainer = styled(CardContentColContainer)`
-  @media only screen and (min-width: 300px) and (max-width: 600px) {
-    flex-direction: column;
-  }
+width: 100%;
+justify-content: space-around;
 `;
 
 export const CardBottomColContainer = styled.div`
@@ -182,24 +190,23 @@ export const TypeOfProps = styled.button<TypeOfProps>`
   justify-content: center;
   align-items: center;
   border: 2px solid #00bf63;
-  box-shadow: 0.5px 0.5px 4px #778899;
   border-radius: 5em;
   font-size: 18px;
   margin: 1em;
   padding-left: 1em;
   padding-right: 1em;
   cursor: pointer;
-  background-color: ${(props) => (props.BGColor ? props.BGColor : "")};
+  background-color: ${(props) => (props.BGColor ? props.BGColor : "white")};
   color: ${(props) => (props.Clr ? props.Clr : "Black")};
 `;
 
 export const AdSellContainer = styled.div`
   width: 20%;
-  height: 13em;
-  background-image: linear-gradient(180deg, #00bf63, transparent);
+  height: auto;
+  background-color : white;
   box-shadow: 0.5px 0.5px 4px #778899;
   text-align: left;
-  border-radius: 1em;
+  border-radius: 0.5em;
   align-items: center;
   justify-content: center;
   margin: 2em;
@@ -207,9 +214,9 @@ export const AdSellContainer = styled.div`
   cursor: pointer;
 `;
 
-export const PropSaleContainer = styled.div`
+export const PropSaleContainer = styled.div<TypeOfPropSaleContainer>`
   width: 17%;
-  height: 13em;
+  height: 12em;
   box-shadow: 0.5px 0.5px 4px #778899;
   text-align: left;
   border-radius: 1em;
@@ -218,11 +225,22 @@ export const PropSaleContainer = styled.div`
   justify-content: center;
   margin: 1em;
   cursor: pointer;
+  > span{
+    display:none;
+  }
+
+  &: hover {
+    height: ${(props) => (props.Height && props.Height)};
+    transition: height ease-in-out 0.5s;
+    > span{
+      display: flex;
+    }
+  }
 `;
 
-export const HotSaleContainer = styled.div`
+export const HotSaleContainer = styled.div<TypeOfHotSaleContainer>`
   width: 90%;
-  height: 13em;
+  height: 11em;
   box-shadow: 0.5px 0.5px 4px #778899;
   text-align: left;
   border-radius: 1em;
@@ -231,6 +249,17 @@ export const HotSaleContainer = styled.div`
   justify-content: center;
   margin: 1em;
   cursor: pointer;
+  > span{
+    display:none;
+  }
+
+  &: hover {
+    height: ${(props) => (props.Height && props.Height)};
+    transition: height ease-in-out 0.5s;
+    > span{
+      display: flex;
+    }
+  }
 `;
 
 export const AdDreamContainer = styled(AdSellContainer)``;
@@ -240,44 +269,40 @@ export const AdBrokerContainer = styled(AdSellContainer)``;
 export const AdInvestContainer = styled(AdSellContainer)``;
 
 export const HeaderLabel = styled.div`
-  color: white;
-  font-size: 27px;
-  font-weight: 800;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
   margin-bottom: 1em;
 `;
 
 export const Text = styled.div`
   color: black;
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export const PropertiesTittleInHome = styled.div`
   font-weight: 700;
-  font-size: 28px;
+  font-size: 24px;
 `;
 
 export const ImgBGonDiv = styled.img`
   width: 100%;
-  height: 13em;
+  height: 12em;
   border-radius: 1em;
   z-index: 1;
   transition: all 0.3s ease-in-out;
 
-  &: hover {
-    transform: scale(1.1);
-  }
+  // &: hover {
+  //   transform: scale(1.1);
+  // }
 `;
 
-export const LabelOnImgCard = styled.span`
-  z-index: 5;
-  position: absolute;
-  left: 1em;
-  top: 1em;
-  color: white;
+export const LabelOnImgCard = styled.span<TypeOfLabelOnImgCard>`
   font-weight: 700;
-  background-color: #00bf63;
   padding: 5px;
-  border-radius: 10px;
+  top: ${(props) => (props.top && props.top)};
+  color: black;
+  
 `;
 
 export const FooterBaseContainer = styled.div`
@@ -312,14 +337,14 @@ export const CardReview = styled.div`
 `;
 
 export const ReviewBaseContainer = styled.div`
-  width: 28em;
+  width: auto;
   height: 15em;
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin: 1px;
+  margin: 1em;
   box-shadow: 0.5px 0.5px 4px #778899;
   border-radius: 0.5em;
 `;

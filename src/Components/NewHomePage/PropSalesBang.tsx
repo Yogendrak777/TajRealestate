@@ -70,28 +70,28 @@ export default function PropSalesBang() {
         <TypeOfProps BGColor = {PropertyType ? "#00bf63"  : "" } Clr = {PropertyType && "white"  } onClick={handleByPropertyType}>
           By Property Type
         </TypeOfProps>
-        <TypeOfProps BGColor = {BHK ? "#00bf63"  : "" } Clr = {BHK && "white"  } onClick={handleBHK}>By BHK</TypeOfProps>
+        {/* <TypeOfProps BGColor = {BHK ? "#00bf63"  : "" } Clr = {BHK && "white"  } onClick={handleBHK}>By BHK</TypeOfProps> */}
       </CardBaseContainer>
       
       {mostPopular && (
         <CardBaseContainer>
-          <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(87)}>
+          <PropSaleContainer Height='15em' onClick={() =>HandleBudgetWithIn90Lacks(87)}>
             <ImgBGonDiv src={Banner2} />
             <LabelOnImgCard> Budget within 90 Lacks</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer Height='15em'>
             <ImgBGonDiv src={SeventyLakhs} />
             <LabelOnImgCard> 3 BHK Apartments</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer Height='15em'>
             <ImgBGonDiv src={Flats} />
             <LabelOnImgCard> Flats</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer Height='15em'>
             <ImgBGonDiv src={SeventyLakhs} />
             <LabelOnImgCard> Budget within 50 Lacks</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer Height='15em'>
             <ImgBGonDiv src={Frams} />
             <LabelOnImgCard> Residential Plots</LabelOnImgCard>
           </PropSaleContainer>
@@ -100,23 +100,23 @@ export default function PropSalesBang() {
 
       {Budget && (
         <CardBaseContainer>
-          <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(47)}>
+          <PropSaleContainer Height='15em' onClick={() =>HandleBudgetWithIn90Lacks(47)}>
             <ImgBGonDiv src={Banner2} />
             <LabelOnImgCard > Budget within 50 Lacks</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer  onClick={() =>HandleBudgetWithIn90Lacks(57)}>
+          <PropSaleContainer  Height='15em' onClick={() =>HandleBudgetWithIn90Lacks(57)}>
             <ImgBGonDiv src={SeventyLakhs} />
             <LabelOnImgCard > Budget within 60 Lacks</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer  onClick={() =>HandleBudgetWithIn90Lacks(87)}>
+          <PropSaleContainer  Height='15em' onClick={() =>HandleBudgetWithIn90Lacks(87)}>
             <ImgBGonDiv src={NintyLakhs} />
             <LabelOnImgCard> Budget within 90 Lacks</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(97)}>
+          <PropSaleContainer  Height='15em' onClick={() =>HandleBudgetWithIn90Lacks(97)}>
             <ImgBGonDiv src={OneCr} />
             <LabelOnImgCard > Budget within 1 crores</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer onClick={() =>HandleBudgetWithIn90Lacks(103)}>
+          <PropSaleContainer Height='15em' onClick={() =>HandleBudgetWithIn90Lacks(103)}>
             <ImgBGonDiv src={TwoCr} />
             <LabelOnImgCard > Budget within 2 crores</LabelOnImgCard>
           </PropSaleContainer>
@@ -125,23 +125,23 @@ export default function PropSalesBang() {
 
       {PropertyType && (
         <CardBaseContainer>
-          <PropSaleContainer>
+          <PropSaleContainer Height='15em'>
             <ImgBGonDiv src={Flats} />
             <LabelOnImgCard> Flats </LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer Height='15em'>
             <ImgBGonDiv src={Independent} />
             <LabelOnImgCard>Independent Houses/Villa</LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
-            <ImgBGonDiv src={Independent} />
+          <PropSaleContainer Height='15em'>
+            <ImgBGonDiv src={OneCr} />
             <LabelOnImgCard> Gated community Villa </LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer Height='15em'>
             <ImgBGonDiv src={Banner2} />
             <LabelOnImgCard> Stand Alone Building </LabelOnImgCard>
           </PropSaleContainer>
-          <PropSaleContainer>
+          <PropSaleContainer Height='15em'>
             <ImgBGonDiv src={Frams} />
             <LabelOnImgCard> Farm House </LabelOnImgCard>
           </PropSaleContainer>

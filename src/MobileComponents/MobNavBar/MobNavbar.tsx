@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavbarMainDiv, TajLogo, TajName } from "./Skins"
-import CompantLogo from "../../Components/assets/CompanyLogo.jpeg"
+import CompantLogo from "../../Components/assets/CompanyLogo.jpg"
 import { Outlet, useNavigate } from 'react-router-dom'
 import FooterNavBar from '../FooterBar/FooterNavBar';
 import { IoMdArrowBack } from "react-icons/io";

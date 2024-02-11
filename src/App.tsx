@@ -3,12 +3,13 @@ import loadable from '@loadable/component';
 import { isMobile } from 'react-device-detect';
 import { createBrowserRouter,  RouterProvider } from 'react-router-dom';
 import './App.css';
-import ChartIndex from './MobileComponents/MobChart/ChartIndex';
 import MobRequestProp from './MobileComponents/MobRequestProp/MobRequestProp';
 import ProcessingStatus from './MobileComponents/MobStatus/ProcessingStatus';
+const ChartIndex = loadable(()=> import('./MobileComponents/MobChart/ChartIndex'));
 const Navbar = loadable(()=> import('./Components/NavBar/Navbar'));
 const Index = loadable(()=> import('./Components/NewHomePage/Index'));
 const AddIndex = loadable(()=> import('./Components/AddProperty/AddIndex'));
+const ShortListIndex = loadable(()=> import('./Components/ShortlistPage/ShortlistIndex'));
 const IndexSearch = loadable(()=> import('./Components/ProductSearch/IndexSearch'));
 const NoInternetIndex = loadable(()=> import('./Components/NoInternet/NoInternetIndex'));
 const BudgetSearch = loadable(()=> import('./Components/ProductSearch/BudgetSearch'));
@@ -41,11 +42,19 @@ const router = createBrowserRouter([
         element:  <Index/> ,
       },
       {
-        path: "/signIn",
+        path: "/signIn/:queryParam",
         element:  <SignIn/> ,
       },
       {
-        path: "/signUp",
+        path: "/profile",
+        element: <ProfileIndex/> ,
+      },
+      {
+        path: "/chartWithUs",
+        element: <ChartIndex/>,
+      },
+      {
+        path: "/signUp/:queryParam",
         element:  <SignUp/> ,
       },
       {
@@ -59,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/BudgetSearch/:queryParam",
         element:  <BudgetSearch/>,
+      },
+      {
+        path: "/shortlist",
+        element: <ShortListIndex/> ,
       },
       {
         path: "/productFullInfo/:queryParam",

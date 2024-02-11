@@ -25,8 +25,6 @@ import {
   CardBottomColContainer,
 } from "./Skins";
 import Select from "react-select";
-import { getFirestore, collection, addDoc, getDocs,setDoc, doc, getDocFromCache, query, where, getDoc } from "firebase/firestore";
- import { AdminApp } from "../FirebaseConfig/AdminFirebase"
 import { useNavigate } from "react-router-dom";
 
 export default function SearchCard() {
@@ -38,18 +36,6 @@ export default function SearchCard() {
   const [getApartmentTypeData, setGetApartmentTypeData] = useState<any>("N/A");
   const [getPropertyAgeData, setShowFPropertyAgeData] = useState<any>("N/A");
   const [getBuggetData, setShowgetBuggetData] = useState<any>("N/A");
-
-  const getDisaplyData = async () => {
-    try {
-      const db = getFirestore(AdminApp);
-      const q = query(collection(db, "PropertyData"), where("City", "==", selectedOption.value), where("BHK", "==", getBHKData.value),  where("ApartmentType", "==", getApartmentTypeData.value), where('Prices', "==",getBuggetData.value), where('PropertyAge', "==",getPropertyAgeData.value));
-      const querySnapshot = await getDocs(q);
-      const data = querySnapshot.docs.map((doc) => doc.data());
-      console.log(JSON.stringify(data))
-    } catch (e) {
-      alert(e);
-    }
-  };
 
   const HandleSearchBtn = () => {
     if (selectedOption !== null && getBHKData !== null && getApartmentTypeData !== null){

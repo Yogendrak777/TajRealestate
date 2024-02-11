@@ -1,25 +1,30 @@
 import styled from "styled-components";
 
+interface NavTitleProps {
+  fontWeight? : '900' | '800'| '700'| '600' | '500' | '400';
+  fontSize? : 'medium' | 'larger' | 'small' | 'large';
+}
+
 export const NavbarMainDiv = styled.div`
 width : 100%;
-height : auto;
+height : 3em;
 position: fixed;
 top:0px;
-background-image: linear-gradient(180deg, #00BF63, transparent);
+background-color: white;
+box-shadow: 1px 1px 7px #778899;
 align-items: center;
 display: flex;
 flex-direction: row;
+border-radius: 0 0 0.5em 0.5em;
 z-index : 100;
-@media only screen and (max-width: 600px) {
-      background-color: lightblue;
-      height : auto;
-  }
+justify-content: space-between;
 `;
 
-export const TajName = styled.span`
+export const NavTitle = styled.span<NavTitleProps>`
 color : #30373C;
-font-size: larger;
-font-weight: 800;
+font-size: ${(props) => (props.fontSize && props.fontSize)};
+font-weight: ${(props) => (props.fontWeight && props.fontWeight)};
+margin: 0 1em;
 `;
 
 export const TajLogo = styled.img`
@@ -28,15 +33,9 @@ height : 2em;
 margin : 0.5em;
 `;
 
-export const RightContainer = styled.div`
-margin-left :60%;
-background-color: back;
+export const LogoAndName = styled.span`
+align-items: center;
+display: flex;
+flex-direction: row;
 `;
 
-export const LoginBtn = styled.div`
-background-color:  #00BF63;
-color : white;
-padding : 0.5em 1em; 0.5em 1em;
-border-radius : 5px;
-cursor:pointer;
-`;

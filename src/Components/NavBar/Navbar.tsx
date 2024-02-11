@@ -1,72 +1,39 @@
-import React, { useEffect, useState } from 'react'
-import { NavbarMainDiv, TajLogo, RightContainer, TajName, LoginBtn } from "./Skins"
-import CompantLogo from "../assets/CompanyLogo.jpeg"
+import React from 'react'
+import { NavbarMainDiv, TajLogo, NavTitle, LogoAndName } from "./Skins"
+import CompantLogo from "../assets/CompanyLogo.jpg"
 import { Outlet, useNavigate } from 'react-router-dom'
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from "firebase/auth";
-import { AdminApp } from "../FirebaseConfig/AdminFirebase";
 
 export default function Navbar() {
   const navigate = useNavigate();
 
-  const [isLogout, serIsLpgout] = useState<any>(true)
-
   const HandleGoBack = () => {
-    navigate('/')
+    navigate('/');
   }
 
-  const HandleSignIn = () => {
-    navigate('/signIn')
+  const HandleChartWithUs = () => {
+    navigate('/chartWithUs');
   }
 
-  const HandleLagOut = () => {
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {
-        alert("Sign Out")
-        serIsLpgout(true)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const HandleProfile = () => {
+    navigate(`/profile`);
   }
 
-  useEffect(() => {
-    // Disable the back button
-    window.history.pushState(null, window.location.href);
-    window.onpopstate = function () {
-      window.history.pushState(null, window.location.href);
-    };
-    const auth = getAuth(AdminApp);
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        serIsLpgout(false)
-      }
-    })
-  }, []);
+  const HandleShortList = () => {
+    navigate(`/shortlist`);
+  }
 
   return (
     <>
     <NavbarMainDiv>
-      <TajLogo src = {CompantLogo}/>
-      <TajName onClick={HandleGoBack}> Taj Properties </TajName>
-      <RightContainer>
-       {isLogout ? 
-       <LoginBtn onClick={HandleSignIn}>
-          SignIn / SignUp
-        </LoginBtn>
-         : 
-        <LoginBtn onClick={HandleLagOut}>
-        LogOut
-      </LoginBtn>
-      }
-      </RightContainer>
+      <LogoAndName>
+      <TajLogo src = {CompantLogo}/> 
+      <NavTitle fontWeight='800' fontSize='larger' onClick={HandleGoBack}> LegacyProperties</NavTitle>
+      </LogoAndName>
+      <div>
+      <NavTitle fontWeight='600' fontSize='medium' onClick={HandleChartWithUs}> Chart with us </NavTitle>
+      <NavTitle fontWeight='600' fontSize='medium' onClick={HandleShortList}> ShortList </NavTitle>
+      <NavTitle fontWeight='600' fontSize='medium'  onClick={HandleProfile}> Profile </NavTitle>
+      </div>
     </NavbarMainDiv>
     <Outlet/>
     </>

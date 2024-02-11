@@ -5,152 +5,150 @@ import {
   EmailInput,
   PasswordInput,
   SignInBtn,
-  ForgetPassword,
   NewToTP,
   Row,
   ImgForSign,
 } from "./Skins";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
-import phoneNumber from "../assets/phone-call.png";
-import Name from '../assets/user.png';
-import Email from "../assets/email.png";
-import Password from '../assets/lock.png';
-import UploadImage from '../assets/uploadImage.png';
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  setDoc,
-  doc,
-  getDocFromCache,
-  query,
-  where,
-  getDoc,
-} from "firebase/firestore";
+import { phoneNumber, Name, Email, Password } from "../../Components/assets";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { AdminApp } from "../FirebaseConfig/AdminFirebase";
+import { AdminApp } from "../../Components/FirebaseConfig/AdminFirebase";
 import { Helmet } from "react-helmet-async";
 
-
-export default function SignUp() {
-
+export default function MobSignUp() {
+  const params = new URLSearchParams(window.location.search);
+  const sendTo = params?.get("sendTo");   
   const [NameData, setNameData] = useState<any>("");
   const [EmailData, setEmailData] = useState<any>("");
   const [PasswordData, setPasswordData] = useState<any>("");
   const [PhoneNumber, setPhoneNumber] = useState<any>("");
   const navigate = useNavigate();
   const auth = getAuth(AdminApp);
-  const user: any = auth.currentUser;
   const db = getFirestore(AdminApp);
-
 
   const handleKeyPress = (e: any) => {
     const regex = new RegExp(/^[+0-9\b]+$/);
-    
-    if(!regex.test(e.key)){
-      if(e.key !==  "Backspace"){
-        e.preventDefault()
+
+    if (!regex.test(e.key)) {
+      if (e.key !== "Backspace") {
+        e.preventDefault();
       }
     }
   };
 
   const handleName = (event: any) => {
-    setNameData(event.target.value)
-  }
+    setNameData(event.target.value);
+  };
 
   const handleEmail = (event: any) => {
-    setEmailData(event.target.value)
-  }
+    setEmailData(event.target.value);
+  };
 
   const handlePassword = (event: any) => {
-    setPasswordData(event.target.value)
-  }
+    setPasswordData(event.target.value);
+  };
 
-  const SubmitToDB = async (User : any) => {
-      try {
-        const docRef = await addDoc(collection(db, "Profile"), {
-          uid: User.uid,
-          Name: NameData,
-          EmailID : EmailData,
-          Password : PasswordData,
-        });
-        alert("Upload Successful  id : " + docRef.id);
-        navigate('/signIn')
-
-      } catch (error) {
-          alert(error)
-      }
+  const SubmitToDB = async (User: any) => {
+    if(User){
+    try {
+       await addDoc(collection(db, "Profile"), {
+        uid: User.uid,
+        Name: NameData,
+        EmailID: EmailData,
+        Password: PasswordData,
+        UserImage:"",
+        ChartList:[{
+          "Id": "Agent",
+          "Message": "Hello, I am Yogendra, How can I help you"
+        }]
+      });
+    } catch (error) {
+      alert(error);
+    }
+    if(sendTo){
+      sessionStorage.setItem("DeviceId", User.uid)
+      navigate(sendTo);
+    } else {
+      sessionStorage.setItem("DeviceId", User.uid)
+      navigate("/");
+    }
   }
+  };
 
   const handleSubmit = async () => {
-    try {   
-        createUserWithEmailAndPassword(auth, EmailData, PasswordData)
+    if(NameData !=="" && EmailData !==""  && PasswordData !==""  && PhoneNumber !==""  ){
+    try {
+      createUserWithEmailAndPassword(auth, EmailData, PasswordData)
         .then((userCredential) => {
-          // Signed up
           const user = userCredential.user;
-          console.log(userCredential + '    userCredential')
-          alert(JSON.stringify(user))
-          setTimeout(() => {
-            SubmitToDB(user)
-          }, 2000);
-  
+          user && SubmitToDB(user);
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessage = error.message;
-          alert(errorMessage)
+          console.error(errorMessage);
         });
-      } catch (e) {
-        alert("Error adding document: " + e);
-      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
   };
-  
 
   return (
     <>
     <Helmet>
       <title>signUp to Legacy Properties</title>
       <meta name="description" content='signUp to Legacy Properties to explore luxury homes in sought-after locations' />
-      <link rel="canonical" href="https://legacyproperties.in/signUp"/>
+      <link rel="canonical" href="https://legacyproperties.in/signUp/:?sendTo=/"/>
     </Helmet>
     <BaseContainer>
       <SignInContainer>
         <h2> Sign Up </h2>
-      <Row>
-        <ImgForSign src={Name}/>
-        <EmailInput type="text" placeholder="Name" required onChange={handleName}/>
-      </Row>
-      <Row>
-      <ImgForSign src={Email}/>
-        <EmailInput type="email" placeholder="Email ID" required onChange={handleEmail}/>
-      </Row>
-      <Row>
-      <ImgForSign src={Password}/>
-        <PasswordInput type="password" placeholder="Password" required onChange={handlePassword} />
-      </Row>
-      <Row>
-      <ImgForSign src={phoneNumber}/>
-        <EmailInput
-          type="text"
-          value={PhoneNumber}
-          onChange={(e:any) => setPhoneNumber(e.target.value)}
-          onKeyDown={handleKeyPress}
-          placeholder="Phone Number"
+        <Row>
+          <ImgForSign src={Name} />
+          <EmailInput
+            type="text"
+            placeholder="Name"
+            required
+            onChange={handleName}
           />
-      </Row>
+        </Row>
+        <Row>
+          <ImgForSign src={Email} />
+          <EmailInput
+            type="email"
+            placeholder="Email ID"
+            required
+            onChange={handleEmail}
+          />
+        </Row>
+        <Row>
+          <ImgForSign src={Password} />
+          <PasswordInput
+            type="password"
+            placeholder="Password"
+            required
+            onChange={handlePassword}
+          />
+        </Row>
+        <Row>
+          <ImgForSign src={phoneNumber} />
+          <EmailInput
+            type="tel"
+            value={PhoneNumber}
+            maxLength={10}
+            onChange={(e: any) => setPhoneNumber(e.target.value)}
+            placeholder="Phone Number"
+          />
+        </Row>
         <SignInBtn onClick={handleSubmit}> Continue &gt; </SignInBtn>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <NewToTP>
           {" "}
-          Already Registered with Taj Properties? <Link to={"/signIn"}>SingIn</Link>{" "}
+          Already Registered with Taj Properties?{" "}
+          <Link to={`/signIn/:?sendTo=${sendTo}`}>SignIn</Link>{" "}
         </NewToTP>
       </SignInContainer>
     </BaseContainer>
